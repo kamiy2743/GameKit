@@ -7,9 +7,9 @@ namespace GameKit.UIFramework.Editor
 {
     static class PagePrefabVariantMenu
     {
-        const string PackageName = "com.kamiy2743.ui-framework";
-        const string PackageRelativePrefabPath = "Prefabs/Page/Page.prefab";
-        const string LegacyAssetsPrefabPath = "Assets/UIFramework/Prefabs/Page/Page.prefab";
+        const string PackageName = "com.kamiy2743.game-kit";
+        const string PackageRelativePrefabPath = "UIFramework/Prefabs/Page/Page.prefab";
+        const string LegacyAssetsPrefabPath = "Assets/GameKit/UIFramework/Prefabs/Page/Page.prefab";
         static readonly string SourcePrefabPath = ResolveSourcePrefabPath();
         const string DefaultFileName = "Page Variant.prefab";
 
