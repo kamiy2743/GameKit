@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b21d0b96a0c06214abb6f8d93341077d
+timeCreated: 1526820012
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 75123
+  packageName: Clean & Minimalist GUI Pack
+  packageVersion: 3.0.6
+  assetPath: Assets/GUIPack-Clean&Minimalist/Sources/Game Controller/VR Game Controller/HTCVive/WhiteOutline/SVG/TrackpadArrowSimpleRightLeft.svg
+  uploadId: 673355

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 2511bf11e9e0c7940a6edfc62c687245
+timeCreated: 1526820012
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 75123
+  packageName: Clean & Minimalist GUI Pack
+  packageVersion: 3.0.6
+  assetPath: Assets/GUIPack-Clean&Minimalist/Sources/Game Controller/VR Game Controller/HTCVive/BlackSolid/SVG/TrackpadArrowRight.svg
+  uploadId: 673355

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 0084446ce45271b4c8cf7f170df20f2a
+timeCreated: 1526820012
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 75123
+  packageName: Clean & Minimalist GUI Pack
+  packageVersion: 3.0.6
+  assetPath: Assets/GUIPack-Clean&Minimalist/Sources/Game Controller/VR Game Controller/HTCVive/BlackOutlineSolid/SVG/TrackpadNumbers.svg
+  uploadId: 673355

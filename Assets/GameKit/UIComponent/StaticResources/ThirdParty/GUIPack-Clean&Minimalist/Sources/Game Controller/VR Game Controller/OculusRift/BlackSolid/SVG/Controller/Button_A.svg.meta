@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 7d5dffc3e355d9c4bb707b67bdf61340
+timeCreated: 1526822312
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 75123
+  packageName: Clean & Minimalist GUI Pack
+  packageVersion: 3.0.6
+  assetPath: Assets/GUIPack-Clean&Minimalist/Sources/Game Controller/VR Game Controller/OculusRift/BlackSolid/SVG/Controller/Button_A.svg
+  uploadId: 673355

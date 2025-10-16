@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 7d4968080b9eb1945afdbf25b5b1fa72
+timeCreated: 1526820012
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 75123
+  packageName: Clean & Minimalist GUI Pack
+  packageVersion: 3.0.6
+  assetPath: Assets/GUIPack-Clean&Minimalist/Sources/Game Controller/VR Game Controller/HTCVive/BlackSolid/SVG/TrackpadColorPoints.svg
+  uploadId: 673355

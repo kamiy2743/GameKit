@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 1a0672f69c49cad4693494b72fd3c27e
+timeCreated: 1526822312
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 75123
+  packageName: Clean & Minimalist GUI Pack
+  packageVersion: 3.0.6
+  assetPath: Assets/GUIPack-Clean&Minimalist/Sources/Game Controller/VR Game Controller/OculusRift/WhiteSolid/SVG/Controller/GrabLButton.svg
+  uploadId: 673355

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 6c4e8a14e2c6a9547a488ce0036011e9
+timeCreated: 1526820011
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 75123
+  packageName: Clean & Minimalist GUI Pack
+  packageVersion: 3.0.6
+  assetPath: Assets/GUIPack-Clean&Minimalist/Sources/Game Controller/VR Game Controller/HTCVive/BlackOutlineSolid/SVG/TrackpadArrowUpDown.svg
+  uploadId: 673355

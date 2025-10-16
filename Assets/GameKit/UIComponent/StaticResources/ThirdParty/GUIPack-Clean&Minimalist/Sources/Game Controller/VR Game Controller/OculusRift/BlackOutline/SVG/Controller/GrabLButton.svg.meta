@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 240633ea5fe9d304d8fbbd68f0e93e4f
+timeCreated: 1526822312
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 75123
+  packageName: Clean & Minimalist GUI Pack
+  packageVersion: 3.0.6
+  assetPath: Assets/GUIPack-Clean&Minimalist/Sources/Game Controller/VR Game Controller/OculusRift/BlackOutline/SVG/Controller/GrabLButton.svg
+  uploadId: 673355

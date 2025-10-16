@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 60dc2ee2a89c1814ba82937782cae87a
+timeCreated: 1526822312
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 75123
+  packageName: Clean & Minimalist GUI Pack
+  packageVersion: 3.0.6
+  assetPath: Assets/GUIPack-Clean&Minimalist/Sources/Game Controller/VR Game Controller/OculusRift/WhiteSolid/SVG/Remote/NavigationDiskArrows.svg
+  uploadId: 673355

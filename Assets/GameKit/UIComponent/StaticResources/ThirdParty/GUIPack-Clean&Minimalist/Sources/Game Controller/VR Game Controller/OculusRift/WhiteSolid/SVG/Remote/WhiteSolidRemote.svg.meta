@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b9be21e15aa053544a2cc9c5f133d05b
+timeCreated: 1526822498
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 75123
+  packageName: Clean & Minimalist GUI Pack
+  packageVersion: 3.0.6
+  assetPath: Assets/GUIPack-Clean&Minimalist/Sources/Game Controller/VR Game Controller/OculusRift/WhiteSolid/SVG/Remote/WhiteSolidRemote.svg
+  uploadId: 673355

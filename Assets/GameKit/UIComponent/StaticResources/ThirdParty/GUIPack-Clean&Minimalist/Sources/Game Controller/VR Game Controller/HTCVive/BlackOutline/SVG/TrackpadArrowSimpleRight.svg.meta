@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e719e59a7c428e8478ac5b5888c82c44
+timeCreated: 1526820012
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 75123
+  packageName: Clean & Minimalist GUI Pack
+  packageVersion: 3.0.6
+  assetPath: Assets/GUIPack-Clean&Minimalist/Sources/Game Controller/VR Game Controller/HTCVive/BlackOutline/SVG/TrackpadArrowSimpleRight.svg
+  uploadId: 673355

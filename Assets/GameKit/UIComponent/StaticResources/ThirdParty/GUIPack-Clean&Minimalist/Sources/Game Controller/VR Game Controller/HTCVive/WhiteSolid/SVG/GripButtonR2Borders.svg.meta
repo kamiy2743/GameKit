@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 3cb4c41221f46cd49b0c45bd368c041d
+timeCreated: 1526820011
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 75123
+  packageName: Clean & Minimalist GUI Pack
+  packageVersion: 3.0.6
+  assetPath: Assets/GUIPack-Clean&Minimalist/Sources/Game Controller/VR Game Controller/HTCVive/WhiteSolid/SVG/GripButtonR2Borders.svg
+  uploadId: 673355
