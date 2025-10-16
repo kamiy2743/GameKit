@@ -1,0 +1,17 @@
+{
+    "name": "GameKit.Application",
+    "rootNamespace": "GameKit.Application",
+    "references": [
+        "VContainer",
+        "GameKit.DependencyInjection"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
