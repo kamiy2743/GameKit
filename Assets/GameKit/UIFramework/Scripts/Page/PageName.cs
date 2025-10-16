@@ -2,6 +2,7 @@
 
 namespace GameKit.UIFramework.Page
 {
+    //TODO valueをprivateにする
     public sealed record PageName(string Value)
     {
         static string ResourceKeyPrefix => "Page_";

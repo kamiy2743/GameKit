@@ -1,0 +1,19 @@
+{
+    "name": "GameKit.Scene",
+    "rootNamespace": "GameKit.Scene",
+    "references": [
+        "UniTask",
+        "ZString",
+        "VContainer",
+        "GameKit.DependencyInjection"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
