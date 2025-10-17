@@ -2,14 +2,12 @@
 
 namespace GameKit.Scene
 {
-    public sealed record SceneName
+    //TODO valueをprivateにする
+    public sealed record SceneName(string Value)
     {
-        public string Value { get; }
-
-        //TODO privateにする
-        public SceneName(string value)
-        {
-            Value = ZString.Concat(value, "Scene");
-        }
+        static string SceneSuffix => "Scene";
+        
+        public string Value { get; } = Value;
+        public string ResourceKey { get; } = ZString.Concat(Value, SceneSuffix);
     }
 }

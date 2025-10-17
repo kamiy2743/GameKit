@@ -10,7 +10,7 @@ namespace GameKit.Scene
         public async UniTask AddAsync(SceneName sceneName, CancellationToken ct)
         {
             ct.ThrowIfCancellationRequested();
-            await SceneManager.LoadSceneAsync(sceneName.Value, LoadSceneMode.Additive);
+            await SceneManager.LoadSceneAsync(sceneName.ResourceKey, LoadSceneMode.Additive);
         }
     }
 }
