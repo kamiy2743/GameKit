@@ -1,0 +1,17 @@
+{
+    "name": "GameKit.CharacterController.Sample",
+    "rootNamespace": "GameKit.CharacterController.Sample",
+    "references": [
+        "Unity.InputSystem",
+        "GameKit.CharacterController"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
