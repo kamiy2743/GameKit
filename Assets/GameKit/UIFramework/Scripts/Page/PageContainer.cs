@@ -29,5 +29,11 @@ namespace GameKit.UIFramework.Page
             ct.ThrowIfCancellationRequested();
             await pageContainer.Pop(true);
         }
+        
+        public async UniTask PopAllAsync(CancellationToken ct)
+        {
+            ct.ThrowIfCancellationRequested();
+            await pageContainer.Pop(true, pageContainer.Pages.Count);
+        }
     }
 }
