@@ -1,16 +1,19 @@
-﻿using R3;
+﻿using System.Threading;
+using R3;
 using UnityEngine.InputSystem;
 
 namespace GameKit.Input.GameKit.Input
 {
     public static class InputSystemObservableFactory
     {
-        public static ReadOnlyReactiveProperty<T> MakeReactiveProperty<T>(InputAction action)  where T : struct
+        public static ReadOnlyReactiveProperty<T> MakeReactiveProperty<T>(InputAction action, CancellationToken ct)  where T : struct
         {
-            return Observable.EveryUpdate()
+            var rp = Observable.EveryUpdate()
                 .Select(_ => action.ReadValue<T>())
                 .Prepend(action.ReadValue<T>())
                 .ToReadOnlyReactiveProperty();
+            ct.Register(() => rp.Dispose());
+            return rp;
         }
 
         public static Observable<Unit> MakeObservable(InputAction action)
