@@ -1,10 +1,7 @@
 {
-    "name": "GameKit.Input",
-    "rootNamespace": "GameKit.Input",
-    "references": [
-        "Unity.InputSystem",
-        "GameKit.DisposableExtension"
-    ],
+    "name": "GameKit.DisposableExtension",
+    "rootNamespace": "GameKit.DisposableExtension",
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
