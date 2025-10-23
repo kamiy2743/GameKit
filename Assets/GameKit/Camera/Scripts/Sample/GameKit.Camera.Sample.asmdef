@@ -1,9 +1,10 @@
 {
-    "name": "GameKit.Camera",
-    "rootNamespace": "GameKit.Camera",
+    "name": "GameKit.Camera.Sample",
+    "rootNamespace": "GameKit.Camera.Sample",
     "references": [
+        "Unity.InputSystem",
         "Unity.Cinemachine",
-        "Unity.InputSystem"
+        "GameKit.Camera"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
