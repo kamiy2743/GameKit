@@ -12,11 +12,11 @@ namespace GameKit.CharacterController.Sample
         void Update()
         {
             var moveInput = moveAction.action.ReadValue<Vector2>();
-            characterController.SetMoveInput(moveInput);
+            characterController.Move(moveInput);
 
             if (jumpAction.action.IsPressed())
             {
-                characterController.RequestJump();
+                characterController.Jump();
             }
         }
     }

@@ -1,7 +1,9 @@
 {
     "name": "GameKit.Input",
     "rootNamespace": "GameKit.Input",
-    "references": [],
+    "references": [
+        "Unity.InputSystem"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

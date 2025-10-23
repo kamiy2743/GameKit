@@ -36,12 +36,12 @@ namespace GameKit.CharacterController
             ConfigureRigidbody();
         }
 
-        public void SetMoveInput(Vector2 input)
+        public void Move(Vector2 input)
         {
             moveInput = Vector2.ClampMagnitude(input, 1f);
         }
 
-        public void RequestJump()
+        public void Jump()
         {
             jumpRequested = true;
         }
