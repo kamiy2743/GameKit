@@ -1,7 +1,7 @@
 using Unity.Cinemachine;
 using UnityEngine;
 
-namespace GameKit.Camera
+namespace GameKit.Camera.Builtin
 {
     public sealed class FirstPersonCamera : MonoBehaviour, ICamera
     {
