@@ -3,15 +3,15 @@ using UnityEngine.InputSystem;
 
 namespace GameKit.Camera.Sample
 {
-    public sealed class SimpleInputAxisInput : MonoBehaviour
+    public sealed class SimpleThirdPersonCameraInput : MonoBehaviour
     {
         [SerializeField] InputActionReference lookAction;
-        [SerializeField] InputAxisController inputAxisController;
+        [SerializeField] ThirdPersonCamera thirdPersonCamera;
 
         void Update()
         {
             var lookInput = lookAction.action.ReadValue<Vector2>();
-            inputAxisController.SetLookInput(lookInput);
+            thirdPersonCamera.SetLookInput(lookInput);
         }
     }
 }
