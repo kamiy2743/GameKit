@@ -34,7 +34,10 @@ namespace GameKit.Camera
             {
                 var isActive = key.Equals(cameraName);
                 camera.SetEnable(isActive);
-                activeCamera = camera;
+                if (isActive)
+                {
+                    activeCamera = camera;
+                }
             }
         }
     }

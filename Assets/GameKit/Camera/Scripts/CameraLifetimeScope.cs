@@ -8,6 +8,7 @@ namespace GameKit.Camera
         public override void Configure(IContainerBuilder builder)
         {
             builder.Register<CameraContainer>(Lifetime.Singleton);
+            builder.Register<ActiveCameraInputProxy>(Lifetime.Singleton);
         }
     }
 }
