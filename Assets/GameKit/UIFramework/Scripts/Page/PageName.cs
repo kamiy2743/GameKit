@@ -5,6 +5,7 @@ namespace GameKit.UIFramework.Page
     //TODO valueをprivateにする
     public sealed record PageName(string Value)
     {
+        // TODO Suffixでいいかも
         static string ResourceKeyPrefix => "Page_";
 
         public string Value { get; } = Value;

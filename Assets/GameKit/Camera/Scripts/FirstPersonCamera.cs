@@ -5,6 +5,8 @@ namespace GameKit.Camera
 {
     public sealed class FirstPersonCamera : MonoBehaviour, ICamera
     {
+        public static readonly CameraName Name = new(nameof(FirstPersonCamera));
+
         [SerializeField] float accelTime;
         [SerializeField] float decelTime;
         [SerializeField] float baseSensitivity;

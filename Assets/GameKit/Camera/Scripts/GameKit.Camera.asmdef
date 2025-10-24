@@ -2,8 +2,10 @@
     "name": "GameKit.Camera",
     "rootNamespace": "GameKit.Camera",
     "references": [
+        "VContainer",
         "Unity.Cinemachine",
-        "Unity.InputSystem"
+        "Unity.InputSystem",
+        "GameKit.DependencyInjection"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

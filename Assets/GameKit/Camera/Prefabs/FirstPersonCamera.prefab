@@ -90,5 +90,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   accelTime: 1
   decelTime: 0.2
-  baseSensitivity: 10
+  baseSensitivity: 20
   pitchLimits: {x: -80, y: 80}
