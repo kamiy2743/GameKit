@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace GameKit.Camera
 {
-    public sealed class FirstPersonCamera : MonoBehaviour
+    public sealed class FirstPersonCamera : MonoBehaviour, ICamera
     {
         [SerializeField] float accelTime;
         [SerializeField] float decelTime;
@@ -15,7 +15,12 @@ namespace GameKit.Camera
         float yaw;
         float pitch;
 
-        public void SetLookInput(Vector2 input)
+        void ICamera.SetEnable(bool enable)
+        {
+            gameObject.SetActive(enable);
+        }
+
+        void ICamera.SetLookInput(Vector2 input)
         {
             this.input = input;
         }

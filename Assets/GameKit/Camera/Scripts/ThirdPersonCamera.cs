@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace GameKit.Camera
 {
-    public sealed class ThirdPersonCamera : InputAxisControllerBase<InputAxisReader>
+    public sealed class ThirdPersonCamera : InputAxisControllerBase<InputAxisReader>, ICamera
     {
         void Start()
         {
@@ -11,7 +11,12 @@ namespace GameKit.Camera
             Controllers[1].Input = new InputAxisReader();
         }
 
-        public void SetLookInput(Vector2 input)
+        void ICamera.SetEnable(bool enable)
+        {
+            gameObject.SetActive(enable);
+        }
+
+        void ICamera.SetLookInput(Vector2 input)
         {
             Controllers[0].Input.SetAxisInput(input.x);
             Controllers[1].Input.SetAxisInput(input.y);

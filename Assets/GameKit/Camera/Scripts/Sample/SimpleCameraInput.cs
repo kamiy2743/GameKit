@@ -3,15 +3,21 @@ using UnityEngine.InputSystem;
 
 namespace GameKit.Camera.Sample
 {
-    public sealed class SimpleThirdPersonCameraInput : MonoBehaviour
+    public sealed class SimpleCameraInput : MonoBehaviour
     {
         [SerializeField] InputActionReference lookAction;
-        [SerializeField] ThirdPersonCamera thirdPersonCamera;
+
+        ICamera? camera;
+
+        void Start()
+        {
+            camera = GetComponent<ICamera>();
+        }
 
         void Update()
         {
             var lookInput = lookAction.action.ReadValue<Vector2>();
-            thirdPersonCamera.SetLookInput(lookInput);
+            camera?.SetLookInput(lookInput);
         }
     }
 }
