@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 namespace GameKit.CharacterController
 {
@@ -24,6 +24,7 @@ namespace GameKit.CharacterController
         [SerializeField] bool enableDebugLogs;
 
         Rigidbody rb;
+        Transform cameraTransform;
         Vector2 moveInput;
         bool jumpRequested;
         bool isGrounded;
@@ -33,6 +34,7 @@ namespace GameKit.CharacterController
         void Awake()
         {
             rb = GetComponent<Rigidbody>();
+            cameraTransform = Camera.main!.transform;
             ConfigureRigidbody();
         }
 
@@ -78,7 +80,7 @@ namespace GameKit.CharacterController
         void UpdateGroundState()
         {
             var hitGround = Physics.SphereCast(
-                transform.position + Vector3.up * (groundCheckRadius + groundCheckDistance), 
+                transform.position + Vector3.up * (groundCheckRadius + groundCheckDistance),
                 groundCheckRadius,
                 Vector3.down,
                 out var hit,
@@ -86,7 +88,7 @@ namespace GameKit.CharacterController
                 groundLayers,
                 QueryTriggerInteraction.Ignore
             );
-            
+
             if (!hitGround)
             {
                 isGrounded = false;
@@ -108,7 +110,7 @@ namespace GameKit.CharacterController
         Vector3 GetDesiredPlanarVelocity(float deltaTime)
         {
             var inputDirection = new Vector3(moveInput.x, 0f, moveInput.y);
-            var worldInput = transform.TransformDirection(inputDirection);
+            var worldInput = GetWorldMovementDirection(inputDirection);
             var desiredVelocity = worldInput * maxSpeed;
 
             if (isGrounded)
@@ -119,6 +121,31 @@ namespace GameKit.CharacterController
             var currentPlanar = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
             var maxDelta = (isGrounded ? acceleration : acceleration * airControlMultiplier) * deltaTime;
             return Vector3.MoveTowards(currentPlanar, desiredVelocity, maxDelta);
+        }
+
+        Vector3 GetWorldMovementDirection(Vector3 inputDirection)
+        {
+            var cameraForward = Vector3.ProjectOnPlane(cameraTransform.forward, Vector3.up);
+            if (cameraForward.sqrMagnitude <= Mathf.Epsilon)
+            {
+                return transform.TransformDirection(inputDirection);
+            }
+            cameraForward.Normalize();
+
+            var cameraRight = Vector3.ProjectOnPlane(cameraTransform.right, Vector3.up);
+            if (cameraRight.sqrMagnitude <= Mathf.Epsilon)
+            {
+                cameraRight = new Vector3(cameraForward.z, 0f, -cameraForward.x);
+            }
+            cameraRight.Normalize();
+
+            var world = cameraRight * inputDirection.x + cameraForward * inputDirection.z;
+            if (world.sqrMagnitude <= Mathf.Epsilon)
+            {
+                return Vector3.zero;
+            }
+
+            return world.normalized * inputDirection.magnitude;
         }
 
         void ApplyJump(ref Vector3 velocity)
