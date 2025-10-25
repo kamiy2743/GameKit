@@ -5,17 +5,16 @@ namespace GameKit.UIFramework.Page
     //TODO valueをprivateにする
     public sealed record PageName(string Value)
     {
-        // TODO Suffixでいいかも
-        static string ResourceKeyPrefix => "Page_";
+        static string ResourceKeySuffix => "Page";
 
         public string Value { get; } = Value;
-        public string ResourceKey { get; } = ZString.Concat(ResourceKeyPrefix, Value);
+        public string ResourceKey { get; } = ZString.Concat(Value, ResourceKeySuffix);
 
         public static bool TryParseFromResourceKey(string value, out PageName? pageName)
         {
-            if (value.StartsWith(ResourceKeyPrefix))
+            if (value.EndsWith(ResourceKeySuffix))
             {
-                pageName = new PageName(value[ResourceKeyPrefix.Length..]);
+                pageName = new PageName(value[..^ResourceKeySuffix.Length]);
                 return true;
             }
             pageName = null;

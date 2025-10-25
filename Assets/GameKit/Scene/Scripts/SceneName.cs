@@ -5,9 +5,9 @@ namespace GameKit.Scene
     //TODO valueをprivateにする
     public sealed record SceneName(string Value)
     {
-        static string SceneSuffix => "Scene";
+        static string ResourceKeySuffix => "Scene";
         
         public string Value { get; } = Value;
-        public string ResourceKey { get; } = ZString.Concat(Value, SceneSuffix);
+        public string ResourceKey { get; } = ZString.Concat(Value, ResourceKeySuffix);
     }
 }
