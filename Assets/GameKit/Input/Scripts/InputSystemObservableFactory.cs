@@ -1,4 +1,5 @@
-﻿using GameKit.DisposableExtension;
+﻿using System;
+using GameKit.DisposableExtension;
 using R3;
 using UnityEngine.InputSystem;
 
@@ -16,10 +17,18 @@ namespace GameKit.Input.GameKit.Input
             return rp;
         }
 
-        public static Observable<Unit> MakeObservable(InputAction action)
+        public static Observable<Unit> MakeObservable(InputAction action, ButtonInputMode mode)
         {
             return Observable.EveryUpdate()
-                .Where(_ => action.IsPressed());
+                .Where(_ =>
+                {
+                    return mode switch
+                    {
+                        ButtonInputMode.Triggered => action.triggered,
+                        ButtonInputMode.Pressed => action.IsPressed(),
+                        _ => throw new NotImplementedException(),
+                    };
+                });
         }
     }
 }

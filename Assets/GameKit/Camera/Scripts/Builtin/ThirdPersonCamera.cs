@@ -5,8 +5,6 @@ namespace GameKit.Camera.Builtin
 {
     public sealed class ThirdPersonCamera : InputAxisControllerBase<InputAxisReader>, ICamera
     {
-        public static readonly CameraName Name = new(nameof(ThirdPersonCamera));
-        
         void Start()
         {
             Controllers[0].Input = new InputAxisReader();
