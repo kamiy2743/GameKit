@@ -9,5 +9,10 @@ namespace GameKit.Application
             UnityEngine.Cursor.visible = visible;
             UnityEngine.Cursor.lockState = visible ? CursorLockMode.None : CursorLockMode.Locked;
         }
+        
+        public static bool IsVisible()
+        {
+            return UnityEngine.Cursor.visible;
+        }
     }
 }

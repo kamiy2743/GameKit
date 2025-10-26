@@ -4,6 +4,7 @@ using R3;
 
 namespace GameKit.UIFramework.Page
 {
+    //TODO 排他制御
     public sealed class PageContainer
     {
         readonly UnityScreenNavigator.Runtime.Core.Page.PageContainer pageContainer;
@@ -59,6 +60,11 @@ namespace GameKit.UIFramework.Page
             {
                 lastPageClosed.OnNext(Unit.Default);
             }
+        }
+        
+        public bool IsEmpty()
+        {
+            return pageContainer.Pages.Count == 0;
         }
     }
 }
