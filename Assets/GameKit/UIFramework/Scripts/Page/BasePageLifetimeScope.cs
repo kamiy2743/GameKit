@@ -4,21 +4,21 @@ using VContainer;
 
 namespace GameKit.UIFramework.Page
 {
-    public abstract class BasePageLifetimeScope<TView, TPresenter> : BaseRootChildLifetimeScope
-        where TView : BasePageView
+    public abstract class BasePageLifetimeScope<TPage, TPresenter> : BaseRootChildLifetimeScope
+        where TPage : BasePage
         where TPresenter : BasePagePresenter
     {
-        [SerializeField] TView view;
+        [SerializeField] TPage page;
         
         protected override void Configure(IContainerBuilder builder)
         {
-            builder.RegisterInstance(view);
+            builder.RegisterInstance(page);
             builder.Register<TPresenter>(Lifetime.Singleton);
             
             builder.RegisterBuildCallback(container =>
             {
                 var presenter = container.Resolve<TPresenter>();
-                view.AddLifecycleEvent(presenter);
+                page.AddLifecycleEvent(presenter);
             });
         }
     }
