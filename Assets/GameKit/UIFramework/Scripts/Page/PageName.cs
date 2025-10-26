@@ -3,6 +3,7 @@
 namespace GameKit.UIFramework.Page
 {
     //TODO valueをprivateにする
+    //TODO Genericsにして削除
     public sealed record PageName(string Value)
     {
         static string ResourceKeySuffix => "Page";

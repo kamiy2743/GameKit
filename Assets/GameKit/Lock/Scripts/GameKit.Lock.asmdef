@@ -1,13 +1,8 @@
 {
-    "name": "GameKit.UIFramework",
-    "rootNamespace": "GameKit.UIFramework",
+    "name": "GameKit.Lock",
+    "rootNamespace": "GameKit.Lock",
     "references": [
-        "UnityScreenNavigator",
-        "UniTask",
-        "ZString",
-        "VContainer",
-        "GameKit.DependencyInjection",
-        "GameKit.Lock"
+        "UniTask"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
