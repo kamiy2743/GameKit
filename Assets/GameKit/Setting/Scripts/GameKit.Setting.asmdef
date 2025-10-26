@@ -1,0 +1,19 @@
+{
+    "name": "GameKit.Setting",
+    "rootNamespace": "GameKit.Setting",
+    "references": [
+        "VContainer",
+        "GameKit.DependencyInjection",
+        "GameKit.DisposableExtension",
+        "GameKit.UIComponent"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

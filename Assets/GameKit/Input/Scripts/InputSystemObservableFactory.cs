@@ -9,12 +9,10 @@ namespace GameKit.Input.GameKit.Input
     {
         public static ReadOnlyReactiveProperty<T> MakeReactiveProperty<T>(InputAction action, Disposer disposer)  where T : struct
         {
-            var rp = Observable.EveryUpdate()
+            return Observable.EveryUpdate()
                 .Select(_ => action.ReadValue<T>())
-                .Prepend(action.ReadValue<T>())
-                .ToReadOnlyReactiveProperty();
-            disposer.Register(rp);
-            return rp;
+                .ToReadOnlyReactiveProperty(action.ReadValue<T>())
+                .Register(disposer);
         }
 
         public static Observable<Unit> MakeObservable(InputAction action, ButtonInputMode mode)
