@@ -1,6 +1,7 @@
 ﻿using System.Threading;
 using Cysharp.Threading.Tasks;
 using GameKit.Lock;
+using GameKit.UIFramework.UnityScreenNavigatorResource;
 using R3;
 
 namespace GameKit.UIFramework.Page
@@ -22,22 +23,22 @@ namespace GameKit.UIFramework.Page
             this.pageContainer = pageContainer;
         }
 
-        public async UniTask PushAsync(PageName pageName, CancellationToken ct)
+        public async UniTask PushAsync<T>(CancellationToken ct) where T : BasePage
         {
-            await PushAsync(pageName, true, ct);
+            await PushAsync<T>(true, ct);
         }
         
-        public async UniTask PushWithoutAnimationAsync(PageName pageName, CancellationToken ct)
+        public async UniTask PushWithoutAnimationAsync<T>(CancellationToken ct) where T : BasePage
         {
-            await PushAsync(pageName, false, ct);
+            await PushAsync<T>(false, ct);
         }
         
-        async UniTask PushAsync(PageName pageName, bool playAnimation, CancellationToken ct)
+        async UniTask PushAsync<T>(bool playAnimation, CancellationToken ct) where T : BasePage
         {
             ct.ThrowIfCancellationRequested();
             using (await locker.LockAsync(ct))
             {
-                await pageContainer.Push(pageName.ResourceKey, playAnimation);
+                await pageContainer.Push(ResourceKey.FromGenerics<T>().Value, playAnimation);
                 if (pageContainer.Pages.Count == 1)
                 {
                     firstPageOpened.OnNext(Unit.Default);

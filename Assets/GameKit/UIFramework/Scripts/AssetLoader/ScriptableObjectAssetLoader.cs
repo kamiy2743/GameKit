@@ -13,6 +13,7 @@ namespace GameKit.UIFramework.AssetLoader
         public ScriptableObjectAssetLoader(ScriptableObjectAssetLoaderMap map)
         {
             this.map = map;
+            map.SetUp();
         }
         
         AssetLoadHandle<T> IAssetLoader.Load<T>(string key)
