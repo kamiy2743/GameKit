@@ -9,6 +9,12 @@ namespace GameKit.UIFramework.Page
         where TPresenter : BasePagePresenter
     {
         [SerializeField] TPage page;
+
+        protected override void OnValidate()
+        {
+            base.OnValidate();
+            page = GetComponent<TPage>();
+        }
         
         protected override void Configure(IContainerBuilder builder)
         {

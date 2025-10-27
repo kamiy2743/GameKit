@@ -4,7 +4,7 @@ namespace GameKit.DependencyInjection.Root
 {
     public class BaseRootChildLifetimeScope : LifetimeScope
     {
-        void OnValidate()
+        protected virtual void OnValidate()
         {
             parentReference = ParentReference.Create<RootLifetimeScope>();
         }
