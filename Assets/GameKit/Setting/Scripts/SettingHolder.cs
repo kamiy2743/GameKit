@@ -7,49 +7,55 @@ namespace GameKit.Setting
 {
     public sealed class SettingHolder
     {
-        readonly Dictionary<SettingKey, ISettingValue> settings = new();
+        readonly Dictionary<string, ISettingValue> settings = new();
         readonly Subject<SettingUpdateEvent> settingUpdated = new();
         
-        public ReadOnlyReactiveProperty<T> GetAsReactiveProperty<T>(SettingKey key, T defaultValue, Disposer disposer) where T : ISettingValue
+        public ReadOnlyReactiveProperty<TValue> GetAsReactiveProperty<TProperty, TValue>(Disposer disposer)
+            where TProperty : ISettingProperty<TValue>
+            where TValue : ISettingValue
         {
+            var key = GetKey<TProperty, TValue>();
             return settingUpdated
                 .Where(e => e.Key.Equals(key))
-                .Select(e => (T)e.Value)
-                .ToReadOnlyReactiveProperty(Get(key, defaultValue))
+                .Select(e => (TValue)e.Value)
+                .ToReadOnlyReactiveProperty(Get<TProperty, TValue>())
                 .RegisterAndReturn(disposer);
         }
         
-        public T Get<T>(SettingKey key, T defaultValue) where T : ISettingValue
+        public TValue Get<TProperty, TValue>()
+            where TProperty : ISettingProperty<TValue>
+            where TValue : ISettingValue
         {
+            var key = GetKey<TProperty, TValue>();
             if (settings.TryGetValue(key, out var value))
             {
-                return (T)value;
+                return (TValue)value;
             }
 
-            return defaultValue;
+            var property = Activator.CreateInstance<TProperty>();
+            settings.Add(key, property.Default);
+            return property.Default;
         }
         
-        public void Set<T>(SettingKey key, T value) where T : ISettingValue
+        public void Set<TProperty, TValue>(TValue value)
+            where TProperty : ISettingProperty<TValue>
+            where TValue : ISettingValue
         {
-            if (settings.TryGetValue(key, out var oldValue))
-            {
-                if (oldValue is not T)
-                {
-                    throw new InvalidOperationException($"{key}に保存する型が一致しません。既存の型:{oldValue.GetType().FullName}, 指定された型:{typeof(T).FullName}");
-                }
-                settings[key] = value;
-            }
-            else
-            {
-                settings.Add(key, value);
-            }
-
+            var key = GetKey<TProperty, TValue>();
+            settings[key] = value;
             settingUpdated.OnNext(new SettingUpdateEvent(key, value));
         }
-
-        sealed record SettingUpdateEvent(SettingKey Key, ISettingValue Value)
+        
+        static string GetKey<TProperty, TValue>()
+            where TProperty : ISettingProperty<TValue>
+            where TValue : ISettingValue
         {
-            public SettingKey Key { get; } = Key;
+            return typeof(TProperty).FullName!;
+        }
+
+        sealed record SettingUpdateEvent(string Key, ISettingValue Value)
+        {
+            public string Key { get; } = Key;
             public ISettingValue Value { get; } = Value;
         }
     }

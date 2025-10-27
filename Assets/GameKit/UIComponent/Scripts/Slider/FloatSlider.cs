@@ -7,6 +7,12 @@ namespace GameKit.UIComponent.Slider
     {
         [SerializeField] UnityEngine.UI.Slider slider;
         
+        public void SetRange(float min, float max)
+        {
+            slider.minValue = min;
+            slider.maxValue = max;
+        }
+        
         public void SetValue(float value)
         {
             slider.value = value;

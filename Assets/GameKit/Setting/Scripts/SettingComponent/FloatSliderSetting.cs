@@ -21,6 +21,11 @@ namespace GameKit.Setting.SettingComponent
                 .Subscribe(x => slider.SetValue(x))
                 .AddTo(this);
         }
+
+        public void SetUp(float min, float max)
+        {
+            slider.SetRange(min, max);
+        }
         
         void ISettingBindable<FloatSettingValue>.SetValue(FloatSettingValue value)
         {

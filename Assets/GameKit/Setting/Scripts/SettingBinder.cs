@@ -12,18 +12,15 @@ namespace GameKit.Setting
             this.settingHolder = settingHolder;
         }
 
-        public void Bind<T>(
-            SettingKey key,
-            T defaultValue,
-            ISettingBindable<T> bindable,
-            Disposer disposer
-        ) where T : ISettingValue
+        public void Bind<TProperty, TValue>(ISettingBindable<TValue> bindable, Disposer disposer)
+            where TProperty : ISettingProperty<TValue>
+            where TValue : ISettingValue
         {
-            var value = settingHolder.Get(key, defaultValue);
+            var value = settingHolder.Get<TProperty, TValue>();
             bindable.SetValue(value);
 
             bindable.OnValueChange()
-                .Subscribe(x => settingHolder.Set(key, x))
+                .Subscribe(x => settingHolder.Set<TProperty, TValue>(x))
                 .AddTo(disposer);
         }
     }
