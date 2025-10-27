@@ -7,7 +7,6 @@ namespace GameKit.Camera.Builtin
     {
         [SerializeField] float accelTime;
         [SerializeField] float decelTime;
-        [SerializeField] float baseSensitivity;
         [SerializeField] Vector2 pitchLimits = new(-80f, 80f);
 
         Vector2 input;
@@ -28,24 +27,18 @@ namespace GameKit.Camera.Builtin
         void Update()
         {
             var dt = Time.deltaTime;
-            UpdateAngularVelocity(dt);
+            angularVelocity = new Vector2(
+                UpdateAxisVelocity(angularVelocity.x, input.x, dt),
+                UpdateAxisVelocity(angularVelocity.y, input.y, dt)
+            );
 
-            yaw += angularVelocity.x * dt;
-            pitch += -angularVelocity.y * dt;
+            yaw += angularVelocity.x;
+            pitch += -angularVelocity.y;
 
             yaw = WrapAngle(yaw);
             pitch = Mathf.Clamp(pitch, pitchLimits.x, pitchLimits.y);
 
             transform.rotation = Quaternion.Euler(pitch, yaw, 0);
-        }
-
-        void UpdateAngularVelocity(float dt)
-        {
-            var desiredVelocity = input * baseSensitivity;
-
-            angularVelocity = new Vector2(
-                UpdateAxisVelocity(angularVelocity.x, desiredVelocity.x, dt),
-                UpdateAxisVelocity(angularVelocity.y, desiredVelocity.y, dt));
         }
 
         float UpdateAxisVelocity(float current, float desired, float dt)
