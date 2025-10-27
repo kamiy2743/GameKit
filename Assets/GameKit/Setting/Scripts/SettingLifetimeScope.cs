@@ -8,6 +8,7 @@ namespace GameKit.Setting
         public override void Configure(IContainerBuilder builder)
         {
             builder.Register<SettingHolder>(Lifetime.Singleton);
+            builder.Register<SettingBinder>(Lifetime.Singleton);
         }
     }
 }

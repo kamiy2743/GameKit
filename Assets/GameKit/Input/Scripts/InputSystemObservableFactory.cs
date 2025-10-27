@@ -12,7 +12,7 @@ namespace GameKit.Input.GameKit.Input
             return Observable.EveryUpdate()
                 .Select(_ => action.ReadValue<T>())
                 .ToReadOnlyReactiveProperty(action.ReadValue<T>())
-                .Register(disposer);
+                .RegisterAndReturn(disposer);
         }
 
         public static Observable<Unit> MakeObservable(InputAction action, ButtonInputMode mode)

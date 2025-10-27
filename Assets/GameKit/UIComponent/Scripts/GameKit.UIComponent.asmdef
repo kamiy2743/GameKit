@@ -2,7 +2,9 @@
     "name": "GameKit.UIComponent",
     "rootNamespace": "GameKit.UIComponent",
     "references": [
-        "R3.Unity"
+        "R3.Unity",
+        "R3.Unity.TextMeshPro",
+        "Unity.TextMeshPro"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

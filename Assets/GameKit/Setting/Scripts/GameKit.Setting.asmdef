@@ -3,6 +3,7 @@
     "rootNamespace": "GameKit.Setting",
     "references": [
         "VContainer",
+        "R3.Unity",
         "GameKit.DependencyInjection",
         "GameKit.DisposableExtension",
         "GameKit.UIComponent"

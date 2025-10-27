@@ -16,7 +16,7 @@ namespace GameKit.Setting
                 .Where(e => e.Key.Equals(key))
                 .Select(e => (T)e.Value)
                 .ToReadOnlyReactiveProperty(Get(key, defaultValue))
-                .Register(disposer);
+                .RegisterAndReturn(disposer);
         }
         
         public T Get<T>(SettingKey key, T defaultValue) where T : ISettingValue
