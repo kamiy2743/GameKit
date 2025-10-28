@@ -10,10 +10,11 @@ namespace GameKit.License
 
         public void Bind(
             Func<GameObject> makeDelegate,
-            Action<GameObject, int> setUpDelegate
+            Action<GameObject, int> setUpDelegate,
+            int itemCount = -1
         )
         {
-            loopScrollView.Bind(makeDelegate, setUpDelegate);
+            loopScrollView.Bind(makeDelegate, setUpDelegate, itemCount);
         }
     }
 }

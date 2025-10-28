@@ -13,7 +13,8 @@ namespace GameKit.UIComponent.LoopScrollView
 
         public void Bind(
             Func<GameObject> makeDelegate,
-            Action<GameObject, int> setUpDelegate
+            Action<GameObject, int> setUpDelegate,
+            int itemCount = -1
         )
         {
             this.makeDelegate = makeDelegate;
@@ -22,7 +23,7 @@ namespace GameKit.UIComponent.LoopScrollView
             loopScrollRect.ClearCells();
             loopScrollRect.prefabSource = this;
             loopScrollRect.dataSource = this;
-            loopScrollRect.totalCount = -1;
+            loopScrollRect.totalCount = itemCount;
             loopScrollRect.RefillCells();
         }
 

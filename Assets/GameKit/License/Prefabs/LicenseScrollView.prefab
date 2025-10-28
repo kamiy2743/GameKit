@@ -157,9 +157,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3377865644486894460, guid: 6c65d1311b11a0f4ba5489293d1ea462, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3652992400297368634, guid: 6c65d1311b11a0f4ba5489293d1ea462, type: 3}
       propertyPath: m_Name
-      value: LoopVerticalScrollRect
+      value: LoopVerticalScrollView
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

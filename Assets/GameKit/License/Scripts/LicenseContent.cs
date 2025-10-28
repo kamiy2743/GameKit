@@ -8,10 +8,10 @@ namespace GameKit.License
         [SerializeField] Text nameText;
         [SerializeField] Text bodyText;
         
-        public void SetContent(string name, string body)
+        public void SetValue(LicenseContentValue value)
         {
-            nameText.SetText(name);
-            bodyText.SetText(body);
+            nameText.SetText(value.Name);
+            bodyText.SetText(value.Body);
         }
     }
 }
