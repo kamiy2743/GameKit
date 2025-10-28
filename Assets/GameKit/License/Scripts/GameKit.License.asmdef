@@ -1,11 +1,10 @@
 {
-    "name": "GameKit.UIComponent",
-    "rootNamespace": "GameKit.UIComponent",
+    "name": "GameKit.License",
+    "rootNamespace": "GameKit.License",
     "references": [
-        "R3.Unity",
-        "R3.Unity.TextMeshPro",
-        "Unity.TextMeshPro",
-        "LoopScrollRect.Runtime"
+        "VContainer",
+        "GameKit.UIComponent",
+        "GameKit.DependencyInjection"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
