@@ -13,7 +13,7 @@ namespace GameKit.UIFramework.Editor
         static readonly string SourcePrefabPath = ResolveSourcePrefabPath();
         const string DefaultFileName = "Page Variant.prefab";
 
-        [MenuItem("Assets/Create/UIFramework/Page Variant")]
+        [MenuItem("Assets/Create/GameKit/UIFramework/Page Variant")]
         static void CreatePageVariant()
         {
             var sourcePrefab = AssetDatabase.LoadAssetAtPath<GameObject>(SourcePrefabPath);

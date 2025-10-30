@@ -3,7 +3,7 @@ using UnityScreenNavigator.Runtime.Foundation.AssetLoader;
 
 namespace GameKit.UIFramework.AssetLoader
 {
-    [CreateAssetMenu(fileName = "ScriptableObjectAssetLoader", menuName = "UIFramework/ScriptableObjectAssetLoader")]
+    [CreateAssetMenu(fileName = "ScriptableObjectAssetLoader", menuName = "GameKit/UIFramework/ScriptableObjectAssetLoader")]
     public sealed class ScriptableObjectAssetLoaderObject : AssetLoaderObject
     {
         [SerializeField] ScriptableObjectAssetLoaderMap map;
