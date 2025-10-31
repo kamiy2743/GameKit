@@ -1,4 +1,5 @@
-﻿日本語で回答して
+﻿- 日本語で回答して
+- Pythonコードを作成し実行することを禁止
 
 # Repository Guidelines
 
