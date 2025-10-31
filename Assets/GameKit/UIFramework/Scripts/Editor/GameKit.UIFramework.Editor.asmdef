@@ -1,7 +1,9 @@
 ﻿{
     "name": "GameKit.UIFramework.Editor",
     "rootNamespace": "GameKit.UIFramework.Editor",
-    "references": [],
+    "references": [
+        "GameKit.Asset.Editor"
+    ],
     "includePlatforms": [
         "Editor"
     ],
