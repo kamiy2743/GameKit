@@ -4,7 +4,7 @@ using VContainer;
 
 namespace GameKit.UIFramework.Page
 {
-    public sealed class PageContainerLifetimeScopeRegistration : BaseMBLifetimeScopeRegistration
+    public sealed class PageContainerLifetimeScope : BaseMBLifetimeScopeRegistration
     {
         [SerializeField] UnityScreenNavigator.Runtime.Core.Page.PageContainer pageContainer;
 
