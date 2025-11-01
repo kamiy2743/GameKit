@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using R3;
 
 namespace GameKit.DisposableExtension
 {
@@ -20,6 +21,11 @@ namespace GameKit.DisposableExtension
         public static implicit operator Disposer(CancellationToken ct)
         {
             return new Disposer(new CancellationTokenDisposer(ct));
+        }
+        
+        public static implicit operator Disposer(CompositeDisposable disposable)
+        {
+            return new Disposer(new DisposableCollectionDisposer(disposable));
         }
     }
 }
