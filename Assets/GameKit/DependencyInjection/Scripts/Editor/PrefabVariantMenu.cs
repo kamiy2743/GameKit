@@ -12,7 +12,7 @@ namespace GameKit.DependencyInjection.Editor
         [MenuItem(MenuItemRoot + "RootLifetimeScope")]
         static void MakePageVariant()
         {
-            PrefabVariantFactory.Make(Path.Combine(PackageRootPrefabPath, "RootLifetimeScope.prefab"));
+            AssetPrefabVariantFactory.Make(Path.Combine(PackageRootPrefabPath, "RootLifetimeScope.prefab"));
         }
     }
 }
