@@ -1,0 +1,18 @@
+﻿{
+    "name": "GameKit.Camera.Editor",
+    "rootNamespace": "GameKit.Camera.Editor",
+    "references": [
+        "GameKit.Asset.Editor"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
