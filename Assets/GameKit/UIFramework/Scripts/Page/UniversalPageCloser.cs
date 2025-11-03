@@ -1,5 +1,4 @@
 ﻿using System;
-using GameKit.Exception;
 using R3;
 using VContainer.Unity;
 
@@ -24,13 +23,10 @@ namespace GameKit.UIFramework.Page
         void IInitializable.Initialize()
         {
             universalClosePageObservable.OnCloseRequest()
+                .Where(_ => pageContainer.GetActivePage()?.AllowUniversalClose() ?? false)
                 .SubscribeAwait(async (_, c) =>
                 {
-                    await pageContainer.PopAsync(
-                       modeWhenConcurrentRequested: ExceptionHandleMode.Ignore,
-                       modeWhenPopCountExceeded: ExceptionHandleMode.Ignore,
-                        ct: c
-                    );
+                    await pageContainer.PopAsync(ct: c);
                 })
                 .AddTo(disposable);
         }

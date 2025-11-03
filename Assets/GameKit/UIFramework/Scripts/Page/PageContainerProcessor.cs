@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using GameKit.Exception;
 using GameKit.UIFramework.UnityScreenNavigatorResource;
 using R3;
-using UnityEngine;
 using VContainer.Unity;
 
 namespace GameKit.UIFramework.Page
@@ -34,18 +32,9 @@ namespace GameKit.UIFramework.Page
         {
             if (currentPushRequest != null)
             {
-                switch (request.ModeWhenConcurrentRequested)
-                {
-                    case ExceptionHandleMode.Throw:
-                        throw new InvalidOperationException($"他のPush処理中のため、Push要求を処理できません。 {request}, {currentPushRequest}");
-                    case ExceptionHandleMode.Log:
-                        Debug.Log($"他のPush処理中のため、Push要求を無視します。 {request}, {currentPushRequest}");
-                        return;
-                    case ExceptionHandleMode.Ignore:
-                    default:
-                        return;
-                }
+                throw new InvalidOperationException($"他のPush処理中のため、Push要求を処理できません。 {request}, {currentPushRequest}");
             }
+
             currentPushRequest = request;
             currentPopRequest = null;
             await UniTask.WaitUntil(() => currentPushRequest == null, cancellationToken: request.Ct);
@@ -55,18 +44,9 @@ namespace GameKit.UIFramework.Page
         {
             if (currentPushRequest != null || currentPopRequest != null)
             {
-                switch (request.ModeWhenConcurrentRequested)
-                {
-                    case ExceptionHandleMode.Throw:
-                        throw new InvalidOperationException($"他のPushまたはPop処理中のため、Pop要求を処理できません。 {request}, {currentPushRequest}, {currentPopRequest}");
-                    case ExceptionHandleMode.Log:
-                        Debug.Log($"他のPushまたはPop処理中のため、Pop要求を無視します。 {request}, {currentPushRequest}, {currentPopRequest}");
-                        return;
-                    case ExceptionHandleMode.Ignore:
-                    default:
-                        return;
-                }
+                throw new InvalidOperationException($"他のPushまたはPop処理中のため、Pop要求を処理できません。 {request}, {currentPushRequest}, {currentPopRequest}");
             }
+
             currentPopRequest = request;
             await UniTask.WaitUntil(() => currentPopRequest == null, cancellationToken: request.Ct);
         }
@@ -114,7 +94,7 @@ namespace GameKit.UIFramework.Page
             ct.ThrowIfCancellationRequested();
 
             await pageContainer.Push(request.ResourceKey.Value, request.PlayAnimation);
-            if (pageContainer.Pages.Count == 1)
+            if (pageContainer.OrderedPagesIds.Count == 1)
             {
                 firstPageOpened.OnNext(Unit.Default);
             }
@@ -124,24 +104,14 @@ namespace GameKit.UIFramework.Page
         {
             ct.ThrowIfCancellationRequested();
 
-            var beforePageCount = pageContainer.Pages.Count;
+            var beforePageCount = pageContainer.OrderedPagesIds.Count;
             if (request.PopCount > beforePageCount)
-            {
-                switch (request.ModeWhenPopCountExceeded)
-                {
-                    case ExceptionHandleMode.Throw:
-                        throw new InvalidOperationException($"現在のページ数 {beforePageCount} より多い数 {request.PopCount} のページを閉じることはできません。");
-                    case ExceptionHandleMode.Log:
-                        Debug.Log($"Pop skipped: 現在のページ数 {beforePageCount} より多い数 {request.PopCount} のページを閉じる要求がありましたが無視します。");
-                        return;
-                    case ExceptionHandleMode.Ignore:
-                    default:
-                        return;
-                }
+            { 
+                throw new InvalidOperationException($"現在のページ数 {beforePageCount} より多い数 {request.PopCount} のページを閉じることはできません。");
             }
 
             await pageContainer.Pop(true, request.PopCount);
-            if (beforePageCount > 0 && pageContainer.Pages.Count == 0)
+            if (beforePageCount > 0 && pageContainer.OrderedPagesIds.Count == 0)
             {
                 lastPageClosed.OnNext(Unit.Default);
             }
@@ -153,29 +123,16 @@ namespace GameKit.UIFramework.Page
             processCts.Dispose();
         }
 
-        internal sealed record PushRequest(
-            ResourceKey ResourceKey,
-            bool PlayAnimation,
-            ExceptionHandleMode ModeWhenConcurrentRequested,
-            CancellationToken Ct
-        )
+        internal sealed record PushRequest(ResourceKey ResourceKey, bool PlayAnimation, CancellationToken Ct)
         {
             public ResourceKey ResourceKey { get; } = ResourceKey;
             public bool PlayAnimation { get; } = PlayAnimation;
-            public ExceptionHandleMode ModeWhenConcurrentRequested { get; } = ModeWhenConcurrentRequested;
             public CancellationToken Ct { get; } = Ct;
         }
 
-        internal sealed record PopRequest(
-            int PopCount,
-            ExceptionHandleMode ModeWhenConcurrentRequested,
-            ExceptionHandleMode ModeWhenPopCountExceeded,
-            CancellationToken Ct
-        ) 
+        internal sealed record PopRequest(int PopCount, CancellationToken Ct) 
         {
             public int PopCount { get; } = PopCount;
-            public ExceptionHandleMode ModeWhenConcurrentRequested { get; } = ModeWhenConcurrentRequested;
-            public ExceptionHandleMode ModeWhenPopCountExceeded { get; } = ModeWhenPopCountExceeded;
             public CancellationToken Ct { get; } = Ct;
         }
     }
