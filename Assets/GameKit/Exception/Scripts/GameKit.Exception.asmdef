@@ -1,14 +1,7 @@
 {
-    "name": "GameKit.UIFramework",
-    "rootNamespace": "GameKit.UIFramework",
-    "references": [
-        "UnityScreenNavigator",
-        "UniTask",
-        "ZString",
-        "VContainer",
-        "GameKit.DependencyInjection",
-        "GameKit.Exception"
-    ],
+    "name": "GameKit.Exception",
+    "rootNamespace": "GameKit.Exception",
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

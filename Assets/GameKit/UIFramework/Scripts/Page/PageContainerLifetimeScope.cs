@@ -12,6 +12,7 @@ namespace GameKit.UIFramework.Page
         public override void Configure(IContainerBuilder builder)
         {
             builder.Register<PageContainer>(Lifetime.Singleton).WithParameter(pageContainer);
+            builder.RegisterEntryPoint<PageContainerProcessor>().AsSelf().WithParameter(pageContainer);
             builder.RegisterEntryPoint<UniversalPageCloser>();
         }
     }
