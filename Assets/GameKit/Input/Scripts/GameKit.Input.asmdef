@@ -2,8 +2,10 @@
     "name": "GameKit.Input",
     "rootNamespace": "GameKit.Input",
     "references": [
+        "VContainer",
         "Unity.InputSystem",
-        "GameKit.DisposableExtension"
+        "GameKit.DisposableExtension",
+        "GameKit.DependencyInjection"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -2,7 +2,6 @@
 
 namespace GameKit.Scene
 {
-    //TODO valueをprivateにする
     public sealed record SceneName(string Value)
     {
         static string ResourceKeySuffix => "Scene";

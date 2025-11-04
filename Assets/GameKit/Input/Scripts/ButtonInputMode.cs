@@ -1,4 +1,4 @@
-﻿namespace GameKit.Input.GameKit.Input
+﻿namespace GameKit.Input
 {
     public enum ButtonInputMode
     {
