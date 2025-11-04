@@ -7,7 +7,7 @@ using VContainer.Unity;
 
 namespace GameKit.UIFramework.Page
 {
-    sealed class PageContainerProcessor : IPostTickable, IDisposable
+    sealed class PageTransitioner : IPostTickable, IDisposable
     {
         readonly UnityScreenNavigator.Runtime.Core.Page.PageContainer pageContainer;
         
@@ -23,7 +23,7 @@ namespace GameKit.UIFramework.Page
         PopRequest? currentPopRequest;
         bool isProcessing;
 
-        public PageContainerProcessor(UnityScreenNavigator.Runtime.Core.Page.PageContainer pageContainer)
+        public PageTransitioner(UnityScreenNavigator.Runtime.Core.Page.PageContainer pageContainer)
         {
             this.pageContainer = pageContainer;
         }
@@ -49,6 +49,11 @@ namespace GameKit.UIFramework.Page
 
             currentPopRequest = request;
             await UniTask.WaitUntil(() => currentPopRequest == null, cancellationToken: request.Ct);
+        }
+        
+        public bool IsTransitioning()
+        {
+            return isProcessing || currentPushRequest != null || currentPopRequest != null;
         }
 
         void IPostTickable.PostTick()

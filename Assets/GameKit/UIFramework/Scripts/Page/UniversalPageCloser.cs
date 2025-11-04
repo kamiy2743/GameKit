@@ -8,22 +8,25 @@ namespace GameKit.UIFramework.Page
     {
         readonly IUniversalClosePageObservable universalClosePageObservable;
         readonly PageContainer pageContainer;
+        readonly UniversalClosePageSpecification universalClosePageSpecification;
 
         readonly CompositeDisposable disposable = new();
 
         public UniversalPageCloser(
             IUniversalClosePageObservable universalClosePageObservable,
-            PageContainer pageContainer
+            PageContainer pageContainer,
+            UniversalClosePageSpecification universalClosePageSpecification
         )
         {
             this.universalClosePageObservable = universalClosePageObservable;
             this.pageContainer = pageContainer;
+            this.universalClosePageSpecification = universalClosePageSpecification;
         }
         
         void IInitializable.Initialize()
         {
             universalClosePageObservable.OnCloseRequest()
-                .Where(_ => pageContainer.GetActivePage()?.AllowUniversalClose() ?? false)
+                .Where(_ => universalClosePageSpecification.Check())
                 .SubscribeAwait(async (_, c) =>
                 {
                     await pageContainer.PopAsync(ct: c);

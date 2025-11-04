@@ -8,31 +8,31 @@ namespace GameKit.UIFramework.Page
     public sealed class PageContainer
     {
         readonly UnityScreenNavigator.Runtime.Core.Page.PageContainer pageContainer;
-        readonly PageContainerProcessor pageContainerProcessor;
+        readonly PageTransitioner pageTransitioner;
 
-        public Observable<Unit> FirstPageOpened => pageContainerProcessor.FirstPageOpened;
-        public Observable<Unit> LastPageClosed => pageContainerProcessor.LastPageClosed;
+        public Observable<Unit> FirstPageOpened => pageTransitioner.FirstPageOpened;
+        public Observable<Unit> LastPageClosed => pageTransitioner.LastPageClosed;
 
         internal PageContainer(
             UnityScreenNavigator.Runtime.Core.Page.PageContainer pageContainer,
-            PageContainerProcessor pageContainerProcessor
+            PageTransitioner pageTransitioner
         )
         {
             this.pageContainer = pageContainer;
-            this.pageContainerProcessor = pageContainerProcessor;
+            this.pageTransitioner = pageTransitioner;
         }
         
         public async UniTask PushAsync<T>(bool playAnimation = true, CancellationToken ct = default) where T : BasePage 
         {
             var resourceKey = ResourceKey.FromGenerics<T>();
-            var request = new PageContainerProcessor.PushRequest(resourceKey, playAnimation, ct);
-            await pageContainerProcessor.PushAsync(request);
+            var request = new PageTransitioner.PushRequest(resourceKey, playAnimation, ct);
+            await pageTransitioner.PushAsync(request);
         }
 
         public async UniTask PopAsync(int popCount = 1, CancellationToken ct = default) 
         {
-            var request = new PageContainerProcessor.PopRequest(popCount, ct);
-            await pageContainerProcessor.PopAsync(request);
+            var request = new PageTransitioner.PopRequest(popCount, ct);
+            await pageTransitioner.PopAsync(request);
         }
 
         public async UniTask PopAllAsync(CancellationToken ct)
@@ -54,6 +54,11 @@ namespace GameKit.UIFramework.Page
         public bool IsEmpty()
         {
             return pageContainer.OrderedPagesIds.Count == 0;
+        }
+        
+        public bool IsTransitioning()
+        {
+            return pageTransitioner.IsTransitioning();
         }
     }
 }
