@@ -50,11 +50,6 @@ namespace GameKit.UIFramework.Page
             var id = pageContainer.OrderedPagesIds[^1];
             return pageContainer.Pages[id] as BasePage;
         }
-
-        public bool IsEmpty()
-        {
-            return pageContainer.OrderedPagesIds.Count == 0;
-        }
         
         public bool IsTransitioning()
         {

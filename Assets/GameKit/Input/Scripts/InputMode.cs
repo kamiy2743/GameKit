@@ -1,6 +1,6 @@
 ﻿namespace GameKit.Input
 {
-    public sealed record InputMode
+    public sealed class InputMode
     {
         public static readonly InputMode All = new(nameof(All));
         
@@ -14,6 +14,11 @@
         public bool Allows(InputMode mode)
         {
             return Equals(All) || Equals(mode);
+        }
+        
+        bool Equals(InputMode other)
+        {
+            return value == other.value;
         }
     }
 }
