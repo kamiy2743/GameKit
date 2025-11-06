@@ -11,11 +11,11 @@ namespace GameKit.UIFramework.Page
     {
         readonly UnityScreenNavigator.Runtime.Core.Page.PageContainer pageContainer;
         
-        readonly Subject<Unit> firstPageOpened = new();
-        public Observable<Unit> FirstPageOpened => firstPageOpened;
+        readonly Subject<Unit> willFirstPageOpen = new();
+        public Observable<Unit> WillFirstPageOpen => willFirstPageOpen;
         
-        readonly Subject<Unit> lastPageClosed = new();
-        public Observable<Unit> LastPageClosed => lastPageClosed;
+        readonly Subject<Unit> willLastPageClose = new();
+        public Observable<Unit> WillLastPageClose => willLastPageClose;
         
         readonly CancellationTokenSource processCts = new();
         
@@ -98,28 +98,28 @@ namespace GameKit.UIFramework.Page
         {
             ct.ThrowIfCancellationRequested();
 
-            await pageContainer.Push(request.ResourceKey.Value, request.PlayAnimation);
-            if (pageContainer.OrderedPagesIds.Count == 1)
+            if (pageContainer.OrderedPagesIds.Count == 0)
             {
-                firstPageOpened.OnNext(Unit.Default);
+                willFirstPageOpen.OnNext(Unit.Default);
             }
+            await pageContainer.Push(request.ResourceKey.Value, request.PlayAnimation);
         }
         
         async UniTask ProcessPopAsync(PopRequest request, CancellationToken ct)
         {
             ct.ThrowIfCancellationRequested();
 
-            var beforePageCount = pageContainer.OrderedPagesIds.Count;
-            if (request.PopCount > beforePageCount)
+            var pageCount = pageContainer.OrderedPagesIds.Count;
+            if (request.PopCount > pageCount)
             { 
-                throw new InvalidOperationException($"現在のページ数 {beforePageCount} より多い数 {request.PopCount} のページを閉じることはできません。");
+                throw new InvalidOperationException($"現在のページ数 {pageCount} より多い数 {request.PopCount} のページを閉じることはできません。");
             }
 
-            await pageContainer.Pop(true, request.PopCount);
-            if (beforePageCount > 0 && pageContainer.OrderedPagesIds.Count == 0)
+            if (request.PopCount == pageCount)
             {
-                lastPageClosed.OnNext(Unit.Default);
+                willLastPageClose.OnNext(Unit.Default);
             }
+            await pageContainer.Pop(true, request.PopCount);
         }
         
         void IDisposable.Dispose()

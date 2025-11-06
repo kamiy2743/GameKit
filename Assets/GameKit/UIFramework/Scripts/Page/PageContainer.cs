@@ -10,8 +10,8 @@ namespace GameKit.UIFramework.Page
         readonly UnityScreenNavigator.Runtime.Core.Page.PageContainer pageContainer;
         readonly PageTransitioner pageTransitioner;
 
-        public Observable<Unit> FirstPageOpened => pageTransitioner.FirstPageOpened;
-        public Observable<Unit> LastPageClosed => pageTransitioner.LastPageClosed;
+        public Observable<Unit> WillFirstPageOpen => pageTransitioner.WillFirstPageOpen;
+        public Observable<Unit> WillLastPageClose => pageTransitioner.WillLastPageClose;
 
         internal PageContainer(
             UnityScreenNavigator.Runtime.Core.Page.PageContainer pageContainer,
