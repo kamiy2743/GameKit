@@ -2,7 +2,7 @@
 
 namespace GameKit.DependencyInjection.Root
 {
-    public class BaseRootChildLifetimeScope : LifetimeScope
+    public abstract class BaseRootChildLifetimeScope : LifetimeScope
     {
         protected virtual void OnValidate()
         {
