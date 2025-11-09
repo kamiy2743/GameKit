@@ -13,7 +13,6 @@ namespace GameKit.UIFramework.Page
         {
             builder.Register<PageContainer>(Lifetime.Singleton).WithParameter(pageContainer);
             builder.RegisterEntryPoint<PageTransitioner>().AsSelf().WithParameter(pageContainer);
-            builder.Register<UniversalClosePageSpecification>(Lifetime.Singleton);
             builder.RegisterEntryPoint<UniversalPageCloser>();
         }
     }
