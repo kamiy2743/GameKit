@@ -16,6 +16,12 @@ namespace GameKit.UIFramework.Editor
             AssetPrefabVariantFactory.Make(Path.Combine(PackageRootPrefabPath, "Page/Page.prefab"));
         }
         
+        [MenuItem(AssetPrefabMenuRoot + "Page/PageGroup")]
+        static void MakePageGroupVariant()
+        {
+            AssetPrefabVariantFactory.Make(Path.Combine(PackageRootPrefabPath, "Page/PageGroup/PageGroup.prefab"));
+        }
+        
         [MenuItem(HierarchyPrefabMenuRoot + "RootPageContainer")]
         static void MakeRootPageContainer()
         {
