@@ -32,9 +32,13 @@ namespace GameKit.UIFramework.Page
         
         public async UniTask PushAsync(PushRequest request)
         {
+            if (isProcessing)
+            {
+                throw new InvalidOperationException($"画面遷移中のため、Push要求を処理できません。 {request}, {currentPushRequest}, {currentPopRequest}");
+            }
             if (currentPushRequest != null)
             {
-                throw new InvalidOperationException($"他のPush処理中のため、Push要求を処理できません。 {request}, {currentPushRequest}");
+                throw new InvalidOperationException($"他のPush処理が待機しているため、Push要求を処理できません。 {request}, {currentPushRequest}");
             }
 
             currentPushRequest = request;
@@ -44,9 +48,13 @@ namespace GameKit.UIFramework.Page
         
         public async UniTask PopAsync(PopRequest request)
         {
+            if (isProcessing)
+            {
+                throw new InvalidOperationException($"画面遷移中のため、Push要求を処理できません。 {request}, {currentPushRequest}, {currentPopRequest}");
+            }
             if (currentPushRequest != null || currentPopRequest != null)
             {
-                throw new InvalidOperationException($"他のPushまたはPop処理中のため、Pop要求を処理できません。 {request}, {currentPushRequest}, {currentPopRequest}");
+                throw new InvalidOperationException($"他のPushまたはPop処理が待機しているため、Pop要求を処理できません。 {request}, {currentPushRequest}, {currentPopRequest}");
             }
 
             currentPopRequest = request;
