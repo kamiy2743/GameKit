@@ -10,7 +10,7 @@ namespace GameKit.Input.Editor
         const string PackageRootPrefabPath = "Input/Prefabs/";
 
         [MenuItem(HierarchyPrefabMenuRoot + "EventSystem")]
-        static void MakeRootPageContainer()
+        static void MakeEventSystem()
         {
             HierarchyPrefabFactory.Make(Path.Combine(PackageRootPrefabPath, "EventSystem.prefab"));
         }
