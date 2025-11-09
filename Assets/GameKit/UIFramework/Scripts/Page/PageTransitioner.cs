@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using GameKit.UIFramework.UnityScreenNavigatorResource;
 using R3;
+using UnityEngine;
 using VContainer.Unity;
 
 namespace GameKit.UIFramework.Page
@@ -119,6 +121,17 @@ namespace GameKit.UIFramework.Page
             {
                 willLastPageClose.OnNext(Unit.Default);
             }
+
+            var popTargetPages = pageContainer.OrderedPagesIds
+                .TakeLast(request.PopCount)
+                .Select(id => pageContainer.Pages[id])
+                // 一番手前以外を取得
+                .Take(request.PopCount - 1);
+            foreach (var page in popTargetPages)
+            {
+                page.GetComponent<Canvas>().enabled = false;
+            }
+            
             await pageContainer.Pop(true, request.PopCount);
         }
         
