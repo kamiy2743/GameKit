@@ -6,6 +6,8 @@
     "com.github-glitchenzo.nugetforunity": "https://github.com/GlitchEnzo/NuGetForUnity.git?path=/src/NuGetForUnity",
     "com.harumak.unityscreennavigator": "https://github.com/Haruma-K/UnityScreenNavigator.git?path=/Assets/UnityScreenNavigator",
     "com.harumak.upalette": "https://github.com/Haruma-K/uPalette.git?path=/Assets/uPalette",
+    "com.vrmc.gltf": "https://github.com/vrm-c/UniVRM.git?path=/Assets/UniGLTF#v0.130.1",
+    "com.vrmc.vrm": "https://github.com/vrm-c/UniVRM.git?path=/Assets/VRM10#v0.130.1",
     "com.unity.ai.navigation": "2.0.8",
     "com.unity.cinemachine": "3.1.4",
     "com.unity.collab-proxy": "2.10.0",
