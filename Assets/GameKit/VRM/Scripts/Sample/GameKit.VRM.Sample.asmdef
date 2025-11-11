@@ -1,12 +1,11 @@
 {
-    "name": "GameKit.VRM",
-    "rootNamespace": "GameKit.VRM",
+    "name": "GameKit.VRM.Sample",
+    "rootNamespace": "GameKit.VRM.Sample",
     "references": [
-        "VRM10",
-        "UniGLTF",
         "VContainer",
         "UniTask",
-        "GameKit.DependencyInjection"
+        "GameKit.DependencyInjection",
+        "GameKit.VRM"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
