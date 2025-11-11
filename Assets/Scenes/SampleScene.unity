@@ -2654,23 +2654,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 882819905457207202, guid: 5ba896a8693b6a347b401045c0902876, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.6
+      value: -2.5
       objectReference: {fileID: 0}
     - target: {fileID: 882819905457207202, guid: 5ba896a8693b6a347b401045c0902876, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99699855
+      value: 0.99875855
       objectReference: {fileID: 0}
     - target: {fileID: 882819905457207202, guid: 5ba896a8693b6a347b401045c0902876, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.077420816
+      value: 0.049813703
       objectReference: {fileID: 0}
     - target: {fileID: 882819905457207202, guid: 5ba896a8693b6a347b401045c0902876, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000029712876
+      value: -5.2265847e-10
       objectReference: {fileID: 0}
     - target: {fileID: 882819905457207202, guid: 5ba896a8693b6a347b401045c0902876, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000023073203
+      value: 2.6067877e-11
       objectReference: {fileID: 0}
     - target: {fileID: 882819905457207202, guid: 5ba896a8693b6a347b401045c0902876, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4216,6 +4216,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   path: C:\Users\kamiy\WorkSpace\VRM\Flare_v2_Choco.vrm
   parent: {fileID: 6740824527271821822}
+  animatorController: {fileID: 9100000, guid: 40db3173a05ae3242b1c182a09b0a183, type: 2}
 --- !u!114 &6740824527271821824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4251,23 +4252,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3574369625310592441, guid: 2c487a8918ea53c4d9f39ab1c67a8e1f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.6
+      value: -2.5
       objectReference: {fileID: 0}
     - target: {fileID: 3574369625310592441, guid: 2c487a8918ea53c4d9f39ab1c67a8e1f, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99699855
+      value: 0.99875855
       objectReference: {fileID: 0}
     - target: {fileID: 3574369625310592441, guid: 2c487a8918ea53c4d9f39ab1c67a8e1f, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.07742083
+      value: 0.049813703
       objectReference: {fileID: 0}
     - target: {fileID: 3574369625310592441, guid: 2c487a8918ea53c4d9f39ab1c67a8e1f, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00000002971288
+      value: -5.226585e-10
       objectReference: {fileID: 0}
     - target: {fileID: 3574369625310592441, guid: 2c487a8918ea53c4d9f39ab1c67a8e1f, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000002307321
+      value: 2.6067919e-11
       objectReference: {fileID: 0}
     - target: {fileID: 3574369625310592441, guid: 2c487a8918ea53c4d9f39ab1c67a8e1f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

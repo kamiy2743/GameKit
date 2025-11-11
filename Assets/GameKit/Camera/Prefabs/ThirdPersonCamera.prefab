@@ -103,9 +103,9 @@ MonoBehaviour:
   Orbits:
     Top:
       Radius: 0.3
-      Height: 3.5
+      Height: 4
     Center:
-      Radius: 1.6
+      Radius: 2.5
       Height: 1.75
     Bottom:
       Radius: 0.4

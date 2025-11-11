@@ -8,6 +8,7 @@ namespace GameKit.VRM
     {
         [SerializeField][TextArea] string path;
         [SerializeField] Transform parent;
+        [SerializeField] RuntimeAnimatorController animatorController;
         
         VRMLoader vrmLoader;
 
@@ -24,7 +25,7 @@ namespace GameKit.VRM
 
         async void Start()
         {
-            var vrm = await vrmLoader.LoadFromFileAsync(path, destroyCancellationToken);
+            var vrm = await vrmLoader.LoadFromFileAsync(path, animatorController, destroyCancellationToken);
             vrm.gameObject.transform.SetParent(parent, false);
         }
     }
