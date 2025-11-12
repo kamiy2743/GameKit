@@ -5,9 +5,9 @@ namespace GameKit.UIFramework.Modal
 {
     public abstract class BaseModal : UnityScreenNavigator.Runtime.Core.Modal.Modal, IUnityScreenNavigatorResource
     {
-        ResourceKey IUnityScreenNavigatorResource.GetResourceKey()
+        IUnityScreenNavigatorResourceKey IUnityScreenNavigatorResource.GetResourceKey()
         {
-            return ResourceKey.FromType(GetType());
+            return ModalName.FromModalType(GetType());
         }
         
         GameObject IUnityScreenNavigatorResource.GetResource()

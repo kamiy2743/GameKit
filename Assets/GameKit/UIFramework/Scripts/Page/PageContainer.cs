@@ -1,6 +1,5 @@
 ﻿using System.Threading;
 using Cysharp.Threading.Tasks;
-using GameKit.UIFramework.UnityScreenNavigatorResource;
 using R3;
 
 namespace GameKit.UIFramework.Page
@@ -22,10 +21,13 @@ namespace GameKit.UIFramework.Page
             this.pageTransitioner = pageTransitioner;
         }
         
-        public async UniTask PushAsync<T>(bool playAnimation = true, CancellationToken ct = default) where T : BasePage 
+        public async UniTask PushAsync(
+            PageName pageName,
+            bool playAnimation = true,
+            CancellationToken ct = default
+        ) 
         {
-            var resourceKey = ResourceKey.FromGenerics<T>();
-            var request = new PageTransitioner.PushRequest(resourceKey, playAnimation, ct);
+            var request = new PageTransitioner.PushRequest(pageName, playAnimation, ct);
             await pageTransitioner.PushAsync(request);
         }
 

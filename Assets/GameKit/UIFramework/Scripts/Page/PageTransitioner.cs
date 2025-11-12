@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using GameKit.UIFramework.UnityScreenNavigatorResource;
 using R3;
 using UnityEngine;
 using VContainer.Unity;
@@ -112,7 +111,7 @@ namespace GameKit.UIFramework.Page
             {
                 willFirstPageOpen.OnNext(Unit.Default);
             }
-            await pageContainer.Push(request.ResourceKey.Value, request.PlayAnimation);
+            await pageContainer.Push(request.PageName.ResourceKey, request.PlayAnimation);
         }
         
         async UniTask ProcessPopAsync(PopRequest request, CancellationToken ct)
@@ -149,9 +148,9 @@ namespace GameKit.UIFramework.Page
             processCts.Dispose();
         }
 
-        internal sealed record PushRequest(ResourceKey ResourceKey, bool PlayAnimation, CancellationToken Ct)
+        internal sealed record PushRequest(PageName PageName, bool PlayAnimation, CancellationToken Ct)
         {
-            public ResourceKey ResourceKey { get; } = ResourceKey;
+            public PageName PageName { get; } = PageName;
             public bool PlayAnimation { get; } = PlayAnimation;
             public CancellationToken Ct { get; } = Ct;
         }

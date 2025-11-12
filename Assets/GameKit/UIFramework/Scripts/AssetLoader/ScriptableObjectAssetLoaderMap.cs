@@ -13,24 +13,23 @@ namespace GameKit.UIFramework.AssetLoader
         [SerializeField] List<BasePage> pagePrefabs;
         [SerializeField] List<BaseModal> modalPrefabs;
 
-        readonly Dictionary<ResourceKey, GameObject> prefabs = new();
+        readonly Dictionary<string, GameObject> prefabs = new();
 
         public void SetUp()
         {
             foreach (IUnityScreenNavigatorResource pagePrefab in pagePrefabs)
             {
-                prefabs.Add(pagePrefab.GetResourceKey(), pagePrefab.GetResource());
+                prefabs.Add(pagePrefab.GetResourceKey().ResourceKey, pagePrefab.GetResource());
             }
             foreach (IUnityScreenNavigatorResource modalPrefab in modalPrefabs)
             {
-                prefabs.Add(modalPrefab.GetResourceKey(), modalPrefab.GetResource());
+                prefabs.Add(modalPrefab.GetResourceKey().ResourceKey, modalPrefab.GetResource());
             }
         }
         
         public GameObject GetPrefab(string key)
         {
-            var resourceKey = new ResourceKey(key);
-            if (prefabs.TryGetValue(resourceKey, out var prefab))
+            if (prefabs.TryGetValue(key, out var prefab))
             {
                 return prefab;
             }

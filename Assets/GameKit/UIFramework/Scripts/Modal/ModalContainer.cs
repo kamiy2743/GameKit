@@ -1,6 +1,5 @@
 ﻿using System.Threading;
 using Cysharp.Threading.Tasks;
-using GameKit.UIFramework.UnityScreenNavigatorResource;
 
 namespace GameKit.UIFramework.Modal
 {
@@ -12,10 +11,13 @@ namespace GameKit.UIFramework.Modal
             this.modalContainer = modalContainer;
         }
         
-        public async UniTask PushAsync<T>(bool playAnimation = true, CancellationToken ct = default) where T : BaseModal 
+        public async UniTask PushAsync(
+            ModalName modalName,
+            bool playAnimation = true,
+            CancellationToken ct = default
+        )
         {
-            var resourceKey = ResourceKey.FromGenerics<T>();
-            await modalContainer.Push(resourceKey.Value, playAnimation);
+            await modalContainer.Push(modalName.ResourceKey, playAnimation);
         }
 
         public async UniTask PopAsync(int popCount = 1, CancellationToken ct = default) 

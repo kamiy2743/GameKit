@@ -10,9 +10,9 @@ namespace GameKit.UIFramework.Page
             return true;
         }
         
-        ResourceKey IUnityScreenNavigatorResource.GetResourceKey()
+        IUnityScreenNavigatorResourceKey IUnityScreenNavigatorResource.GetResourceKey()
         {
-            return ResourceKey.FromType(GetType());
+            return PageName.FromPageType(GetType());
         }
         
         GameObject IUnityScreenNavigatorResource.GetResource()
