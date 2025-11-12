@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: NoAnimation
   m_EditorClassIdentifier: 
   _delay: 0
-  _duration: 0
+  _duration: 0.3
   _easeType: 0
   _beforeAlignment: 4
   _beforeScale: {x: 1, y: 1, z: 1}
