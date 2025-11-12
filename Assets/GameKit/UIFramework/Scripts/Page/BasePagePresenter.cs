@@ -2,14 +2,11 @@
 using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using UnityScreenNavigator.Runtime.Core.Page;
-using VContainer;
 
 namespace GameKit.UIFramework.Page
 {
     public abstract class BasePagePresenter : IPageLifecycleEvent
     {
-        [Inject] protected readonly PageContainer pageContainer;
-        
         readonly CancellationTokenSource cts = new();
         
         protected virtual UniTask InitializeAsync(CancellationToken ct) => UniTask.CompletedTask;
