@@ -27,6 +27,12 @@ namespace GameKit.UIFramework.Editor
         {
             AssetPrefabVariantFactory.Make(Path.Combine(PackageRootPrefabPath, "Modal/Modal.prefab"));
         }
+        
+        [MenuItem(HierarchyPrefabMenuRoot + "RootModalContainer")]
+        static void MakeRootModalContainer()
+        {
+            HierarchyPrefabFactory.Make(Path.Combine(PackageRootPrefabPath, "Modal/RootModalContainer.prefab"));
+        }
 
         [MenuItem(AssetPrefabMenuRoot + "Sheet")]
         static void MakeSheetVariant()
