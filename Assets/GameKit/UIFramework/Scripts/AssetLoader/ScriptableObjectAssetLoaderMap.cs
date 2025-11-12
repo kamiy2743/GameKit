@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using GameKit.UIFramework.Modal;
 using GameKit.UIFramework.Page;
 using GameKit.UIFramework.UnityScreenNavigatorResource;
 using UnityEngine;
@@ -10,6 +11,7 @@ namespace GameKit.UIFramework.AssetLoader
     public sealed record ScriptableObjectAssetLoaderMap
     {
         [SerializeField] List<BasePage> pagePrefabs;
+        [SerializeField] List<BaseModal> modalPrefabs;
 
         readonly Dictionary<ResourceKey, GameObject> prefabs = new();
 
@@ -18,6 +20,10 @@ namespace GameKit.UIFramework.AssetLoader
             foreach (IUnityScreenNavigatorResource pagePrefab in pagePrefabs)
             {
                 prefabs.Add(pagePrefab.GetResourceKey(), pagePrefab.GetResource());
+            }
+            foreach (IUnityScreenNavigatorResource modalPrefab in modalPrefabs)
+            {
+                prefabs.Add(modalPrefab.GetResourceKey(), modalPrefab.GetResource());
             }
         }
         
