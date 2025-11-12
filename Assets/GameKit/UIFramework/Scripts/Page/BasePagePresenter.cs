@@ -18,8 +18,8 @@ namespace GameKit.UIFramework.Page
         protected virtual UniTask WillPushEnterAsync(CancellationToken ct) => UniTask.CompletedTask;
         async Task IPageLifecycleEvent.WillPushEnter() => await WillPushEnterAsync(cts.Token);
 
-        protected virtual void DidPushEnter() { }
-        void IPageLifecycleEvent.DidPushEnter() => DidPushEnter();
+        protected virtual UniTask DidPushEnterAsync(CancellationToken ct) => UniTask.CompletedTask;
+        async void IPageLifecycleEvent.DidPushEnter() => await DidPushEnterAsync(cts.Token).SuppressCancellationThrow();
 
         protected virtual UniTask WillPushExitAsync(CancellationToken ct) => UniTask.CompletedTask;
         async Task IPageLifecycleEvent.WillPushExit() => await WillPushExitAsync(cts.Token);

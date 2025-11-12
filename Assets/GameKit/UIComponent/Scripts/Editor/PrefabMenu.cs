@@ -12,7 +12,7 @@ namespace GameKit.UIComponent.Editor
         [MenuItem(HierarchyPrefabMenuRoot + "Button")]
         static void MakeButton()
         {
-            HierarchyPrefabFactory.Make(Path.Combine(PackageRootPrefabPath, "Button.prefab"));
+            HierarchyPrefabFactory.Make(Path.Combine(PackageRootPrefabPath, "Button/Button.prefab"));
         }
         
         [MenuItem(HierarchyPrefabMenuRoot + "InputField/FloatInputField")]
@@ -54,13 +54,13 @@ namespace GameKit.UIComponent.Editor
         [MenuItem(HierarchyPrefabMenuRoot + "Switch")]
         static void MakeSwitch()
         {
-            HierarchyPrefabFactory.Make(Path.Combine(PackageRootPrefabPath, "Switch.prefab"));
+            HierarchyPrefabFactory.Make(Path.Combine(PackageRootPrefabPath, "Switch/Switch.prefab"));
         }
 
         [MenuItem(HierarchyPrefabMenuRoot + "Text")]
         static void MakeText()
         {
-            HierarchyPrefabFactory.Make(Path.Combine(PackageRootPrefabPath, "Text.prefab"));
+            HierarchyPrefabFactory.Make(Path.Combine(PackageRootPrefabPath, "Text/Text.prefab"));
         }
     }
 }
