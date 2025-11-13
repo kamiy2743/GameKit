@@ -9,6 +9,8 @@ namespace GameKit.UIFramework.Page
         readonly UnityScreenNavigator.Runtime.Core.Page.PageContainer pageContainer;
         readonly PageTransitioner pageTransitioner;
 
+        
+        //TODO Open CloseをPush Popに統一
         public Observable<Unit> WillFirstPageOpen => pageTransitioner.WillFirstPageOpen;
         public Observable<Unit> WillLastPageClose => pageTransitioner.WillLastPageClose;
 

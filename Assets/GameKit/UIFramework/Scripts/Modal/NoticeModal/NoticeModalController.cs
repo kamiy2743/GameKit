@@ -1,0 +1,27 @@
+﻿using System.Threading;
+using Cysharp.Threading.Tasks;
+
+namespace GameKit.UIFramework.Modal.NoticeModal
+{
+    public sealed class NoticeModalController
+    {
+        readonly ModalContainer modalContainer;
+        readonly ModalStateHolder modalStateHolder;
+
+        public NoticeModalController(
+            ModalContainer modalContainer,
+            ModalStateHolder modalStateHolder
+        )
+        {
+            this.modalContainer = modalContainer;
+            this.modalStateHolder = modalStateHolder;
+        }
+        
+        public async UniTask PushAndWaitOkAsync(CancellationToken ct)
+        {
+            //TODO ModalNameを定数に
+            var modalId = await modalContainer.PushAsync(new ModalName("Notice"), ct: ct);
+            await modalStateHolder.WaitForStateAsync(modalId, new NoticeModalState(true), ct);
+        }
+    }
+}

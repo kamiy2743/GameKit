@@ -6,7 +6,9 @@
         "UniTask",
         "ZString",
         "VContainer",
-        "GameKit.DependencyInjection"
+        "GameKit.DependencyInjection",
+        "GameKit.UIComponent",
+        "GameKit.Id"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
