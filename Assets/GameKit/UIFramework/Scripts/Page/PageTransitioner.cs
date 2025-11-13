@@ -12,11 +12,11 @@ namespace GameKit.UIFramework.Page
     {
         readonly UnityScreenNavigator.Runtime.Core.Page.PageContainer pageContainer;
         
-        readonly Subject<Unit> willFirstPageOpen = new();
-        public Observable<Unit> WillFirstPageOpen => willFirstPageOpen;
+        readonly Subject<Unit> willFirstPagePush = new();
+        public Observable<Unit> WillFirstPagePush => willFirstPagePush;
         
-        readonly Subject<Unit> willLastPageClose = new();
-        public Observable<Unit> WillLastPageClose => willLastPageClose;
+        readonly Subject<Unit> willLastPagePop = new();
+        public Observable<Unit> WillLastPagePop => willLastPagePop;
         
         readonly CancellationTokenSource processCts = new();
         
@@ -109,7 +109,7 @@ namespace GameKit.UIFramework.Page
 
             if (pageContainer.OrderedPagesIds.Count == 0)
             {
-                willFirstPageOpen.OnNext(Unit.Default);
+                willFirstPagePush.OnNext(Unit.Default);
             }
             await pageContainer.Push(request.PageName.ResourceKey, request.PlayAnimation);
         }
@@ -126,7 +126,7 @@ namespace GameKit.UIFramework.Page
 
             if (request.PopCount == pageCount)
             {
-                willLastPageClose.OnNext(Unit.Default);
+                willLastPagePop.OnNext(Unit.Default);
             }
 
             var popTargetPages = pageContainer.OrderedPagesIds

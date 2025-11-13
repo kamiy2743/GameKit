@@ -5,7 +5,7 @@ namespace GameKit.UIFramework.Page
 {
     public abstract class BasePage : UnityScreenNavigator.Runtime.Core.Page.Page, IUnityScreenNavigatorResource
     {
-        public virtual bool AllowUniversalClose()
+        public virtual bool AllowUniversalPop()
         {
             return true;
         }

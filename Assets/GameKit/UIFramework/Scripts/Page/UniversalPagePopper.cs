@@ -4,26 +4,26 @@ using VContainer.Unity;
 
 namespace GameKit.UIFramework.Page
 {
-    public sealed class UniversalPageCloser : IInitializable, IDisposable
+    public sealed class UniversalPagePopper : IInitializable, IDisposable
     {
-        readonly IUniversalClosePageObservable universalClosePageObservable;
+        readonly IUniversalPopPageObservable universalPopPageObservable;
         readonly PageContainer pageContainer;
 
         readonly CompositeDisposable disposable = new();
 
-        public UniversalPageCloser(
-            IUniversalClosePageObservable universalClosePageObservable,
+        public UniversalPagePopper(
+            IUniversalPopPageObservable universalPopPageObservable,
             PageContainer pageContainer
         )
         {
-            this.universalClosePageObservable = universalClosePageObservable;
+            this.universalPopPageObservable = universalPopPageObservable;
             this.pageContainer = pageContainer;
         }
         
         void IInitializable.Initialize()
         {
-            universalClosePageObservable.OnCloseRequest()
-                .Where(_ => CanClosePage())
+            universalPopPageObservable.OnPopRequest()
+                .Where(_ => CanPopPage())
                 .SubscribeAwait(async (_, c) =>
                 {
                     await pageContainer.PopAsync(ct: c);
@@ -31,14 +31,14 @@ namespace GameKit.UIFramework.Page
                 .AddTo(disposable);
         }
         
-        bool CanClosePage()
+        bool CanPopPage()
         {
             if (pageContainer.IsTransitioning())
             {
                 return false;
             }
             
-            if (!pageContainer.GetActivePage()?.AllowUniversalClose() ?? false)
+            if (!pageContainer.GetActivePage()?.AllowUniversalPop() ?? false)
             {
                 return false;
             }
