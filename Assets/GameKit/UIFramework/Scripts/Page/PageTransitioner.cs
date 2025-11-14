@@ -1,10 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using R3;
 using UnityEngine;
+using UnityScreenNavigator.Runtime.Core.Page;
+using UnityScreenNavigator.Runtime.Core.Shared;
 using VContainer.Unity;
+using Object = UnityEngine.Object;
 
 namespace GameKit.UIFramework.Page
 {
@@ -106,15 +110,74 @@ namespace GameKit.UIFramework.Page
         async UniTask ProcessPushAsync(PushRequest request, CancellationToken ct)
         {
             ct.ThrowIfCancellationRequested();
+            
+            if (
+                request.AnimationMode == PageAnimationMode.Overlap &&
+                pageContainer.OrderedPagesIds.Count > 0
+            )
+            {
+                await ProcessPushOverlapAnimationAsync(request, ct);
+            }
+            else
+            {
+                await ProcessPushNormalAnimationAsync(request, ct);
+            }
+        }
+        
+        async UniTask ProcessPushNormalAnimationAsync(PushRequest request, CancellationToken ct)
+        {
+            ct.ThrowIfCancellationRequested();
+
+            if (request.AnimationMode == PageAnimationMode.Overlap)
+            {
+                throw new InvalidOperationException("通常アニメーションでPushする場合、Overlapアニメーションは指定できません。");
+            }
 
             if (pageContainer.OrderedPagesIds.Count == 0)
             {
                 willFirstPagePush.OnNext(Unit.Default);
             }
-            var playAnimation =
-                request.AnimationMode == PageAnimationMode.Play ||
-                request.AnimationMode == PageAnimationMode.Overlap;
+
+            var playAnimation = request.AnimationMode == PageAnimationMode.Play;
             await pageContainer.Push(request.PageName.ResourceKey, playAnimation);
+        }
+        
+        async UniTask ProcessPushOverlapAnimationAsync(PushRequest request, CancellationToken ct)
+        {
+            ct.ThrowIfCancellationRequested();
+
+            if (request.AnimationMode != PageAnimationMode.Overlap)
+            {
+                throw new InvalidOperationException("OverlapアニメーションでPushする場合、通常アニメーションは指定できません。");
+            }
+            if (pageContainer.OrderedPagesIds.Count == 0)
+            {
+                throw new InvalidOperationException("最初のページをOverlapアニメーションで表示することはできません。");
+            }
+            
+            var exitPage = pageContainer.Pages[pageContainer.OrderedPagesIds[^1]];
+            var originalPushExitAnimations = new List<PageTransitionAnimationContainer.TransitionAnimation>(
+                exitPage.AnimationContainer.PushExitAnimations
+            );
+
+            //TODO 開くページから取得
+            var pushEnterAnimationDuration = 0.3f;
+            var animation = exitPage.gameObject.AddComponent<PageOverlapAnimation>();
+            animation.SetDuration(pushEnterAnimationDuration);
+            exitPage.AnimationContainer.PushExitAnimations.Clear();
+            exitPage.AnimationContainer.PushExitAnimations.Add(
+                new PageTransitionAnimationContainer.TransitionAnimation
+                {
+                    AssetType = AnimationAssetType.MonoBehaviour,
+                    AnimationBehaviour = animation,
+                }
+            );
+
+            await pageContainer.Push(request.PageName.ResourceKey, true);
+
+            Object.Destroy(animation);
+            exitPage.AnimationContainer.PushExitAnimations.Clear();
+            exitPage.AnimationContainer.PushExitAnimations.AddRange(originalPushExitAnimations);
         }
         
         async UniTask ProcessPopAsync(PopRequest request, CancellationToken ct)
