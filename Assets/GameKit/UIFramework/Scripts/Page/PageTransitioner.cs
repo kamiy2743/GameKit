@@ -111,7 +111,10 @@ namespace GameKit.UIFramework.Page
             {
                 willFirstPagePush.OnNext(Unit.Default);
             }
-            await pageContainer.Push(request.PageName.ResourceKey, request.PlayAnimation);
+            var playAnimation =
+                request.AnimationMode == PageAnimationMode.Play ||
+                request.AnimationMode == PageAnimationMode.Overlap;
+            await pageContainer.Push(request.PageName.ResourceKey, playAnimation);
         }
         
         async UniTask ProcessPopAsync(PopRequest request, CancellationToken ct)
@@ -148,10 +151,9 @@ namespace GameKit.UIFramework.Page
             processCts.Dispose();
         }
 
-        internal sealed record PushRequest(PageName PageName, bool PlayAnimation, CancellationToken Ct)
-        {
+        internal sealed record PushRequest(PageName PageName, PageAnimationMode AnimationMode, CancellationToken Ct) {
             public PageName PageName { get; } = PageName;
-            public bool PlayAnimation { get; } = PlayAnimation;
+            public PageAnimationMode AnimationMode { get; } = AnimationMode;
             public CancellationToken Ct { get; } = Ct;
         }
 

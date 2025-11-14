@@ -27,11 +27,11 @@ namespace GameKit.UIFramework.Page
         
         public async UniTask PushAsync(
             PageName pageName,
-            bool playAnimation = true,
+            PageAnimationMode animationMode = PageAnimationMode.Play,
             CancellationToken ct = default
-        ) 
+        )
         {
-            var request = new PageTransitioner.PushRequest(pageName, playAnimation, ct);
+            var request = new PageTransitioner.PushRequest(pageName, animationMode, ct);
             await pageTransitioner.PushAsync(request);
         }
 
