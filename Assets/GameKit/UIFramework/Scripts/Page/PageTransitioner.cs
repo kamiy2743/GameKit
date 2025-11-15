@@ -12,7 +12,7 @@ using Object = UnityEngine.Object;
 
 namespace GameKit.UIFramework.Page
 {
-    sealed class PageTransitioner : IPostTickable, IDisposable
+    public sealed class PageTransitioner : IPostTickable, IDisposable
     {
         readonly UnityScreenNavigator.Runtime.Core.Page.PageContainer pageContainer;
         
@@ -214,13 +214,13 @@ namespace GameKit.UIFramework.Page
             processCts.Dispose();
         }
 
-        internal sealed record PushRequest(PageName PageName, PageAnimationMode AnimationMode, CancellationToken Ct) {
+        public sealed record PushRequest(PageName PageName, PageAnimationMode AnimationMode, CancellationToken Ct) {
             public PageName PageName { get; } = PageName;
             public PageAnimationMode AnimationMode { get; } = AnimationMode;
             public CancellationToken Ct { get; } = Ct;
         }
 
-        internal sealed record PopRequest(int PopCount, CancellationToken Ct) 
+        public sealed record PopRequest(int PopCount, CancellationToken Ct) 
         {
             public int PopCount { get; } = PopCount;
             public CancellationToken Ct { get; } = Ct;

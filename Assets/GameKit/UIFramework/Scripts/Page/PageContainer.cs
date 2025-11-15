@@ -11,12 +11,11 @@ namespace GameKit.UIFramework.Page
     {
         readonly UnityScreenNavigator.Runtime.Core.Page.PageContainer pageContainer;
         readonly PageTransitioner pageTransitioner;
-
         
         public Observable<Unit> WillFirstPagePush => pageTransitioner.WillFirstPagePush;
         public Observable<Unit> WillLastPagePop => pageTransitioner.WillLastPagePop;
 
-        internal PageContainer(
+        public PageContainer(
             UnityScreenNavigator.Runtime.Core.Page.PageContainer pageContainer,
             PageTransitioner pageTransitioner
         )
