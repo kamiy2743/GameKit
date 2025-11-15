@@ -7,6 +7,7 @@ using R3;
 using UnityEngine;
 using UnityScreenNavigator.Runtime.Core.Page;
 using UnityScreenNavigator.Runtime.Core.Shared;
+using UnityScreenNavigator.Runtime.Foundation.AssetLoader;
 using VContainer.Unity;
 using Object = UnityEngine.Object;
 
@@ -14,6 +15,8 @@ namespace GameKit.UIFramework.Page
 {
     public sealed class PageTransitioner : IPostTickable, IDisposable
     {
+        const float DefaultAnimationDuration = 0.3f;
+        
         readonly UnityScreenNavigator.Runtime.Core.Page.PageContainer pageContainer;
         
         readonly Subject<Unit> willFirstPagePush = new();
@@ -160,8 +163,7 @@ namespace GameKit.UIFramework.Page
                 exitPage.AnimationContainer.PushExitAnimations
             );
 
-            //TODO 開くページから取得
-            var pushEnterAnimationDuration = 0.3f;
+            var pushEnterAnimationDuration = await GetPushEnterAnimationDurationAsync(request.PageName, ct);
             var animation = exitPage.gameObject.AddComponent<PageOverlapAnimation>();
             animation.SetDuration(pushEnterAnimationDuration);
             exitPage.AnimationContainer.PushExitAnimations.Clear();
@@ -178,6 +180,25 @@ namespace GameKit.UIFramework.Page
             Object.Destroy(animation);
             exitPage.AnimationContainer.PushExitAnimations.Clear();
             exitPage.AnimationContainer.PushExitAnimations.AddRange(originalPushExitAnimations);
+        }
+        
+        async UniTask<float> GetPushEnterAnimationDurationAsync(PageName pageName, CancellationToken ct)
+        {
+            ct.ThrowIfCancellationRequested();
+
+            var handle = pageContainer.AssetLoader.Load<GameObject>(pageName.ResourceKey);
+            await UniTask.WaitUntil(() => handle.IsDone, cancellationToken: ct);
+            if (handle.Status == AssetLoadStatus.Failed)
+            {
+                throw handle.OperationException;
+            }
+            var page = handle.Result.GetComponent<UnityScreenNavigator.Runtime.Core.Page.Page>();
+            if (page.AnimationContainer.PushEnterAnimations.Count == 0)
+            {
+                return DefaultAnimationDuration;
+            }
+            return page.AnimationContainer.PushEnterAnimations
+                .Max(animation => animation.GetAnimation().Duration);
         }
         
         async UniTask ProcessPopAsync(PopRequest request, CancellationToken ct)
