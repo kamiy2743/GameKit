@@ -6,7 +6,7 @@ namespace GameKit.File
 {
     public sealed class FileBrowser
     {
-        public async UniTask<string> SelectFileAsync(string dialogTitle, string extension, CancellationToken ct)
+        public async UniTask<FilePath> SelectFileAsync(string dialogTitle, string extension, CancellationToken ct)
         {
             ct.ThrowIfCancellationRequested();
             
@@ -15,7 +15,7 @@ namespace GameKit.File
             {
                 throw new SelectFileCanceledException();
             }
-            return paths[0];
+            return new FilePath(paths[0]);
         }
     }
 }

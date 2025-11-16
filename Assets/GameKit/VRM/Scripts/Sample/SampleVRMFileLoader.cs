@@ -1,4 +1,5 @@
 ﻿using System;
+using GameKit.File;
 using UnityEngine;
 using VContainer;
 
@@ -28,7 +29,7 @@ namespace GameKit.VRM
         {
             try
             {
-                var vrm = await vrmLoader.LoadFromFileAsync(path, animatorController, destroyCancellationToken);
+                var vrm = await vrmLoader.LoadFromFileAsync(new FilePath(path), animatorController, destroyCancellationToken);
                 vrm.gameObject.transform.SetParent(parent, false);
             }
             catch (Exception e)

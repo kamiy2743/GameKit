@@ -5,7 +5,8 @@
         "VContainer",
         "UniTask",
         "GameKit.DependencyInjection",
-        "GameKit.VRM"
+        "GameKit.VRM",
+        "GameKit.File"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

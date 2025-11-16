@@ -6,7 +6,8 @@
         "UniGLTF",
         "VContainer",
         "UniTask",
-        "GameKit.DependencyInjection"
+        "GameKit.DependencyInjection",
+        "GameKit.File"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
