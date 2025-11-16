@@ -4,9 +4,9 @@ using VContainer;
 
 namespace GameKit.License.Sample
 {
-    public sealed class LicenseContentSettingLifetimeScope : BaseMBLifetimeScopeRegistration
+    public sealed class SampleLicenseLifetimeScope : BaseMBLifetimeScopeRegistration
     {
-        [SerializeField] LicenseContentSetting licenseContentSetting;
+        [SerializeField] GameKitLicenseContentSetting licenseContentSetting;
         
         public override void Configure(IContainerBuilder builder)
         {

@@ -3749,7 +3749,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13cdbcca162b47ef9e9f0e8e7e5adbe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  licenseContentSetting: {fileID: 11400000, guid: 795ae0d89c660694f8aa3454488da5f1, type: 2}
+  licenseContentSetting: {fileID: 11400000, guid: b65787e7acd239b40990223251e8e73e, type: 2}
 --- !u!1 &2142319648
 GameObject:
   m_ObjectHideFlags: 0

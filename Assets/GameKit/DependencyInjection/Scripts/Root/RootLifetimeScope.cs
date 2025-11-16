@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
@@ -7,7 +6,7 @@ namespace GameKit.DependencyInjection.Root
 {
     public sealed class RootLifetimeScope : LifetimeScope
     {
-        [SerializeField] List<BaseMBLifetimeScopeRegistration> registrations;
+        [SerializeField] BaseMBLifetimeScopeRegistration[] registrations;
 
         protected override void Configure(IContainerBuilder builder)
         {

@@ -10,8 +10,8 @@ namespace GameKit.UIFramework.AssetLoader
     [Serializable]
     public sealed record ScriptableObjectAssetLoaderMap
     {
-        [SerializeField] List<BasePage> pagePrefabs;
-        [SerializeField] List<BaseModal> modalPrefabs;
+        [SerializeField] BasePage[] pagePrefabs;
+        [SerializeField] BaseModal[] modalPrefabs;
 
         readonly Dictionary<string, GameObject> prefabs = new();
 
