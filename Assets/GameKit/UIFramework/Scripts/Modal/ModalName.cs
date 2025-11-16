@@ -4,7 +4,7 @@ using GameKit.UIFramework.UnityScreenNavigatorResource;
 
 namespace GameKit.UIFramework.Modal
 {
-    public sealed record ModalName : IUnityScreenNavigatorResourceKey
+    public sealed partial record ModalName : IUnityScreenNavigatorResourceKey
     {
         static string ResourceKeySuffix => "Modal";
         

@@ -19,8 +19,7 @@ namespace GameKit.UIFramework.Modal.NoticeModal
         
         public async UniTask PushAndWaitOkAsync(CancellationToken ct)
         {
-            //TODO ModalNameを定数に
-            var modalId = await modalContainer.PushAsync(new ModalName("Notice"), ct: ct);
+            var modalId = await modalContainer.PushAsync(ModalName.Notice, ct: ct);
             await modalStateHolder.WaitForStateAsync(modalId, new NoticeModalState(true), ct);
         }
     }
