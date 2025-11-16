@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: f2bb666c86a2efe4b894e415e1f4143b
   m_currentHash:
     serializedVersion: 2
-    Hash: 00000000000000000000000000000000
+    Hash: 0fabce0fd5211f27e5d6a4425ce7252e
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_CatalogRequestsTimeout: 0
@@ -24,11 +24,11 @@ MonoBehaviour:
   m_InternalBundleIdMode: 1
   m_AssetLoadMode: 0
   m_BundledAssetProviderType:
-    m_AssemblyName: 
-    m_ClassName: 
+    m_AssemblyName: Unity.ResourceManager, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    m_ClassName: UnityEngine.ResourceManagement.ResourceProviders.BundledAssetProvider
   m_AssetBundleProviderType:
-    m_AssemblyName: 
-    m_ClassName: 
+    m_AssemblyName: Unity.ResourceManager, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    m_ClassName: UnityEngine.ResourceManagement.ResourceProviders.AssetBundleProvider
   m_IgnoreUnsupportedFilesInBuild: 0
   m_UniqueBundleIds: 0
   m_EnableJsonCatalog: 0
@@ -50,10 +50,10 @@ MonoBehaviour:
   m_CheckForContentUpdateRestrictionsOption: 0
   m_MonoScriptBundleCustomNaming: 
   m_RemoteCatalogBuildPath:
-    m_Id: 
+    m_Id: 98dc80a106eba9d4cbbfcabf060aa402
   m_RemoteCatalogLoadPath:
-    m_Id: 
-  m_ContentStateBuildPathProfileVariableName: 
+    m_Id: e0c2db0042351994eb3e1bb61adb48a5
+  m_ContentStateBuildPathProfileVariableName: <default settings path>
   m_CustomContentStateBuildPath: 
   m_ContentStateBuildPath: 
   m_BuildAddressablesWithPlayerBuild: 0
@@ -61,6 +61,7 @@ MonoBehaviour:
   m_GroupAssets:
   - {fileID: 11400000, guid: 10d9987832c37fa4fa09568ccd9d5ae9, type: 2}
   - {fileID: 11400000, guid: 3cbb6fd76d31ca5458b16d20573c6b8b, type: 2}
+  - {fileID: 11400000, guid: 50e24e7147d1b974da0c9ed51264e7cd, type: 2}
   - {fileID: 11400000, guid: f3e8e1d06311f28499bb482ebdea4a86, type: 2}
   - {fileID: 11400000, guid: 9968878342d0e97439f97a0dfbd2e08b, type: 2}
   m_BuildSettings:
@@ -104,6 +105,7 @@ MonoBehaviour:
     - default
     - Locale
     - Locale-en
+    - Locale-ja
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 534c2b9b9c3df3547865fe40a323741c, type: 2}
