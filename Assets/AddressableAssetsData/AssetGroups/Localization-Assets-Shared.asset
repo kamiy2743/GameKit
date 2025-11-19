@@ -14,7 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_GroupName: Localization-Assets-Shared
   m_GUID: 8a7eaea655312424bb78d0c24f7a5881
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 09d65b98146355c469290f4c81fa0d91
+    m_Address: Assets/GameKit/UIComponent/LocalizationTables/Button/Button Shared
+      Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 4323075c41d25c2439a2cc4bdd037f86, type: 2}
   m_SchemaSet:

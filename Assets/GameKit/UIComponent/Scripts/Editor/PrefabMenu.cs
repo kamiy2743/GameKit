@@ -9,10 +9,28 @@ namespace GameKit.UIComponent.Editor
         const string HierarchyPrefabMenuRoot = "GameObject/GameKit/UIComponent/";
         const string PackageRootPrefabPath = "UIComponent/Prefabs/";
 
-        [MenuItem(HierarchyPrefabMenuRoot + "Button")]
+        [MenuItem(HierarchyPrefabMenuRoot + "Button/Button")]
         static void MakeButton()
         {
             HierarchyPrefabFactory.Make(Path.Combine(PackageRootPrefabPath, "Button/Button.prefab"));
+        }
+        
+        [MenuItem(HierarchyPrefabMenuRoot + "Button/OkButton")]
+        static void MakeOkButton()
+        {
+            HierarchyPrefabFactory.Make(Path.Combine(PackageRootPrefabPath, "Button/OkButton.prefab"));
+        }
+        
+        [MenuItem(HierarchyPrefabMenuRoot + "Button/CancelButton")]
+        static void MakeCancelButton()
+        {
+            HierarchyPrefabFactory.Make(Path.Combine(PackageRootPrefabPath, "Button/CancelButton.prefab"));
+        }
+        
+        [MenuItem(HierarchyPrefabMenuRoot + "Button/BackButton")]
+        static void MakeBackButton()
+        {
+            HierarchyPrefabFactory.Make(Path.Combine(PackageRootPrefabPath, "Button/BackButton.prefab"));
         }
         
         [MenuItem(HierarchyPrefabMenuRoot + "InputField/FloatInputField")]
