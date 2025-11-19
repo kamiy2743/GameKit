@@ -10,8 +10,8 @@ namespace GameKit.License
         
         public void SetValue(LicenseContentValue value)
         {
-            nameText.SetText(value.Name);
-            bodyText.SetText(value.Body);
+            nameText.SetPlainText(value.Name);
+            bodyText.SetPlainText(value.Body);
         }
     }
 }

@@ -13,5 +13,10 @@
         {
             return localizedString.GetLocalizedString();
         }
+        
+        public static implicit operator UnityEngine.Localization.LocalizedString(LocalizedString localizedString)
+        {
+            return localizedString.localizedString;
+        }
     }
 }

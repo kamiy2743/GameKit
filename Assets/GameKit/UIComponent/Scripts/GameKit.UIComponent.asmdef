@@ -5,7 +5,9 @@
         "R3.Unity",
         "R3.Unity.TextMeshPro",
         "Unity.TextMeshPro",
-        "LoopScrollRect.Runtime"
+        "Unity.Localization",
+        "LoopScrollRect.Runtime",
+        "GameKit.Localization"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
