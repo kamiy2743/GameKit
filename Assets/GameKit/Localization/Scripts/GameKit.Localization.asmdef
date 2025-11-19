@@ -1,7 +1,9 @@
 {
     "name": "GameKit.Localization",
     "rootNamespace": "GameKit.Localization",
-    "references": [],
+    "references": [
+        "Unity.Localization"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
