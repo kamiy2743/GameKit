@@ -3,7 +3,10 @@
     "rootNamespace": "GameKit.License",
     "references": [
         "VContainer",
+        "UniTask",
+        "UnityScreenNavigator",
         "GameKit.UIComponent",
+        "GameKit.UIFramework",
         "GameKit.DependencyInjection"
     ],
     "includePlatforms": [],

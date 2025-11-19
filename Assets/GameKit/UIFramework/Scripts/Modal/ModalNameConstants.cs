@@ -2,6 +2,7 @@
 {
     public partial record ModalName
     {
-        public static readonly ModalName Notice = new("Notice");
+        public static readonly ModalName Notice = new(nameof(Notice));
+        public static readonly ModalName License = new(nameof(License));
     }
 }

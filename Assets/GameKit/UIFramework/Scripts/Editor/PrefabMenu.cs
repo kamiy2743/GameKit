@@ -22,7 +22,7 @@ namespace GameKit.UIFramework.Editor
             HierarchyPrefabFactory.Make(Path.Combine(PackageRootPrefabPath, "Page/RootPageContainer.prefab"));
         }
         
-        [MenuItem(AssetPrefabMenuRoot + "Modal")]
+        [MenuItem(AssetPrefabMenuRoot + "Modal/Modal")]
         static void MakeModalVariant()
         {
             AssetPrefabVariantFactory.Make(Path.Combine(PackageRootPrefabPath, "Modal/Modal.prefab"));
