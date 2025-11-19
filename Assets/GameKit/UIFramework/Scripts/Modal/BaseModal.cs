@@ -17,6 +17,11 @@ namespace GameKit.UIFramework.Modal
         {
             this.id = id;
         }
+
+        public virtual bool AllowUniversalPop()
+        {
+            return true;
+        }
         
         IUnityScreenNavigatorResourceKey IUnityScreenNavigatorResource.GetResourceKey()
         {

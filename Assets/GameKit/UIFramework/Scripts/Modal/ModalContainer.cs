@@ -70,5 +70,21 @@ namespace GameKit.UIFramework.Modal
         {
             await PopAsync(popCount: modalContainer.OrderedModalIds.Count, ct: ct);
         }
+
+        public BaseModal? GetActiveModal()
+        {
+            if (modalContainer.OrderedModalIds.Count == 0)
+            {
+                return null;
+            }
+
+            var id = modalContainer.OrderedModalIds[^1];
+            return modalContainer.Modals[id] as BaseModal;
+        }
+        
+        public bool IsTransitioning()
+        {
+            return modalContainer.IsInTransition;
+        }
     }
 }

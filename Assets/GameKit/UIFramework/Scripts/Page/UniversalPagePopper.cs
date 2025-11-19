@@ -38,7 +38,7 @@ namespace GameKit.UIFramework.Page
                 return false;
             }
             
-            if (!pageContainer.GetActivePage()?.AllowUniversalPop() ?? false)
+            if (!(pageContainer.GetActivePage()?.AllowUniversalPop() ?? false))
             {
                 return false;
             }
