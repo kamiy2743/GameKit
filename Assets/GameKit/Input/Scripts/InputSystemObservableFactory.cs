@@ -40,7 +40,7 @@ namespace GameKit.Input
                     {
                         ButtonInputMode.Triggered => action.triggered,
                         ButtonInputMode.Pressed => action.IsPressed(),
-                        _ => throw new NotImplementedException(),
+                        _ => throw new ArgumentException(),
                     };
                 });
         }
