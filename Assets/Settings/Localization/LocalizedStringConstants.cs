@@ -11,6 +11,7 @@ namespace TestNameSpace
         {
             public static readonly LocalizedString Back = new(nameof(Button), nameof(Back));
             public static readonly LocalizedString Cancel = new(nameof(Button), nameof(Cancel));
+            public static readonly LocalizedString Close = new(nameof(Button), nameof(Close));
             public static readonly LocalizedString License = new(nameof(Button), nameof(License));
             public static readonly LocalizedString Ok = new(nameof(Button), nameof(Ok));
             public static readonly LocalizedString QuitGame = new(nameof(Button), nameof(QuitGame));

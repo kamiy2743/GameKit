@@ -23,6 +23,10 @@ MonoBehaviour:
     m_Key: Cancel
     m_Metadata:
       m_Items: []
+  - m_Id: 123686820253696
+    m_Key: Close
+    m_Metadata:
+      m_Items: []
   - m_Id: 2957613207554
     m_Key: Back
     m_Metadata:

@@ -7,9 +7,8 @@ namespace GameKit.License.LicenseModal
 {
     public sealed class LicenseModal : BaseModal
     {
-        //TODO closebutton
-        [SerializeField] Button backButton;
+        [SerializeField] Button closeButton;
         
-        public Observable<Unit> OnBackButtonClick() => backButton.OnClick();
+        public Observable<Unit> OnCloseButtonClick() => closeButton.OnClick();
     }
 }

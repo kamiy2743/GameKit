@@ -21,7 +21,7 @@ namespace GameKit.License.LicenseModal
 
         protected override async UniTask InitializeAsync(CancellationToken ct)
         {
-            modal.OnBackButtonClick()
+            modal.OnCloseButtonClick()
                 .SubscribeAwait(async (_, c) =>
                 {
                     await modalContainer.PopAsync(ct: c);

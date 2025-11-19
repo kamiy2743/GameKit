@@ -27,6 +27,12 @@ namespace GameKit.UIComponent.Editor
             HierarchyPrefabFactory.Make(Path.Combine(PackageRootPrefabPath, "Button/CancelButton.prefab"));
         }
         
+        [MenuItem(HierarchyPrefabMenuRoot + "Button/CloseButton")]
+        static void MakeCloseButton()
+        {
+            HierarchyPrefabFactory.Make(Path.Combine(PackageRootPrefabPath, "Button/CloseButton.prefab"));
+        }
+        
         [MenuItem(HierarchyPrefabMenuRoot + "Button/BackButton")]
         static void MakeBackButton()
         {

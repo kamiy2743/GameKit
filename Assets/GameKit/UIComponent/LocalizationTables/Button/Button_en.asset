@@ -42,6 +42,10 @@ MonoBehaviour:
     m_Localized: License
     m_Metadata:
       m_Items: []
+  - m_Id: 123686820253696
+    m_Localized: Close
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
