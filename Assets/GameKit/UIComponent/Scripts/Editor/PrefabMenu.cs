@@ -33,6 +33,24 @@ namespace GameKit.UIComponent.Editor
             HierarchyPrefabFactory.Make(Path.Combine(PackageRootPrefabPath, "Button/BackButton.prefab"));
         }
         
+        [MenuItem(HierarchyPrefabMenuRoot + "Button/SettingButton")]
+        static void MakeSettingButton()
+        {
+            HierarchyPrefabFactory.Make(Path.Combine(PackageRootPrefabPath, "Button/SettingButton.prefab"));
+        }
+        
+        [MenuItem(HierarchyPrefabMenuRoot + "Button/LicenseButton")]
+        static void MakeLicenseButton()
+        {
+            HierarchyPrefabFactory.Make(Path.Combine(PackageRootPrefabPath, "Button/LicenseButton.prefab"));
+        }
+        
+        [MenuItem(HierarchyPrefabMenuRoot + "Button/QuitGameButton")]
+        static void MakeQuitGameButton()
+        {
+            HierarchyPrefabFactory.Make(Path.Combine(PackageRootPrefabPath, "Button/QuitGameButton.prefab"));
+        }
+        
         [MenuItem(HierarchyPrefabMenuRoot + "InputField/FloatInputField")]
         static void MakeFloatInputField()
         {

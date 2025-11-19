@@ -27,6 +27,18 @@ MonoBehaviour:
     m_Key: Back
     m_Metadata:
       m_Items: []
+  - m_Id: 20718313803776
+    m_Key: Setting
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21006152110080
+    m_Key: License
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16162381107200
+    m_Key: QuitGame
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
