@@ -1,0 +1,20 @@
+﻿{
+    "name": "GameKit.Localization.Editor",
+    "rootNamespace": "GameKit.Localization.Editor",
+    "references": [
+        "GameKit.Asset.Editor",
+        "Unity.Localization",
+        "Unity.Localization.Editor"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
