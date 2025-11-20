@@ -28,10 +28,14 @@ namespace GameKit.UIFramework.Modal.NoticeModal
             modal.OnOkButtonClick()
                 .SubscribeAwait(async (_, c) =>
                 {
-                    modalStateHolder.Update(modal.GetId(), new NoticeModalState(true));
                     await modalContainer.PopAsync(ct: c);
                 })
                 .AddTo(ct);
+        }
+
+        protected override async UniTask WillPopExitAsync(CancellationToken ct)
+        {
+            modalStateHolder.Update(modal.GetId(), new NoticeModalState(true));
         }
     }
 }
