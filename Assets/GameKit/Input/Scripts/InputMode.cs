@@ -2,7 +2,7 @@
 {
     public sealed class InputMode
     {
-        public static readonly InputMode All = new(nameof(All));
+        public static readonly InputMode Default = new(nameof(Default));
         
         readonly string value;
         
@@ -11,9 +11,9 @@
             this.value = value;
         }
         
-        public bool Allows(InputMode mode)
+        public bool Contains(InputMode mode)
         {
-            return Equals(All) || Equals(mode);
+            return Equals(Default) || Equals(mode);
         }
         
         bool Equals(InputMode other)

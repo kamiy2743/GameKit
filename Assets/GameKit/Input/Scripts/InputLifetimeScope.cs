@@ -7,7 +7,7 @@ namespace GameKit.Input
     {
         public override void Configure(IContainerBuilder builder)
         {
-            builder.Register<InputModeHolder>(Lifetime.Singleton);
+            builder.Register<InputModeContainer>(Lifetime.Singleton);
             builder.Register<InputSystemObservableFactory>(Lifetime.Singleton);
         }
     }

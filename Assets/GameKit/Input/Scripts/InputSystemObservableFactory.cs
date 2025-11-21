@@ -7,11 +7,11 @@ namespace GameKit.Input
 {
     public sealed class InputSystemObservableFactory
     {
-        readonly InputModeHolder inputModeHolder;
+        readonly InputModeContainer inputModeContainer;
 
-        public InputSystemObservableFactory(InputModeHolder inputModeHolder)
+        public InputSystemObservableFactory(InputModeContainer inputModeContainer)
         {
-            this.inputModeHolder = inputModeHolder;
+            this.inputModeContainer = inputModeContainer;
         }
         
         public ReadOnlyReactiveProperty<T> MakeReactiveProperty<T>(
@@ -33,7 +33,7 @@ namespace GameKit.Input
         )
         {
             return Observable.EveryUpdate()
-                .Where(_ => inputModeHolder.Get().CurrentValue.Allows(enableMode))
+                .Where(_ => inputModeContainer.ContainsInActiveMode(enableMode))
                 .Where(_ =>
                 {
                     return mode switch
@@ -47,7 +47,7 @@ namespace GameKit.Input
         
         T ReadValue<T>(InputMode enableMode, InputAction action) where T : struct
         {
-            return inputModeHolder.Get().CurrentValue.Allows(enableMode) ? action.ReadValue<T>() : default;
+            return inputModeContainer.ContainsInActiveMode(enableMode) ? action.ReadValue<T>() : default;
         }
     }
 }
