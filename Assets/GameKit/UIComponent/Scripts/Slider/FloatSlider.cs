@@ -20,9 +20,7 @@ namespace GameKit.UIComponent.Slider
         
         public Observable<float> OnValueChange()
         {
-            return Observable.EveryUpdate()
-                .Select(_ => slider.value)
-                .DistinctUntilChanged();
+            return slider.OnValueChangedAsObservable();
         }
     }
 }

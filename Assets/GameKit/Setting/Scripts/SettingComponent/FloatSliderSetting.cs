@@ -17,7 +17,7 @@ namespace GameKit.Setting.SettingComponent
                 .Subscribe(x => inputField.SetValue(x))
                 .AddTo(this);
 
-            inputField.OnValueChange()
+            inputField.OnEndEdit()
                 .Subscribe(x => slider.SetValue(x))
                 .AddTo(this);
         }
@@ -35,7 +35,7 @@ namespace GameKit.Setting.SettingComponent
         
         Observable<FloatSettingValue> ISettingBindable<FloatSettingValue>.OnValueChange()
         {
-            return Observable.Merge(slider.OnValueChange(), inputField.OnValueChange())
+            return Observable.Merge(slider.OnValueChange(), inputField.OnEndEdit())
                 .Select(x => new FloatSettingValue(x));
         }
     }

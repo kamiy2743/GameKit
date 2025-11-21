@@ -6,7 +6,8 @@
         "R3.Unity",
         "GameKit.DependencyInjection",
         "GameKit.DisposableExtension",
-        "GameKit.UIComponent"
+        "GameKit.UIComponent",
+        "GameKit.Localization"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -14,11 +14,10 @@ namespace GameKit.UIComponent.InputField
             inputField.text = value.ToString(CultureInfo.CurrentCulture);
         }
         
-        public Observable<float> OnValueChange()
+        public Observable<float> OnEndEdit()
         {
-            return Observable.EveryUpdate()
-                .Select(_ => float.TryParse(inputField.text, out var result) ? result : 0f)
-                .DistinctUntilChanged();
+            return inputField.OnEndEditAsObservable()
+                .Select(_ => float.TryParse(inputField.text, out var result) ? result : 0f);
         }
     }
 }
