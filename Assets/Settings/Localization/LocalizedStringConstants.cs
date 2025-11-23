@@ -17,5 +17,10 @@ namespace TestNameSpace
             public static readonly LocalizedString QuitGame = new(nameof(Button), nameof(QuitGame));
             public static readonly LocalizedString Setting = new(nameof(Button), nameof(Setting));
         }
+
+        public static class Language
+        {
+            public static readonly LocalizedString LanguageSettingLabel = new(nameof(Language), nameof(LanguageSettingLabel));
+        }
     }
 }

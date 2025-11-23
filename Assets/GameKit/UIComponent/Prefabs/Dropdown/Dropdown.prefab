@@ -558,6 +558,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b68201900ad046c0b2d414574e7f09fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropdown: {fileID: 1413160097978642415}
 --- !u!222 &3622320550438555787
 CanvasRenderer:
   m_ObjectHideFlags: 0

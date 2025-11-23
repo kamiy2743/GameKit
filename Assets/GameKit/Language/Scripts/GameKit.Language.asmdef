@@ -1,10 +1,14 @@
 {
-    "name": "GameKit.Localization",
-    "rootNamespace": "GameKit.Localization",
+    "name": "GameKit.Language",
+    "rootNamespace": "GameKit.Language",
     "references": [
         "VContainer",
-        "Unity.Localization",
-        "GameKit.DependencyInjection"
+        "UniTask",
+        "GameKit.DependencyInjection",
+        "GameKit.Setting",
+        "GameKit.Localization",
+        "GameKit.DisposableExtension",
+        "GameKit.UIComponent"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
