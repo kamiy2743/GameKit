@@ -12,5 +12,10 @@ namespace GameKit.Localization
                 .Select(x => new Locale(x.LocaleName, x.Identifier.Code))
                 .ToList();
         }
+
+        public void SetLocale(Locale locale)
+        {
+            LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.GetLocale(locale.Code);
+        }
     }
 }
