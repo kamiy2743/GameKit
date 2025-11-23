@@ -12,7 +12,6 @@ namespace GameKit.Language.LanguageSetting
         
         protected override void Configure(IContainerBuilder builder)
         {
-            builder.Register<LanguageDropdownOptionFactory>(Lifetime.Singleton);
             builder.RegisterEntryPoint<LanguageSettingPresenter>().WithParameter(dropdownSetting);
         }
     }

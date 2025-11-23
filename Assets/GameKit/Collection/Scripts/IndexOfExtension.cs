@@ -5,7 +5,7 @@ namespace GameKit.Collection
 {
     public static class IndexOfExtension
     {
-        public static int IndexOf<T>(this IEnumerable<T> collection, T target) where T : IEquatable<T>
+        public static int? IndexOf<T>(this IEnumerable<T> collection, T target) where T : IEquatable<T>
         {
             var index = 0;
 
@@ -18,7 +18,7 @@ namespace GameKit.Collection
                 index++;
             }
 
-            return -1;
+            return null;
         }
     }
 }

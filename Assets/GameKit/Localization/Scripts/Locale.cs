@@ -4,5 +4,19 @@
     {
         public string Name { get; } = Name;
         public string Code { get; } = Code;
+
+        public bool Equals(Locale? other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+            return Code == other.Code;
+        }
+
+        public override int GetHashCode()
+        {
+            return Code.GetHashCode();
+        }
     }
 }

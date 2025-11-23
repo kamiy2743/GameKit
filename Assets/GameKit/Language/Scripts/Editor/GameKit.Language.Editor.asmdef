@@ -1,0 +1,18 @@
+﻿{
+    "name": "GameKit.Language.Editor",
+    "rootNamespace": "GameKit.Language.Editor",
+    "references": [
+        "GameKit.Asset.Editor"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
