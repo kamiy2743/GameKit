@@ -2,7 +2,6 @@
 using GameKit.Language.LanguageSetting;
 using GameKit.Localization;
 using GameKit.Setting;
-using GameKit.Setting.SettingValue;
 using R3;
 using VContainer.Unity;
 
@@ -26,9 +25,8 @@ namespace GameKit.Language
         
         void IInitializable.Initialize()
         {
-            settingHolder.GetAsReactiveProperty<LanguageSettingProperty, IntSettingValue>(disposable)
-                //TODO
-                .Subscribe(x => localeController.SetLocale(new Locale("日本語", "en")))
+            settingHolder.GetAsReactiveProperty<LanguageSettingProperty, LanguageSettingValue>(disposable)
+                .Subscribe(x => localeController.SetLocale(x.Value))
                 .AddTo(disposable);
         }
         

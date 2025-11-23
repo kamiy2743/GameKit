@@ -1,10 +1,11 @@
-﻿using GameKit.Setting;
-using GameKit.Setting.SettingValue;
+﻿using GameKit.Localization;
+using GameKit.Setting;
 
 namespace GameKit.Language.LanguageSetting
 {
-    public sealed class LanguageSettingProperty : ISettingProperty<IntSettingValue>
+    public sealed class LanguageSettingProperty : ISettingProperty<LanguageSettingValue>
     {
-        public IntSettingValue Default => new(0);
+        //TODO 定数にする
+        public LanguageSettingValue Default => new(new Locale("日本語", "ja"));
     }
 }

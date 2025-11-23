@@ -1,7 +1,6 @@
 ﻿using System;
 using GameKit.Setting;
 using GameKit.Setting.SettingComponent;
-using GameKit.Setting.SettingValue;
 using R3;
 using VContainer.Unity;
 
@@ -29,7 +28,7 @@ namespace GameKit.Language.LanguageSetting
         void IInitializable.Initialize()
         {
             languageSetting.SetUp(languageDropdownOptionFactory.Make());
-            settingBinder.Bind<LanguageSettingProperty, IntSettingValue>(languageSetting, disposable);
+            settingBinder.Bind<LanguageSettingProperty, LanguageSettingValue>(languageSetting, disposable);
         }
 
         void IDisposable.Dispose()
