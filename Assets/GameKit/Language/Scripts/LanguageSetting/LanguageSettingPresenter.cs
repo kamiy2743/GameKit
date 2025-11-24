@@ -12,19 +12,19 @@ namespace GameKit.Language.LanguageSetting
 {
     public sealed class LanguageSettingPresenter : IInitializable, IDisposable
     {
-        readonly DropdownSetting languageSetting;
+        readonly DropdownSetting dropdownSetting;
         readonly SettingBinder settingBinder;
         readonly LocaleController localeController;
 
         readonly CompositeDisposable disposable = new();
 
         public LanguageSettingPresenter(
-            DropdownSetting languageSetting,
+            DropdownSetting dropdownSetting,
             SettingBinder settingBinder,
             LocaleController localeController
         )
         {
-            this.languageSetting = languageSetting;
+            this.dropdownSetting = dropdownSetting;
             this.settingBinder = settingBinder;
             this.localeController = localeController;
         }
@@ -32,10 +32,10 @@ namespace GameKit.Language.LanguageSetting
         void IInitializable.Initialize()
         {
             var locales = localeController.GetLocales();
-            languageSetting.SetUp(MakeOptionList(locales));
+            dropdownSetting.SetUp(MakeOptionList(locales));
 
             settingBinder.Bind<LanguageSettingProperty, LanguageSettingValue>(
-                languageSetting.MakeBindable<LanguageSettingValue, Locale>(
+                dropdownSetting.MakeBindable<LanguageSettingValue, Locale>(
                     locales,
                     locale => new LanguageSettingValue(locale)
                 ),
