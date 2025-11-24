@@ -22,5 +22,11 @@ namespace TestNameSpace
         {
             public static readonly LocalizedString LanguageSettingLabel = new(nameof(Language), nameof(LanguageSettingLabel));
         }
+
+        public static class ScreenResolution
+        {
+            public static readonly LocalizedString FullScreen = new(nameof(ScreenResolution), nameof(FullScreen));
+            public static readonly LocalizedString ScreenResolutionSettingLabel = new(nameof(ScreenResolution), nameof(ScreenResolutionSettingLabel));
+        }
     }
 }

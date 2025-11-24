@@ -1,0 +1,22 @@
+{
+    "name": "GameKit.ScreenResolution",
+    "rootNamespace": "GameKit.ScreenResolution",
+    "references": [
+        "VContainer",
+        "UniTask",
+        "GameKit.DependencyInjection",
+        "GameKit.Setting",
+        "GameKit.Localization",
+        "GameKit.DisposableExtension",
+        "GameKit.UIComponent"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

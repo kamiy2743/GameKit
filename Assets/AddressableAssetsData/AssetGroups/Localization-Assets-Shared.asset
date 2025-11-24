@@ -15,6 +15,12 @@ MonoBehaviour:
   m_GroupName: Localization-Assets-Shared
   m_GUID: 8a7eaea655312424bb78d0c24f7a5881
   m_SerializeEntries:
+  - m_GUID: 045633ee230d54c47963d4c7bc335ba2
+    m_Address: Assets/GameKit/ScreenResolution/LocalizationTables/ScreenResolution
+      Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 09d65b98146355c469290f4c81fa0d91
     m_Address: Assets/GameKit/UIComponent/LocalizationTables/Button/Button Shared
       Data.asset
