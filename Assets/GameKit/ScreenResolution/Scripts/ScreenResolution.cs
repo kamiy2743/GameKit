@@ -18,11 +18,11 @@ namespace GameKit.ScreenResolution
             SR_1280x720,
         };
         
-        public float? Width { get; }
-        public float? Height { get; }
+        public int? Width { get; }
+        public int? Height { get; }
         public bool IsFullScreen { get; }
 
-        ScreenResolution(float width, float height)
+        ScreenResolution(int width, int height)
         {
             Width = width;
             Height = height;
