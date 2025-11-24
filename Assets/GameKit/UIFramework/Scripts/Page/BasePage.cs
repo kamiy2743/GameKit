@@ -5,6 +5,18 @@ namespace GameKit.UIFramework.Page
 {
     public abstract class BasePage : UnityScreenNavigator.Runtime.Core.Page.Page, IUnityScreenNavigatorResource
     {
+        [SerializeField] CanvasGroup canvasGroup;
+
+        void OnValidate()
+        {
+            canvasGroup = GetComponent<CanvasGroup>();
+        }
+        
+        void Awake()
+        {
+            canvasGroup.alpha = 0;
+        }
+        
         public virtual bool AllowUniversalPop()
         {
             return true;

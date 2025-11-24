@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8436199457319193026}
   - component: {fileID: 8549988096344062556}
   - component: {fileID: 6534446717583753893}
+  - component: {fileID: -5575193533811712972}
   m_Layer: 5
   m_Name: Modal
   m_TagString: Untagged
@@ -77,3 +78,15 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!225 &-5575193533811712972
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5405381113918391961}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0

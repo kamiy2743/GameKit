@@ -6,8 +6,20 @@ namespace GameKit.UIFramework.Modal
 {
     public abstract class BaseModal : UnityScreenNavigator.Runtime.Core.Modal.Modal, IUnityScreenNavigatorResource
     {
-        ModalId? id;
+        [SerializeField] CanvasGroup canvasGroup;
         
+        ModalId? id;
+
+        void OnValidate()
+        {
+            canvasGroup = GetComponent<CanvasGroup>();
+        }
+        
+        void Awake()
+        {
+            canvasGroup.alpha = 0;
+        }
+
         public ModalId GetId()
         {
             return id ?? throw new InvalidOperationException("ModalIdが設定されていません。");
