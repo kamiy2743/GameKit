@@ -1,9 +1,22 @@
-﻿namespace GameKit.Localization
+﻿using System.Linq;
+
+namespace GameKit.Localization
 {
-    public sealed record Locale(string Name, string Code)
+    public sealed partial record Locale
     {
-        public string Name { get; } = Name;
-        public string Code { get; } = Code;
+        public string Name { get; }
+        public string Code { get; }
+
+        Locale(string name, string code)
+        {
+            Name = name;
+            Code = code;
+        }
+        
+        public static Locale FromCode(string code)
+        {
+            return Locales.First(x => x.Code == code);
+        }
         
         public static Locale FromUnityLocale(UnityEngine.Localization.Locale locale)
         {
