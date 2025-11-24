@@ -18,7 +18,11 @@ namespace GameKit.Setting.SettingComponent
                 .AddTo(this);
 
             inputField.OnEndEdit()
-                .Subscribe(x => slider.SetValue(x))
+                .Subscribe(x =>
+                {
+                    slider.SetValue(x);
+                    inputField.SetValue(Mathf.Clamp(x, slider.Min, slider.Max));
+                })
                 .AddTo(this);
         }
 
