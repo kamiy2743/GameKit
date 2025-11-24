@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using R3;
 using TMPro;
 using UnityEngine;
@@ -16,10 +17,11 @@ namespace GameKit.UIComponent.Dropdown
                 .AddTo(this);
         }
         
-        void UpdateOptions(List<string> options)
+        void UpdateOptions(IEnumerable<string> options)
         {
-            dropdown.ClearOptions();
-            dropdown.AddOptions(options);
+            dropdown.options.Clear();
+            dropdown.options.AddRange(options.Select(x => new TMP_Dropdown.OptionData(x)));
+            dropdown.RefreshShownValue();
         }
         
         public void SetValue(int value)

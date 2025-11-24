@@ -3,8 +3,8 @@ using R3;
 
 namespace GameKit.UIComponent.Dropdown
 {
-    public sealed record DropdownOptionList(ReadOnlyReactiveProperty<List<string>> Options)
+    public sealed record DropdownOptionList(ReadOnlyReactiveProperty<IEnumerable<string>> Options)
     {
-        public ReadOnlyReactiveProperty<List<string>> Options { get; } = Options;
+        public ReadOnlyReactiveProperty<IEnumerable<string>> Options { get; } = Options;
     }
 }

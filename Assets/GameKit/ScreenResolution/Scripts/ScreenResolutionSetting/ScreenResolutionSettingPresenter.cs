@@ -53,9 +53,9 @@ namespace GameKit.ScreenResolution.ScreenResolutionSetting
 
             return new DropdownOptionList(options);
 
-            List<string> ToOptions(IReadOnlyList<ScreenResolution> values)
+            IEnumerable<string> ToOptions(IReadOnlyList<ScreenResolution> values)
             {
-                return values.Select(x => x.ToString()).ToList();
+                return values.Select(x => x.ToString());
             }
         }
 
