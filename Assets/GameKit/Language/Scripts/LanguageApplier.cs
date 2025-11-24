@@ -7,14 +7,14 @@ using VContainer.Unity;
 
 namespace GameKit.Language
 {
-    public sealed class LanguageSettingApplier : IInitializable, IDisposable
+    public sealed class LanguageApplier : IInitializable, IDisposable
     {
         readonly LocaleController localeController;
         readonly SettingHolder settingHolder;
 
         readonly CompositeDisposable disposable = new();
 
-        public LanguageSettingApplier(
+        public LanguageApplier(
             LocaleController localeController,
             SettingHolder settingHolder
         )

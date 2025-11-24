@@ -8,7 +8,7 @@ namespace GameKit.Language
     {
         public override void Configure(IContainerBuilder builder)
         {
-            builder.RegisterEntryPoint<LanguageSettingApplier>();
+            builder.RegisterEntryPoint<LanguageApplier>();
         }
     }
 }
