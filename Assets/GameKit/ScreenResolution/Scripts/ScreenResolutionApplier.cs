@@ -1,6 +1,8 @@
 ﻿using System;
 using GameKit.ScreenResolution.ScreenResolutionSetting;
+using GameKit.ScreenResolution.VSyncSetting;
 using GameKit.Setting;
+using GameKit.Setting.SettingValue;
 using R3;
 using UnityEngine;
 using VContainer.Unity;
@@ -32,6 +34,13 @@ namespace GameKit.ScreenResolution
                     {
                         Screen.SetResolution(x.Value.Width!.Value, x.Value.Height!.Value, FullScreenMode.Windowed);
                     }
+                })
+                .AddTo(disposable);
+
+            settingHolder.GetAsReactiveProperty<VSyncSettingProperty, BoolSettingValue>(disposable)
+                .Subscribe(x =>
+                {
+                    QualitySettings.vSyncCount = x.Value ? 1 : 0;
                 })
                 .AddTo(disposable);
         }

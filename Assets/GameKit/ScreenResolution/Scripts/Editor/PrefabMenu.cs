@@ -14,5 +14,11 @@ namespace GameKit.ScreenResolution.Editor
         {
             HierarchyPrefabFactory.Make(Path.Combine(PackageRootPrefabPath, "ScreenResolutionSetting/ScreenResolutionSetting.prefab"));
         }
+        
+        [MenuItem(HierarchyPrefabMenuRoot + "VSyncSetting")]
+        static void MakeVSyncSetting()
+        {
+            HierarchyPrefabFactory.Make(Path.Combine(PackageRootPrefabPath, "VSyncSetting/VSyncSetting.prefab"));
+        }
     }
 }

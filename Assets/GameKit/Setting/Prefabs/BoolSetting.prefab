@@ -25,7 +25,19 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7381410750047988575, guid: e298a2b7a64e0144183feabb618bf1e5, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7381410750047988575, guid: e298a2b7a64e0144183feabb618bf1e5, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7381410750047988575, guid: e298a2b7a64e0144183feabb618bf1e5, type: 3}
       propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7381410750047988575, guid: e298a2b7a64e0144183feabb618bf1e5, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7398313077177316111, guid: e298a2b7a64e0144183feabb618bf1e5, type: 3}
@@ -37,7 +49,19 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7398313077177316111, guid: e298a2b7a64e0144183feabb618bf1e5, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7398313077177316111, guid: e298a2b7a64e0144183feabb618bf1e5, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7398313077177316111, guid: e298a2b7a64e0144183feabb618bf1e5, type: 3}
       propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7398313077177316111, guid: e298a2b7a64e0144183feabb618bf1e5, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8163066557364425645, guid: e298a2b7a64e0144183feabb618bf1e5, type: 3}
@@ -49,7 +73,15 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8163066557364425645, guid: e298a2b7a64e0144183feabb618bf1e5, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8163066557364425645, guid: e298a2b7a64e0144183feabb618bf1e5, type: 3}
       propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8163066557364425645, guid: e298a2b7a64e0144183feabb618bf1e5, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8171308805044746197, guid: e298a2b7a64e0144183feabb618bf1e5, type: 3}
@@ -160,6 +192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82e1e45200e14c189e18ef747b717e2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  toggle: {fileID: 980817624292144914}
 --- !u!224 &8924676595863860700 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7398313077177316111, guid: e298a2b7a64e0144183feabb618bf1e5, type: 3}
@@ -255,7 +288,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 928330964827790945, guid: 27a4c30ff4e129044bb6443edcd35cd4, type: 3}
       propertyPath: m_Name
-      value: Switch
+      value: Toggle
       objectReference: {fileID: 0}
     - target: {fileID: 7020206748244450008, guid: 27a4c30ff4e129044bb6443edcd35cd4, type: 3}
       propertyPath: m_AnchorMax.y
@@ -270,6 +303,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27a4c30ff4e129044bb6443edcd35cd4, type: 3}
+--- !u!114 &980817624292144914 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3350306370593386329, guid: 27a4c30ff4e129044bb6443edcd35cd4, type: 3}
+  m_PrefabInstance: {fileID: 2585696800968169547}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b83f0209d9854148bfc307f31004782c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &3014155796838823396 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 735867055664885167, guid: 27a4c30ff4e129044bb6443edcd35cd4, type: 3}

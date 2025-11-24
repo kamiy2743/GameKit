@@ -27,6 +27,7 @@ namespace GameKit.Localization.Internal
         {
             public static readonly LocalizedString FullScreen = new(nameof(ScreenResolution), nameof(FullScreen));
             public static readonly LocalizedString ScreenResolutionSettingLabel = new(nameof(ScreenResolution), nameof(ScreenResolutionSettingLabel));
+            public static readonly LocalizedString VsyncSettingLabel = new(nameof(ScreenResolution), nameof(VsyncSettingLabel));
         }
     }
 }

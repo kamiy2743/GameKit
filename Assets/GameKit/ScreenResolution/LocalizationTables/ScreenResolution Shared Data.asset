@@ -19,6 +19,10 @@ MonoBehaviour:
     m_Key: ScreenResolutionSettingLabel
     m_Metadata:
       m_Items: []
+  - m_Id: 17307103137792
+    m_Key: VsyncSettingLabel
+    m_Metadata:
+      m_Items: []
   - m_Id: 348722565120
     m_Key: FullScreen
     m_Metadata:
