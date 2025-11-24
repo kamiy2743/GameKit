@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using GameKit.Localization.Internal;
 
 namespace GameKit.ScreenResolution
 {
@@ -39,8 +40,7 @@ namespace GameKit.ScreenResolution
         {
             if (IsFullScreen)
             {
-                //TODO LocalizedStringConstantsから取得
-                return "FullScreen";
+                return LocalizedStringConstants.ScreenResolution.FullScreen.GetValue();
             }
             return $"{Width} x {Height}";
         }

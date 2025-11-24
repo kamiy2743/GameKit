@@ -3,7 +3,7 @@
 
 using GameKit.Localization;
 
-namespace TestNameSpace
+namespace GameKit.Localization.Internal
 {
     public static class LocalizedStringConstants
     {
