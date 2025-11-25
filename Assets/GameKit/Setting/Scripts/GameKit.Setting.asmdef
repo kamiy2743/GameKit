@@ -8,7 +8,8 @@
         "GameKit.DisposableExtension",
         "GameKit.UIComponent",
         "GameKit.Localization",
-        "GameKit.Collection"
+        "GameKit.Collection",
+        "GameKit.LocalStorage"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

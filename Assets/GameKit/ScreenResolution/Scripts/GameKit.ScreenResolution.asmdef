@@ -9,7 +9,8 @@
         "GameKit.Localization",
         "GameKit.Localization.Internal",
         "GameKit.DisposableExtension",
-        "GameKit.UIComponent"
+        "GameKit.UIComponent",
+        "GameKit.LocalStorage"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

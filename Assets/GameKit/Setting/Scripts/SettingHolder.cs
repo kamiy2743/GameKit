@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using GameKit.DisposableExtension;
 using R3;
 
@@ -7,8 +6,14 @@ namespace GameKit.Setting
 {
     public sealed class SettingHolder
     {
-        readonly Dictionary<string, ISettingValue> settings = new();
+        readonly LocalStorage.LocalStorage localStorage;
+
         readonly Subject<SettingUpdateEvent> settingUpdated = new();
+
+        public SettingHolder(LocalStorage.LocalStorage localStorage)
+        {
+            this.localStorage = localStorage;
+        }
         
         public ReadOnlyReactiveProperty<TValue> GetAsReactiveProperty<TProperty, TValue>(Disposer disposer)
             where TProperty : ISettingProperty<TValue>
@@ -27,13 +32,13 @@ namespace GameKit.Setting
             where TValue : ISettingValue
         {
             var key = GetKey<TProperty, TValue>();
-            if (settings.TryGetValue(key, out var value))
+            if (localStorage.TryGet<TValue>(key, out var value))
             {
-                return (TValue)value;
+                return value;
             }
 
             var property = Activator.CreateInstance<TProperty>();
-            settings.Add(key, property.Default);
+            localStorage.Insert(key, property.Default);
             return property.Default;
         }
         
@@ -42,7 +47,7 @@ namespace GameKit.Setting
             where TValue : ISettingValue
         {
             var key = GetKey<TProperty, TValue>();
-            settings[key] = value;
+            localStorage.InsertOrUpdate(key, value);
             settingUpdated.OnNext(new SettingUpdateEvent(key, value));
         }
         

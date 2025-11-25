@@ -1,15 +1,9 @@
 {
-    "name": "GameKit.Language",
-    "rootNamespace": "GameKit.Language",
+    "name": "GameKit.LocalStorage",
+    "rootNamespace": "GameKit.LocalStorage",
     "references": [
         "VContainer",
-        "UniTask",
-        "GameKit.DependencyInjection",
-        "GameKit.Setting",
-        "GameKit.Localization",
-        "GameKit.DisposableExtension",
-        "GameKit.UIComponent",
-        "GameKit.LocalStorage"
+        "GameKit.DependencyInjection"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

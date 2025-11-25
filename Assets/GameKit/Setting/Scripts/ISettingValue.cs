@@ -1,6 +1,8 @@
-﻿namespace GameKit.Setting
+﻿using GameKit.LocalStorage;
+
+namespace GameKit.Setting
 {
-    public interface ISettingValue
+    public interface ISettingValue : ILocalStorageValue
     {
     }
 }
