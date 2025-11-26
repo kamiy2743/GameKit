@@ -8,12 +8,12 @@ namespace GameKit.Language.LanguageSetting
     {
         public Locale Value { get; } = Value;
         
-        string ILocalStorageValue.ToStringValue()
+        string ILocalStorageValue.Serialize()
         {
             return Value.Code;
         }
         
-        T ILocalStorageValue.FromStringValue<T>(string value)
+        T ILocalStorageValue.Deserialize<T>(string value)
         {
             var locale = Locale.FromCode(value);
             return (T)(ILocalStorageValue)new LanguageSettingValue(locale);

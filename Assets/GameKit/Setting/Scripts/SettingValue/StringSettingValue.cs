@@ -6,12 +6,12 @@ namespace GameKit.Setting.SettingValue
     {
         public string Value { get; } = Value;
         
-        string ILocalStorageValue.ToStringValue()
+        string ILocalStorageValue.Serialize()
         {
             return Value;
         }
         
-        T ILocalStorageValue.FromStringValue<T>(string value)
+        T ILocalStorageValue.Deserialize<T>(string value)
         {
             return (T)(ILocalStorageValue)new StringSettingValue(value);
         }

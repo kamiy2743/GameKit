@@ -6,12 +6,12 @@ namespace GameKit.Setting.SettingValue
     {
         public bool Value { get; } = Value;
 
-        string ILocalStorageValue.ToStringValue()
+        string ILocalStorageValue.Serialize()
         {
             return Value.ToString();
         }
 
-        T ILocalStorageValue.FromStringValue<T>(string value)
+        T ILocalStorageValue.Deserialize<T>(string value)
         {
             bool parsedValue = bool.Parse(value);
             return (T)(ILocalStorageValue)new BoolSettingValue(parsedValue);

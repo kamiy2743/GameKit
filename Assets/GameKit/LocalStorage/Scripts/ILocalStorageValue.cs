@@ -2,7 +2,7 @@
 {
     public interface ILocalStorageValue
     {
-        string ToStringValue();
-        T FromStringValue<T>(string value) where T : ILocalStorageValue;
+        string Serialize();
+        T Deserialize<T>(string value) where T : ILocalStorageValue;
     }
 }

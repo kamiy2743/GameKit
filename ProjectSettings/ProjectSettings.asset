@@ -820,7 +820,8 @@ PlayerSettings:
   webWasm2023: 0
   scriptingDefineSymbols:
     Standalone: USN_USE_ASYNC_METHODS
-  additionalCompilerArguments: {}
+  additionalCompilerArguments:
+    Standalone: []
   platformArchitecture: {}
   scriptingBackend:
     Android: 1

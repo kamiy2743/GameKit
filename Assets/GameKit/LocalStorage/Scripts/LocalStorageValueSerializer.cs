@@ -6,13 +6,13 @@ namespace GameKit.LocalStorage
     {
         public string Serialize<T>(T value) where T : ILocalStorageValue
         {
-            return value.ToStringValue();
+            return value.Serialize();
         }
         
         public T Deserialize<T>(string value) where T : ILocalStorageValue
         {
             var instance = CreateValueInstance<T>();
-            return instance.FromStringValue<T>(value);
+            return instance.Deserialize<T>(value);
         }
 
         //TODO コード生成で何とかしたい

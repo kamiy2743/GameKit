@@ -7,12 +7,12 @@ namespace GameKit.Setting.SettingValue
     {
         public float Value { get; } = Value;
 
-        string ILocalStorageValue.ToStringValue()
+        string ILocalStorageValue.Serialize()
         {
             return Value.ToString(CultureInfo.CurrentCulture);
         }
 
-        T ILocalStorageValue.FromStringValue<T>(string value)
+        T ILocalStorageValue.Deserialize<T>(string value)
         {
             float parsedValue = float.Parse(value, CultureInfo.CurrentCulture);
             return (T)(ILocalStorageValue)new FloatSettingValue(parsedValue);

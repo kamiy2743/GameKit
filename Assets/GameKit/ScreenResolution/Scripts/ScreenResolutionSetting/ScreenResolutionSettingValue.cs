@@ -7,12 +7,12 @@ namespace GameKit.ScreenResolution.ScreenResolutionSetting
     {
         public ScreenResolution Value { get; } = Value;
         
-        string ILocalStorageValue.ToStringValue()
+        string ILocalStorageValue.Serialize()
         {
             return Value.Identifier;
         }
 
-        T ILocalStorageValue.FromStringValue<T>(string value)
+        T ILocalStorageValue.Deserialize<T>(string value)
         {
             var screenResolution = ScreenResolution.FromIdentifier(value);
             return (T)(ILocalStorageValue)new ScreenResolutionSettingValue(screenResolution);
