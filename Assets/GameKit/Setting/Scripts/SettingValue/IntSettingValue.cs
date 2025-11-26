@@ -1,21 +1,19 @@
-﻿using System.Globalization;
-using GameKit.LocalStorage;
+﻿using GameKit.LocalStorage.LocalStorageValue;
 
 namespace GameKit.Setting.SettingValue
 {
-    public sealed record IntSettingValue(int Value) : ISettingValue
+    public sealed record IntSettingValue(int Value) : ISettingValue, IIntLocalStorageValue<IntSettingValue>
     {
         public int Value { get; } = Value;
         
-        string ILocalStorageValue.Serialize()
+        int IIntLocalStorageValue<IntSettingValue>.Serialize()
         {
-            return Value.ToString();
+            return Value;
         }
-
-        T ILocalStorageValue.Deserialize<T>(string value)
+        
+        IntSettingValue IIntLocalStorageValue<IntSettingValue>.Deserialize(int value)
         {
-            int parsedValue = int.Parse(value, CultureInfo.CurrentCulture);
-            return (T)(ILocalStorageValue)new IntSettingValue(parsedValue);
+            return new IntSettingValue(value);
         }
     }
 }

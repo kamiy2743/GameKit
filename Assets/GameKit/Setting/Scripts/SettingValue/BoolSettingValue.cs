@@ -1,20 +1,19 @@
-﻿using GameKit.LocalStorage;
+﻿using GameKit.LocalStorage.LocalStorageValue;
 
 namespace GameKit.Setting.SettingValue
 {
-    public sealed record BoolSettingValue(bool Value) : ISettingValue
+    public sealed record BoolSettingValue(bool Value) : ISettingValue, IBoolLocalStorageValue<BoolSettingValue>
     {
         public bool Value { get; } = Value;
 
-        string ILocalStorageValue.Serialize()
+        bool IBoolLocalStorageValue<BoolSettingValue>.Serialize()
         {
-            return Value.ToString();
+            return Value;
         }
 
-        T ILocalStorageValue.Deserialize<T>(string value)
+        BoolSettingValue IBoolLocalStorageValue<BoolSettingValue>.Deserialize(bool value)
         {
-            bool parsedValue = bool.Parse(value);
-            return (T)(ILocalStorageValue)new BoolSettingValue(parsedValue);
+            return new BoolSettingValue(value);
         }
     }
 }

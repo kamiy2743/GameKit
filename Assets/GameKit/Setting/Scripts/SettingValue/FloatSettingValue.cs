@@ -1,21 +1,19 @@
-﻿using System.Globalization;
-using GameKit.LocalStorage;
+﻿using GameKit.LocalStorage.LocalStorageValue;
 
 namespace GameKit.Setting.SettingValue
 {
-    public sealed record FloatSettingValue(float Value) : ISettingValue
+    public sealed record FloatSettingValue(float Value) : ISettingValue, IFloatLocalStorageValue<FloatSettingValue>
     {
         public float Value { get; } = Value;
-
-        string ILocalStorageValue.Serialize()
+        
+        float IFloatLocalStorageValue<FloatSettingValue>.Serialize()
         {
-            return Value.ToString(CultureInfo.CurrentCulture);
+            return Value;
         }
-
-        T ILocalStorageValue.Deserialize<T>(string value)
+        
+        FloatSettingValue IFloatLocalStorageValue<FloatSettingValue>.Deserialize(float value)
         {
-            float parsedValue = float.Parse(value, CultureInfo.CurrentCulture);
-            return (T)(ILocalStorageValue)new FloatSettingValue(parsedValue);
+            return new FloatSettingValue(value);
         }
     }
 }

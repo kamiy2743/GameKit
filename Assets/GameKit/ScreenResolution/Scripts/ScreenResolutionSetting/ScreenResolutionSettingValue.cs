@@ -1,21 +1,22 @@
-﻿using GameKit.LocalStorage;
+﻿using GameKit.LocalStorage.LocalStorageValue;
 using GameKit.Setting.SettingValue;
 
 namespace GameKit.ScreenResolution.ScreenResolutionSetting
 {
-    public sealed record ScreenResolutionSettingValue(ScreenResolution Value) : IDropdownSettingValue<ScreenResolution>
+    public sealed record ScreenResolutionSettingValue(ScreenResolution Value)
+        : IDropdownSettingValue<ScreenResolution>, IStringLocalStorageValue<ScreenResolutionSettingValue>
     {
         public ScreenResolution Value { get; } = Value;
-        
-        string ILocalStorageValue.Serialize()
+
+        string IStringLocalStorageValue<ScreenResolutionSettingValue>.Serialize()
         {
             return Value.Identifier;
         }
 
-        T ILocalStorageValue.Deserialize<T>(string value)
+        ScreenResolutionSettingValue IStringLocalStorageValue<ScreenResolutionSettingValue>.Deserialize(string value)
         {
             var screenResolution = ScreenResolution.FromIdentifier(value);
-            return (T)(ILocalStorageValue)new ScreenResolutionSettingValue(screenResolution);
+            return new ScreenResolutionSettingValue(screenResolution);
         }
     }
 }

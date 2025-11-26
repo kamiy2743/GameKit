@@ -1,19 +1,19 @@
-﻿using GameKit.LocalStorage;
+﻿using GameKit.LocalStorage.LocalStorageValue;
 
 namespace GameKit.Setting.SettingValue
 {
-    public sealed record StringSettingValue(string Value) : ISettingValue
+    public sealed record StringSettingValue(string Value) : ISettingValue, IStringLocalStorageValue<StringSettingValue>
     {
         public string Value { get; } = Value;
         
-        string ILocalStorageValue.Serialize()
+        string IStringLocalStorageValue<StringSettingValue>.Serialize()
         {
             return Value;
         }
         
-        T ILocalStorageValue.Deserialize<T>(string value)
+        StringSettingValue IStringLocalStorageValue<StringSettingValue>.Deserialize(string value)
         {
-            return (T)(ILocalStorageValue)new StringSettingValue(value);
+            return new StringSettingValue(value);
         }
     }
 }
