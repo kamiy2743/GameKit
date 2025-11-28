@@ -34,6 +34,12 @@ namespace GameKit.UIFramework.Editor
             HierarchyPrefabFactory.Make(Path.Combine(PackageRootPrefabPath, "Modal/RootModalContainer.prefab"));
         }
         
+        [MenuItem(AssetPrefabMenuRoot + "Modal/ConfirmModal")]
+        static void MakeConfirmModalVariant()
+        {
+            AssetPrefabVariantFactory.Make(Path.Combine(PackageRootPrefabPath, "Modal/ConfirmModal/ConfirmModal.prefab"));
+        }
+        
         [MenuItem(AssetPrefabMenuRoot + "Modal/NoticeModal")]
         static void MakeNoticeModalVariant()
         {

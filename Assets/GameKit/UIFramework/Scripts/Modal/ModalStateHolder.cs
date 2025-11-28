@@ -29,6 +29,19 @@ namespace GameKit.UIFramework.Modal
             modalStates.Remove(modalId);
         }
         
+        public T Get<T>(ModalId modalId) where T : IModalState
+        {
+            if (!modalStates.TryGetValue(modalId, out var state))
+            {
+                throw new InvalidOperationException($"モーダルが存在しません: {modalId}");
+            }
+            if (state is not T typedState)
+            {
+                throw new InvalidOperationException($"モーダル状態の型が異なります: {modalId}, Expected: {typeof(T)}, Actual: {state.GetType()}");
+            }
+            return typedState;
+        }
+        
         public async UniTask WaitForStateAsync<T>(ModalId modalId, T targetState, CancellationToken ct)
             where T : IModalState
         {
