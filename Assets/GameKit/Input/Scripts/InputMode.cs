@@ -20,5 +20,10 @@
         {
             return value == other.value;
         }
+
+        public override string ToString()
+        {
+            return value;
+        }
     }
 }

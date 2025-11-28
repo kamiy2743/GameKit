@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace GameKit.Input
 {
@@ -11,13 +12,22 @@ namespace GameKit.Input
             stack.Push(InputMode.Default);
         }
         
-        public void SetActiveMode(InputMode mode)
+        public void Push(InputMode mode)
         {
-            if (!stack.Peek().Equals(InputMode.Default))
+            if (mode.Equals(InputMode.Default))
             {
-                stack.Pop();
+                throw new InvalidOperationException("デフォルトモードはPushできません。");
             }
             stack.Push(mode);
+        }
+        
+        public void Pop()
+        {
+            if (GetActiveMode().Equals(InputMode.Default))
+            {
+                throw new InvalidOperationException("デフォルトモードはPopできません。");
+            }
+            stack.Pop();
         }
         
         public InputMode GetActiveMode()

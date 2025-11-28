@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using R3;
 
 namespace GameKit.UIFramework.Modal
 {
@@ -9,6 +10,12 @@ namespace GameKit.UIFramework.Modal
     {
         readonly UnityScreenNavigator.Runtime.Core.Modal.ModalContainer modalContainer;
         readonly ModalStateHolder modalStateHolder;
+        
+        readonly Subject<Unit> willFirstModalPush = new();
+        public Observable<Unit> WillFirstModalPush => willFirstModalPush;
+        
+        readonly Subject<Unit> willLastModalPop = new();
+        public Observable<Unit> WillLastModalPop => willLastModalPop;
 
         public ModalContainer(
             UnityScreenNavigator.Runtime.Core.Modal.ModalContainer modalContainer,
@@ -26,6 +33,11 @@ namespace GameKit.UIFramework.Modal
         )
         {
             ct.ThrowIfCancellationRequested();
+            
+            if (modalContainer.OrderedModalIds.Count == 0)
+            {
+                willFirstModalPush.OnNext(Unit.Default);
+            }
 
             var modalId = new ModalId();
             modalStateHolder.Add(modalId, new EmptyModalState());
@@ -49,6 +61,11 @@ namespace GameKit.UIFramework.Modal
         public async UniTask PopAsync(int popCount = 1, CancellationToken ct = default) 
         {
             ct.ThrowIfCancellationRequested();
+            
+            if (modalContainer.OrderedModalIds.Count == popCount)
+            {
+                willLastModalPop.OnNext(Unit.Default);
+            }
 
             var targetModalIds = modalContainer.OrderedModalIds
                 .TakeLast(popCount)
