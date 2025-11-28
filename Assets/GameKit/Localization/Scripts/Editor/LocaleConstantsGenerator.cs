@@ -3,6 +3,7 @@ using System.IO;
 using System.Text;
 using UnityEditor;
 using UnityEngine.Localization.Settings;
+using PackageInfo = UnityEditor.PackageManager.PackageInfo;
 
 namespace GameKit.Localization.Editor
 {
@@ -21,7 +22,10 @@ namespace GameKit.Localization.Editor
                 string[] movedAssets,
                 string[] movedFromAssetPaths)
             {
-                RequestGeneration();
+                if (!IsExecutingFromPackage())
+                {
+                    RequestGeneration();
+                }
             }
         }
 
@@ -103,6 +107,13 @@ namespace GameKit.Localization.Editor
 
             File.WriteAllText(OutputPath, source, Utf8EncodingWithoutBom);
             AssetDatabase.ImportAsset(OutputPath);
+        }
+
+        static bool IsExecutingFromPackage()
+        {
+            var assembly = typeof(LocaleConstantsGenerator).Assembly;
+            var packageInfo = PackageInfo.FindForAssembly(assembly);
+            return packageInfo != null;
         }
     }
 }
