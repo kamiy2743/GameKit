@@ -16,8 +16,9 @@ namespace GameKit.Setting
             where TProperty : ISettingProperty<TValue>
             where TValue : ISettingValue
         {
-            var value = settingHolder.Get<TProperty, TValue>();
-            bindable.SetValue(value);
+            settingHolder.GetAsReactiveProperty<TProperty, TValue>(disposer)
+                .Subscribe(bindable.SetValue)
+                .AddTo(disposer);
 
             bindable.OnValueChange()
                 .Subscribe(x => settingHolder.Set<TProperty, TValue>(x))

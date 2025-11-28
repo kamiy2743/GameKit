@@ -57,6 +57,12 @@ namespace GameKit.UIComponent.Editor
             HierarchyPrefabFactory.Make(Path.Combine(PackageRootPrefabPath, "Button/QuitGameButton.prefab"));
         }
         
+        [MenuItem(HierarchyPrefabMenuRoot + "Button/ResetSettingButton")]
+        static void MakeResetSettingButton()
+        {
+            HierarchyPrefabFactory.Make(Path.Combine(PackageRootPrefabPath, "Button/ResetSettingButton.prefab"));
+        }
+        
         [MenuItem(HierarchyPrefabMenuRoot + "Dropdown/Dropdown")]
         static void MakeDropdown()
         {

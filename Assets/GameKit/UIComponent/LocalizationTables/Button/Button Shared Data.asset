@@ -43,6 +43,10 @@ MonoBehaviour:
     m_Key: QuitGame
     m_Metadata:
       m_Items: []
+  - m_Id: 3196233279344640
+    m_Key: ResetSetting
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

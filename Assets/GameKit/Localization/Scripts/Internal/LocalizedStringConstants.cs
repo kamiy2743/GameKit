@@ -15,6 +15,7 @@ namespace GameKit.Localization.Internal
             public static readonly LocalizedString License = new(nameof(Button), nameof(License));
             public static readonly LocalizedString Ok = new(nameof(Button), nameof(Ok));
             public static readonly LocalizedString QuitGame = new(nameof(Button), nameof(QuitGame));
+            public static readonly LocalizedString ResetSetting = new(nameof(Button), nameof(ResetSetting));
             public static readonly LocalizedString Setting = new(nameof(Button), nameof(Setting));
         }
 
