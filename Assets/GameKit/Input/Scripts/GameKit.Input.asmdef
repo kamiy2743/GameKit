@@ -5,7 +5,8 @@
         "VContainer",
         "Unity.InputSystem",
         "GameKit.DisposableExtension",
-        "GameKit.DependencyInjection"
+        "GameKit.DependencyInjection",
+        "GameKit.Application"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

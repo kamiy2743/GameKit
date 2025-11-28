@@ -1,5 +1,6 @@
 ﻿using GameKit.DependencyInjection;
 using VContainer;
+using VContainer.Unity;
 
 namespace GameKit.Input
 {
@@ -9,6 +10,7 @@ namespace GameKit.Input
         {
             builder.Register<InputModeContainer>(Lifetime.Singleton);
             builder.Register<InputSystemObservableFactory>(Lifetime.Singleton);
+            builder.RegisterEntryPoint<CursorChanger>();
         }
     }
 }

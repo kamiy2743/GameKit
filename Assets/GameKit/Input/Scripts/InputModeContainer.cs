@@ -1,11 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
+using GameKit.DisposableExtension;
+using ObservableCollections;
+using R3;
 
 namespace GameKit.Input
 {
     public sealed class InputModeContainer
     {
-        readonly Stack<InputMode> stack = new();
+        readonly ObservableStack<InputMode> stack = new();
 
         public InputModeContainer()
         {
@@ -33,6 +35,14 @@ namespace GameKit.Input
         public InputMode GetActiveMode()
         {
             return stack.Peek();
+        }
+        
+        public ReadOnlyReactiveProperty<InputMode> GetActiveModeAsReactiveProperty(Disposer disposer)
+        {
+            return stack.ObserveCountChanged()
+                .Select(_ => GetActiveMode())
+                .ToReadOnlyReactiveProperty(GetActiveMode())
+                .RegisterAndReturn(disposer);
         }
         
         public bool ContainsInActiveMode(InputMode mode)

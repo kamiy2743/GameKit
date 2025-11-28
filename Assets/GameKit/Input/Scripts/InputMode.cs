@@ -2,13 +2,15 @@
 {
     public sealed class InputMode
     {
-        public static readonly InputMode Default = new(nameof(Default));
+        public static readonly InputMode Default = new(nameof(Default), true);
         
         readonly string value;
+        public bool isVisibleCursor { get; }
         
-        public InputMode(string value)
+        public InputMode(string value, bool isVisibleCursor)
         {
             this.value = value;
+            this.isVisibleCursor = isVisibleCursor;
         }
         
         public bool Contains(InputMode mode)
