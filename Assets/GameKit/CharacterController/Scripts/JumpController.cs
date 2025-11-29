@@ -6,11 +6,19 @@ namespace GameKit.CharacterController
     {
         [Header("Jump")]
         [SerializeField] float jumpSpeed = 5f;
+        [SerializeField][Min(0f)] float groundedJumpResetDelay = 0.2f;
 
         bool jumpRequested;
         bool hasLeftGroundSinceLastJump = true;
+        bool isCurrentlyGrounded;
+        float groundedResetTimer;
 
         public bool HasPendingJumpRequest => jumpRequested;
+
+        void FixedUpdate()
+        {
+            TickGroundedResetTimer(Time.fixedDeltaTime);
+        }
 
         public void RequestJump()
         {
@@ -24,9 +32,11 @@ namespace GameKit.CharacterController
 
         public void NotifyGroundedState(bool grounded)
         {
+            isCurrentlyGrounded = grounded;
             if (!grounded)
             {
                 hasLeftGroundSinceLastJump = true;
+                groundedResetTimer = 0f;
             }
         }
 
@@ -46,6 +56,28 @@ namespace GameKit.CharacterController
             velocity += Vector3.up * jumpSpeed;
             isGrounded = false;
             hasLeftGroundSinceLastJump = false;
+            groundedResetTimer = groundedJumpResetDelay;
+        }
+
+        void TickGroundedResetTimer(float deltaTime)
+        {
+            if (!isCurrentlyGrounded || hasLeftGroundSinceLastJump)
+            {
+                return;
+            }
+
+            if (groundedJumpResetDelay <= 0f)
+            {
+                hasLeftGroundSinceLastJump = true;
+                return;
+            }
+
+            groundedResetTimer -= deltaTime;
+            if (groundedResetTimer <= 0f)
+            {
+                hasLeftGroundSinceLastJump = true;
+                groundedResetTimer = 0f;
+            }
         }
     }
 }
