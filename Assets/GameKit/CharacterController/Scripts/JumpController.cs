@@ -4,7 +4,6 @@ namespace GameKit.CharacterController
 {
     public sealed class JumpController : MonoBehaviour
     {
-        [Header("Jump")]
         [SerializeField] float jumpSpeed = 5f;
         [SerializeField][Min(0f)] float groundedJumpResetDelay = 0.2f;
 
