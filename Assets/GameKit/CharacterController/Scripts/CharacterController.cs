@@ -4,15 +4,13 @@ namespace GameKit.CharacterController
 {
     [RequireComponent(typeof(CapsuleCollider))]
     [RequireComponent(typeof(Rigidbody))]
+    [RequireComponent(typeof(JumpController))]
     public sealed class CharacterController : MonoBehaviour
     {
         [Header("Movement")]
         [SerializeField] float maxSpeed = 6f;
         [SerializeField] float acceleration = 75f;
         [SerializeField] float airControlMultiplier = 0.5f;
-
-        [Header("Jump")]
-        [SerializeField] float jumpSpeed = 5f;
 
         [Header("Grounding")]
         [SerializeField] LayerMask groundLayers = ~0;
@@ -24,16 +22,16 @@ namespace GameKit.CharacterController
         [SerializeField] bool enableDebugLogs;
 
         Rigidbody rb;
+        JumpController jumpController;
         Transform cameraTransform;
         Vector2 moveInput;
-        bool jumpRequested;
         bool isGrounded;
-        bool hasLeftGroundSinceLastJump = true;
         Vector3 groundNormal;
 
         void Awake()
         {
             rb = GetComponent<Rigidbody>();
+            jumpController = GetComponent<JumpController>();
             cameraTransform = Camera.main!.transform;
             ConfigureRigidbody();
         }
@@ -45,7 +43,7 @@ namespace GameKit.CharacterController
 
         public void Jump()
         {
-            jumpRequested = true;
+            jumpController.RequestJump();
         }
 
         void FixedUpdate()
@@ -60,7 +58,7 @@ namespace GameKit.CharacterController
             velocity.x = desiredPlanarVelocity.x;
             velocity.z = desiredPlanarVelocity.z;
 
-            ApplyJump(ref velocity);
+            jumpController.ApplyJump(ref velocity, ref isGrounded);
 
             if (enableDebugLogs)
             {
@@ -68,7 +66,7 @@ namespace GameKit.CharacterController
             }
 
             rb.linearVelocity = velocity;
-            jumpRequested = false;
+            jumpController.ResetJumpRequest();
         }
 
         void ConfigureRigidbody()
@@ -91,9 +89,7 @@ namespace GameKit.CharacterController
 
             if (!hitGround)
             {
-                isGrounded = false;
-                hasLeftGroundSinceLastJump = true;
-                groundNormal = Vector3.up;
+                SetUngrounded();
                 return;
             }
 
@@ -103,8 +99,21 @@ namespace GameKit.CharacterController
                 return;
             }
 
+            SetGrounded(hit.normal);
+        }
+
+        void SetUngrounded()
+        {
+            isGrounded = false;
+            groundNormal = Vector3.up;
+            jumpController.NotifyGroundedState(isGrounded);
+        }
+
+        void SetGrounded(in Vector3 normal)
+        {
             isGrounded = true;
-            groundNormal = hit.normal;
+            groundNormal = normal;
+            jumpController.NotifyGroundedState(isGrounded);
         }
 
         Vector3 GetDesiredPlanarVelocity(float deltaTime)
@@ -148,28 +157,10 @@ namespace GameKit.CharacterController
             return world.normalized * inputDirection.magnitude;
         }
 
-        void ApplyJump(ref Vector3 velocity)
-        {
-            if (!jumpRequested || !isGrounded || !hasLeftGroundSinceLastJump)
-            {
-                return;
-            }
-
-            var upward = Vector3.Dot(velocity, Vector3.up);
-            if (upward < 0f)
-            {
-                velocity -= upward * Vector3.up;
-            }
-
-            velocity += Vector3.up * jumpSpeed;
-            isGrounded = false;
-            hasLeftGroundSinceLastJump = false;
-        }
-
         void LogState(Vector3 desiredPlanarVelocity, Vector3 velocity)
         {
             Debug.Log(
-                $"[PhysicsCharacterController] position={transform.position} rotation={transform.rotation.eulerAngles} moveInput={moveInput} desiredPlanarVelocity={desiredPlanarVelocity} velocity={velocity} isGrounded={isGrounded} groundNormal={groundNormal} jumpRequested={jumpRequested} rigidbodyVelocity={rb.linearVelocity}"
+                $"[CharacterController] position={transform.position} rotation={transform.rotation.eulerAngles} moveInput={moveInput} desiredPlanarVelocity={desiredPlanarVelocity} velocity={velocity} isGrounded={isGrounded} groundNormal={groundNormal} jumpRequested={jumpController.HasPendingJumpRequest} rigidbodyVelocity={rb.linearVelocity}"
             );
         }
     }
