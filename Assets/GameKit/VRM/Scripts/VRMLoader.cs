@@ -8,23 +8,23 @@ namespace GameKit.VRM
 {
     public sealed class VRMLoader
     {
-        public async UniTask<GameObject> LoadFromFileAsync(
+        public async UniTask<VRMObject> LoadFromFileAsync(
             FilePath path,
             RuntimeAnimatorController animatorController,
             CancellationToken ct
         )
         {
             var vrm = await Vrm10.LoadPathAsync(path.Value, ct: ct);
-            SetUpVRMInstance(vrm, animatorController);
-            return vrm.gameObject;
+            return SetUpVRMInstance(vrm, animatorController);
         }
         
-        void SetUpVRMInstance(Vrm10Instance vrmInstance, RuntimeAnimatorController animatorController)
+        VRMObject SetUpVRMInstance(Vrm10Instance vrmInstance, RuntimeAnimatorController animatorController)
         {
             var animator = vrmInstance.GetComponent<Animator>();
             animator.runtimeAnimatorController = animatorController;
-            var vrmAnimatorController = vrmInstance.gameObject.AddComponent<VRMAnimatorController>();
-            vrmAnimatorController.SetUp(animatorController);
+            var vrmObject = vrmInstance.gameObject.AddComponent<VRMObject>();
+            vrmObject.SetUp(animator);
+            return vrmObject;
         }
     }
 }

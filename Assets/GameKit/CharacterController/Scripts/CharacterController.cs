@@ -7,6 +7,7 @@ namespace GameKit.CharacterController
     [RequireComponent(typeof(JumpController))]
     [RequireComponent(typeof(MovementController))]
     [RequireComponent(typeof(GroundController))]
+    [RequireComponent(typeof(AnimationController))]
     public sealed class CharacterController : MonoBehaviour
     {
         [SerializeField] bool enableDebugLogs;
@@ -15,6 +16,8 @@ namespace GameKit.CharacterController
         JumpController jumpController;
         MovementController movementController;
         GroundController groundController;
+        AnimationController animationController;
+    
         bool isGrounded;
         Vector3 groundNormal;
 
@@ -24,7 +27,14 @@ namespace GameKit.CharacterController
             jumpController = GetComponent<JumpController>();
             movementController = GetComponent<MovementController>();
             groundController = GetComponent<GroundController>();
+            animationController = GetComponent<AnimationController>();
+
             ConfigureRigidbody();
+        }
+        
+        public void SetAnimationController(ICharacterAnimationController animationController)
+        {
+            this.animationController.SetAnimationController(animationController);
         }
 
         public void Move(Vector2 input)

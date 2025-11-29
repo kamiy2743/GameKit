@@ -4836,6 +4836,8 @@ GameObject:
   - component: {fileID: 2738751990528588612}
   - component: {fileID: 6567928049915594083}
   - component: {fileID: 6567928049915594085}
+  - component: {fileID: 6567928049915594086}
+  - component: {fileID: 6567928049915594087}
   - component: {fileID: 6567928049915594082}
   m_Layer: 0
   m_Name: CharacterController
@@ -4856,12 +4858,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f74969c373591a04e88f5d9ebb2cb372, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  groundCheckRadius: 0.4
-  groundCheckDistance: 0.1
-  slopeLimit: 45
   enableDebugLogs: 0
 --- !u!1 &3017882355382704609
 GameObject:
@@ -5045,6 +5041,36 @@ MonoBehaviour:
   airControlMultiplier: 0.5
   rotationSpeed: 720
   modelTransform: {fileID: 6740824527271821822}
+--- !u!114 &6567928049915594086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2681486735896484573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 176afb6bb9ed99841bb6fa9da70bc805, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  groundCheckRadius: 0.4
+  groundCheckDistance: 0.1
+  slopeLimit: 45
+--- !u!114 &6567928049915594087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2681486735896484573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22479c260fe240ba85f16d35a40acb44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &6740824527271821822
 Transform:
   m_ObjectHideFlags: 0
