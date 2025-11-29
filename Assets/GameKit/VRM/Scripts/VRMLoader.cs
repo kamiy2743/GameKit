@@ -15,8 +15,16 @@ namespace GameKit.VRM
         )
         {
             var vrm = await Vrm10.LoadPathAsync(path.Value, ct: ct);
-            vrm.GetComponent<Animator>().runtimeAnimatorController = animatorController;
+            SetUpVRMInstance(vrm, animatorController);
             return vrm.gameObject;
+        }
+        
+        void SetUpVRMInstance(Vrm10Instance vrmInstance, RuntimeAnimatorController animatorController)
+        {
+            var animator = vrmInstance.GetComponent<Animator>();
+            animator.runtimeAnimatorController = animatorController;
+            var vrmAnimatorController = vrmInstance.gameObject.AddComponent<VRMAnimatorController>();
+            vrmAnimatorController.SetUp(animatorController);
         }
     }
 }
