@@ -12,6 +12,10 @@ namespace GameKit.CharacterController
         [SerializeField] float acceleration = 75f;
         [SerializeField] float airControlMultiplier = 0.5f;
 
+        [Header("Rotation")]
+        [SerializeField] float rotationSpeed = 720f;
+        [SerializeField] Transform modelTransform;
+
         [Header("Grounding")]
         [SerializeField] LayerMask groundLayers = ~0;
         [SerializeField] float groundCheckRadius = 0.4f;
@@ -44,6 +48,11 @@ namespace GameKit.CharacterController
         public void Jump()
         {
             jumpController.RequestJump();
+        }
+
+        void Update()
+        {
+            UpdateFacingDirection(Time.deltaTime);
         }
 
         void FixedUpdate()
@@ -155,6 +164,24 @@ namespace GameKit.CharacterController
             }
 
             return world.normalized * inputDirection.magnitude;
+        }
+
+        void UpdateFacingDirection(float deltaTime)
+        {
+            if (moveInput.sqrMagnitude <= Mathf.Epsilon)
+            {
+                return;
+            }
+
+            var inputDirection = new Vector3(moveInput.x, 0f, moveInput.y);
+            var worldDirection = GetWorldMovementDirection(inputDirection);
+            if (worldDirection.sqrMagnitude <= Mathf.Epsilon)
+            {
+                return;
+            }
+
+            var targetRotation = Quaternion.LookRotation(worldDirection.normalized, Vector3.up);
+            modelTransform.rotation = Quaternion.RotateTowards(modelTransform.rotation, targetRotation, rotationSpeed * deltaTime);
         }
 
         void LogState(Vector3 desiredPlanarVelocity, Vector3 velocity)

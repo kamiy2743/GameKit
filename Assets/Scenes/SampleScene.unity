@@ -4834,6 +4834,7 @@ GameObject:
   - component: {fileID: 4671033601969758219}
   - component: {fileID: 6567928049915594081}
   - component: {fileID: 2738751990528588612}
+  - component: {fileID: 6567928049915594083}
   - component: {fileID: 6567928049915594082}
   m_Layer: 0
   m_Name: CharacterController
@@ -4857,7 +4858,8 @@ MonoBehaviour:
   maxSpeed: 6
   acceleration: 75
   airControlMultiplier: 0.5
-  jumpSpeed: 5
+  rotationSpeed: 720
+  modelTransform: {fileID: 6740824527271821822}
   groundLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -5016,6 +5018,20 @@ MonoBehaviour:
   moveAction: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   jumpAction: {fileID: -2099379676528639254, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   characterController: {fileID: 2738751990528588612}
+--- !u!114 &6567928049915594083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2681486735896484573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cafaeb9451d448d4b80862470a64bbf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpSpeed: 5
+  groundedJumpResetDelay: 0.2
 --- !u!4 &6740824527271821822
 Transform:
   m_ObjectHideFlags: 0
