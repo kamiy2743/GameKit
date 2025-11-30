@@ -6,7 +6,8 @@
         "UniTask",
         "GameKit.DependencyInjection",
         "GameKit.VRM",
-        "GameKit.File"
+        "GameKit.File",
+        "GameKit.CharacterController"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

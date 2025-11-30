@@ -5071,6 +5071,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22479c260fe240ba85f16d35a40acb44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpVelocityThreshold: 0.1
+  freeFallVelocityThreshold: 0.1
 --- !u!4 &6740824527271821822
 Transform:
   m_ObjectHideFlags: 0
@@ -5101,6 +5103,7 @@ MonoBehaviour:
   path: C:\Users\kamiy\WorkSpace\VRM\Flare_v2_Choco.vrm
   parent: {fileID: 6740824527271821822}
   animatorController: {fileID: 9100000, guid: 40db3173a05ae3242b1c182a09b0a183, type: 2}
+  characterController: {fileID: 2738751990528588612}
 --- !u!114 &6740824527271821824
 MonoBehaviour:
   m_ObjectHideFlags: 0

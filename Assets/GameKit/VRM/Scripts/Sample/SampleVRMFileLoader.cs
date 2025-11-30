@@ -11,6 +11,7 @@ namespace GameKit.VRM
         [SerializeField][TextArea] string path;
         [SerializeField] Transform parent;
         [SerializeField] RuntimeAnimatorController animatorController;
+        [SerializeField] CharacterController.CharacterController? characterController;
         
         VRMLoader vrmLoader;
 
@@ -31,6 +32,7 @@ namespace GameKit.VRM
             {
                 var vrm = await vrmLoader.LoadFromFileAsync(new FilePath(path), animatorController, destroyCancellationToken);
                 vrm.gameObject.transform.SetParent(parent, false);
+                characterController?.SetAnimationController(vrm.AnimationController);
             }
             catch (Exception e)
             {
