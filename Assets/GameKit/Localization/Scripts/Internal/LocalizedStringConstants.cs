@@ -30,5 +30,10 @@ namespace GameKit.Localization.Internal
             public static readonly LocalizedString ScreenResolutionSettingLabel = new(nameof(ScreenResolution), nameof(ScreenResolutionSettingLabel));
             public static readonly LocalizedString VsyncSettingLabel = new(nameof(ScreenResolution), nameof(VsyncSettingLabel));
         }
+
+        public static class Setting
+        {
+            public static readonly LocalizedString ConfirmResetSetting = new(nameof(Setting), nameof(ConfirmResetSetting));
+        }
     }
 }
