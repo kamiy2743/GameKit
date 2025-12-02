@@ -18,5 +18,10 @@
         {
             return localizedString.localizedString;
         }
+
+        public override string ToString()
+        {
+            return GetValue();
+        }
     }
 }

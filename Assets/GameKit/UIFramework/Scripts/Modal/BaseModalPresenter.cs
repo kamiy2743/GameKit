@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using UnityScreenNavigator.Runtime.Core.Modal;
@@ -8,6 +9,22 @@ namespace GameKit.UIFramework.Modal
     public abstract class BaseModalPresenter : IModalLifecycleEvent
     {
         readonly CancellationTokenSource cts = new();
+        
+        IPushModalParams? pushModalParams;
+
+        public void SetPushModalParams(IPushModalParams? pushModalParams)
+        {
+            this.pushModalParams = pushModalParams;
+        }
+        
+        protected T GetPushModalParams<T>() where T : IPushModalParams
+        {
+            if (pushModalParams is not T castedParams)
+            {
+                throw new InvalidOperationException($"{typeof(T).Name} が設定されていません。");
+            }
+            return castedParams;
+        }
         
         protected virtual UniTask InitializeAsync(CancellationToken ct) => UniTask.CompletedTask;
         async Task IModalLifecycleEvent.Initialize() => await InitializeAsync(cts.Token);

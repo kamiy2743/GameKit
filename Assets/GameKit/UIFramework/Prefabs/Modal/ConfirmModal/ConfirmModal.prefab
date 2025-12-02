@@ -264,6 +264,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2251288255775673544, guid: 03400b4909e45804b8d469fe8372b4ac, type: 3}
   m_PrefabInstance: {fileID: 573408288521948285}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5085677722533775333 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -4510685716054553704, guid: 03400b4909e45804b8d469fe8372b4ac, type: 3}
+  m_PrefabInstance: {fileID: 573408288521948285}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b51445ca33df482680e9a1b0fa10c8d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3374003038310791562
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -646,6 +657,7 @@ MonoBehaviour:
     _enterAnimations: []
     _exitAnimations: []
   canvasGroup: {fileID: 5639455392788495049}
+  messageText: {fileID: 5085677722533775333}
   confirmButton: {fileID: 3455859734206592524}
   cancelButton: {fileID: 3781790415530860462}
 --- !u!114 &-7014587398452430906
@@ -662,7 +674,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parentReference:
     TypeName: GameKit.DependencyInjection.Root.RootLifetimeScope
-  autoRun: 1
+  autoRun: 0
   autoInjectGameObjects: []
   modal: {fileID: -5617113814481901730}
 --- !u!225 &5639455392788495049 stripped

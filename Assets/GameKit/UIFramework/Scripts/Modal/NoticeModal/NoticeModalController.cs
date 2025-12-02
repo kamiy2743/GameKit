@@ -20,7 +20,8 @@ namespace GameKit.UIFramework.Modal.NoticeModal
         
         public async UniTask PushAndWaitOkAsync(LocalizedString message, CancellationToken ct)
         {
-            var modalId = await modalContainer.PushAsync(ModalName.Notice, ct: ct);
+            var pushModalParams = new PushNoticeModalParams(message);
+            var modalId = await modalContainer.PushAsync(ModalName.Notice, pushModalParams, ct: ct);
             await modalStateHolder.WaitForStateAsync(modalId, new NoticeModalState(true), ct);
         }
     }

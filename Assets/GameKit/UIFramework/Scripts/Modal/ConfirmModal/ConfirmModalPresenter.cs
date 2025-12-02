@@ -23,6 +23,9 @@ namespace GameKit.UIFramework.Modal.ConfirmModal
 
         protected override async UniTask InitializeAsync(CancellationToken ct)
         {
+            var pushModalParams = GetPushModalParams<PushConfirmModalParams>();
+            modal.SetMessage(pushModalParams.Message);
+            
             modalStateHolder.Update(modal.GetId(), ConfirmModalState.Pending);
             
             modal.OnConfirmButtonClick()

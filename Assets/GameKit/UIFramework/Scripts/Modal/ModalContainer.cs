@@ -28,6 +28,7 @@ namespace GameKit.UIFramework.Modal
         
         public async UniTask<ModalId> PushAsync(
             ModalName modalName,
+            IPushModalParams? pushModalParams = null,
             bool playAnimation = true,
             CancellationToken ct = default
         )
@@ -47,7 +48,7 @@ namespace GameKit.UIFramework.Modal
                     modalName.ResourceKey,
                     playAnimation,
                     modalId.ToString(),
-                    onLoad: x => ((BaseModal)x.modal).SetId(modalId)
+                    onLoad: x => OnLoadModal(x.modal, modalId, pushModalParams)
                 );
             }
             catch (Exception)
@@ -56,6 +57,16 @@ namespace GameKit.UIFramework.Modal
                 throw;
             }
             return modalId;
+        }
+        
+        void OnLoadModal(
+            UnityScreenNavigator.Runtime.Core.Modal.Modal modal,
+            ModalId modalId,
+            IPushModalParams? pushModalParams
+        )
+        {
+            ((BaseModal)modal).SetId(modalId);
+            modal.GetComponent<IModalLifetimeScope>().Run(pushModalParams);
         }
 
         public async UniTask PopAsync(int popCount = 1, CancellationToken ct = default) 

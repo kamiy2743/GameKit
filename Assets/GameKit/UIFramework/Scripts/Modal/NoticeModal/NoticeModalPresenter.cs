@@ -23,6 +23,9 @@ namespace GameKit.UIFramework.Modal.NoticeModal
         
         protected override async UniTask InitializeAsync(CancellationToken ct)
         {
+            var pushModalParams = GetPushModalParams<PushNoticeModalParams>();
+            modal.SetMessage(pushModalParams.Message);
+            
             modalStateHolder.Update(modal.GetId(), new NoticeModalState(false));
             
             modal.OnOkButtonClick()

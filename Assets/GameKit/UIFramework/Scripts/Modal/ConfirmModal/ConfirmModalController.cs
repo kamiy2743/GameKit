@@ -20,7 +20,8 @@ namespace GameKit.UIFramework.Modal.ConfirmModal
         
         public async UniTask<bool> PushAndWaitResultAsync(LocalizedString message, CancellationToken ct)
         {
-            var modalId = await modalContainer.PushAsync(ModalName.Confirm, ct: ct);
+            var pushModalParams = new PushConfirmModalParams(message);
+            var modalId = await modalContainer.PushAsync(ModalName.Confirm, pushModalParams, ct: ct);
             var result = await UniTask.WhenAny(
                 modalStateHolder.WaitForStateAsync(modalId, ConfirmModalState.Ok, ct),
                 modalStateHolder.WaitForStateAsync(modalId, ConfirmModalState.Cancel, ct)
