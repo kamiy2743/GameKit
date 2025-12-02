@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using GameKit.File;
 using UnityEngine;
@@ -14,8 +15,19 @@ namespace GameKit.VRM
             CancellationToken ct
         )
         {
-            var vrm = await Vrm10.LoadPathAsync(path.Value, ct: ct);
-            return SetUpVRMInstance(vrm, animatorController);
+            try
+            {
+                var vrm = await Vrm10.LoadPathAsync(path.Value, ct: ct);
+                return SetUpVRMInstance(vrm, animatorController);
+            }
+            catch (OperationCanceledException)
+            {
+                throw;
+            }
+            catch (System.Exception e)
+            {
+                throw new LocalVRMFailedException(e);
+            }
         }
         
         VRMObject SetUpVRMInstance(Vrm10Instance vrmInstance, RuntimeAnimatorController animatorController)
