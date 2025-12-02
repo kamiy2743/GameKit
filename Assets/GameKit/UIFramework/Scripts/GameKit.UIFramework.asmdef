@@ -8,7 +8,8 @@
         "VContainer",
         "GameKit.DependencyInjection",
         "GameKit.UIComponent",
-        "GameKit.Id"
+        "GameKit.Id",
+        "GameKit.Localization"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

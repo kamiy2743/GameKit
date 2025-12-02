@@ -1,5 +1,6 @@
 ﻿using System.Threading;
 using Cysharp.Threading.Tasks;
+using GameKit.Localization;
 
 namespace GameKit.UIFramework.Modal.ConfirmModal
 {
@@ -17,7 +18,7 @@ namespace GameKit.UIFramework.Modal.ConfirmModal
             this.modalStateHolder = modalStateHolder;
         }
         
-        public async UniTask<bool> PushAndWaitResultAsync(CancellationToken ct)
+        public async UniTask<bool> PushAndWaitResultAsync(LocalizedString message, CancellationToken ct)
         {
             var modalId = await modalContainer.PushAsync(ModalName.Confirm, ct: ct);
             var result = await UniTask.WhenAny(
