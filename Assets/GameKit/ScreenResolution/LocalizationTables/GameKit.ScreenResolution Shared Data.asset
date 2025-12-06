@@ -10,23 +10,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
-  m_Name: Language Shared Data
+  m_Name: GameKit.ScreenResolution Shared Data
   m_EditorClassIdentifier: 
-  m_TableCollectionName: Language
-  m_TableCollectionNameGuidString: fdb646c0d1bc372459651c11f49accd3
+  m_TableCollectionName: GameKit.ScreenResolution
+  m_TableCollectionNameGuidString: 045633ee230d54c47963d4c7bc335ba2
   m_Entries:
-  - m_Id: 850357129216
-    m_Key: LanguageSettingLabel
+  - m_Id: 348693204992
+    m_Key: ScreenResolutionSettingLabel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17307103137792
+    m_Key: VsyncSettingLabel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 348722565120
+    m_Key: FullScreen
     m_Metadata:
       m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
-    rid: 2610116884889075797
+    rid: 2610116903844708432
   references:
     version: 2
     RefIds:
-    - rid: 2610116884889075797
+    - rid: 2610116903844708432
       type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
       data:
-        m_CustomEpoch: 1763873454653
+        m_CustomEpoch: 1763948888932

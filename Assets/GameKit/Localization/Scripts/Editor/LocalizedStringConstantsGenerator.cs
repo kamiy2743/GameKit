@@ -14,7 +14,6 @@ namespace GameKit.Localization.Editor
     /// </summary>
     public static class LocalizedStringConstantsGenerator
     {
-        const string ConstantsAssetPath = "Assets/GameKit/Localization/Scripts/LocalizedStringConstants.cs";
         static readonly StringBuilder SourceBuilder = new(4096);
         static readonly UTF8Encoding Utf8EncodingWithoutBom = new(false);
 
@@ -164,7 +163,10 @@ namespace GameKit.Localization.Editor
                         continue;
                     }
 
-                    var className = ToIdentifier(collection.TableCollectionName, "Table");
+                    var tableName = collection.TableCollectionName.Contains(".") ?
+                        collection.TableCollectionName.Substring(collection.TableCollectionName.LastIndexOf('.') + 1) :
+                        collection.TableCollectionName;
+                    var className = ToIdentifier(tableName, "Table");
                     var entryDeclarations = BuildEntryDeclarations(references);
                     if (entryDeclarations.Count == 0)
                     {

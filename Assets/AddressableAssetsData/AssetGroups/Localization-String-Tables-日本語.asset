@@ -16,19 +16,25 @@ MonoBehaviour:
   m_GUID: 7a24cfbbec7bd7341bcdb2fc30e0fbd4
   m_SerializeEntries:
   - m_GUID: 415b548e03a7a4f4a895ba9e625a517f
-    m_Address: ScreenResolution_ja
+    m_Address: GameKit.ScreenResolution_ja
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-ja
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 735a66565e349154788b09266a6444d8
-    m_Address: Language_ja
+    m_Address: GameKit.Language_ja
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d244203cd52a6784284ce4e1c18a7d51
+    m_Address: GameKit.Button_ja
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-ja
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e87b0b185e978e3448d7ec5ccbdf473b
-    m_Address: Setting_ja
+    m_Address: GameKit.Setting_ja
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-ja

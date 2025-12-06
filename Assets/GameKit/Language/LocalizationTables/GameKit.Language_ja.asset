@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
-  m_Name: Setting_en
+  m_Name: GameKit.Language_ja
   m_EditorClassIdentifier: 
   m_LocaleId:
-    m_Code: en
-  m_SharedData: {fileID: 11400000, guid: ea46bb6316019ff4dbd76f93a8f7047a, type: 2}
+    m_Code: ja
+  m_SharedData: {fileID: 11400000, guid: fdb646c0d1bc372459651c11f49accd3, type: 2}
   m_Metadata:
     m_Items: []
   m_TableData:
-  - m_Id: 2571158425600
-    m_Localized: Reset to default settings?
+  - m_Id: 850357129216
+    m_Localized: "\u8A00\u8A9E"
     m_Metadata:
       m_Items: []
   references:
