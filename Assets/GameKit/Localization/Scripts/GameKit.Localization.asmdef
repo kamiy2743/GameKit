@@ -4,6 +4,7 @@
     "references": [
         "VContainer",
         "Unity.Localization",
+        "ZString",
         "GameKit.DependencyInjection"
     ],
     "includePlatforms": [],

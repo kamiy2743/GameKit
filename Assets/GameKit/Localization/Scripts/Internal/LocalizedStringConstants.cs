@@ -7,33 +7,36 @@ namespace GameKit.Localization.Internal
 {
     public static class LocalizedStringConstants
     {
-        public static class Button
+        public static class GameKit
         {
-            public static readonly LocalizedString Back = new(nameof(Button), nameof(Back));
-            public static readonly LocalizedString Cancel = new(nameof(Button), nameof(Cancel));
-            public static readonly LocalizedString Close = new(nameof(Button), nameof(Close));
-            public static readonly LocalizedString License = new(nameof(Button), nameof(License));
-            public static readonly LocalizedString Ok = new(nameof(Button), nameof(Ok));
-            public static readonly LocalizedString QuitGame = new(nameof(Button), nameof(QuitGame));
-            public static readonly LocalizedString ResetSetting = new(nameof(Button), nameof(ResetSetting));
-            public static readonly LocalizedString Setting = new(nameof(Button), nameof(Setting));
-        }
+            public static class Button
+            {
+                public static readonly LocalizedString Back = new(nameof(GameKit), nameof(Button), nameof(Back));
+                public static readonly LocalizedString Cancel = new(nameof(GameKit), nameof(Button), nameof(Cancel));
+                public static readonly LocalizedString Close = new(nameof(GameKit), nameof(Button), nameof(Close));
+                public static readonly LocalizedString License = new(nameof(GameKit), nameof(Button), nameof(License));
+                public static readonly LocalizedString Ok = new(nameof(GameKit), nameof(Button), nameof(Ok));
+                public static readonly LocalizedString QuitGame = new(nameof(GameKit), nameof(Button), nameof(QuitGame));
+                public static readonly LocalizedString ResetSetting = new(nameof(GameKit), nameof(Button), nameof(ResetSetting));
+                public static readonly LocalizedString Setting = new(nameof(GameKit), nameof(Button), nameof(Setting));
+            }
 
-        public static class Language
-        {
-            public static readonly LocalizedString LanguageSettingLabel = new(nameof(Language), nameof(LanguageSettingLabel));
-        }
+            public static class Language
+            {
+                public static readonly LocalizedString LanguageSettingLabel = new(nameof(GameKit), nameof(Language), nameof(LanguageSettingLabel));
+            }
 
-        public static class ScreenResolution
-        {
-            public static readonly LocalizedString FullScreen = new(nameof(ScreenResolution), nameof(FullScreen));
-            public static readonly LocalizedString ScreenResolutionSettingLabel = new(nameof(ScreenResolution), nameof(ScreenResolutionSettingLabel));
-            public static readonly LocalizedString VsyncSettingLabel = new(nameof(ScreenResolution), nameof(VsyncSettingLabel));
-        }
+            public static class ScreenResolution
+            {
+                public static readonly LocalizedString FullScreen = new(nameof(GameKit), nameof(ScreenResolution), nameof(FullScreen));
+                public static readonly LocalizedString ScreenResolutionSettingLabel = new(nameof(GameKit), nameof(ScreenResolution), nameof(ScreenResolutionSettingLabel));
+                public static readonly LocalizedString VsyncSettingLabel = new(nameof(GameKit), nameof(ScreenResolution), nameof(VsyncSettingLabel));
+            }
 
-        public static class Setting
-        {
-            public static readonly LocalizedString ConfirmResetSetting = new(nameof(Setting), nameof(ConfirmResetSetting));
+            public static class Setting
+            {
+                public static readonly LocalizedString ConfirmResetSetting = new(nameof(GameKit), nameof(Setting), nameof(ConfirmResetSetting));
+            }
         }
     }
 }

@@ -50,7 +50,7 @@ namespace GameKit.ScreenResolution
         {
             if (IsFullScreen)
             {
-                return LocalizedStringConstants.ScreenResolution.FullScreen.GetValue();
+                return LocalizedStringConstants.GameKit.ScreenResolution.FullScreen.GetValue();
             }
             return $"{Width} x {Height}";
         }
