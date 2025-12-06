@@ -36,6 +36,7 @@ namespace GameKit.VRM
             animator.runtimeAnimatorController = animatorController;
             var vrmObject = vrmInstance.gameObject.AddComponent<VRMObject>();
             vrmObject.SetUp(animator);
+            vrmInstance.gameObject.AddComponent<AnimationEventReceiver>();
             return vrmObject;
         }
     }
