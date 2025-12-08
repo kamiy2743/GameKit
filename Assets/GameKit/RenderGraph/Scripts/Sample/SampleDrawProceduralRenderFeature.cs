@@ -1,32 +1,29 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.RenderGraphModule;
 using UnityEngine.Rendering.Universal;
 
 namespace GameKit.RenderGraph.Sample
 {
-    public sealed class SampleDrawMeshRenderFeature : ScriptableRendererFeature
+    public sealed class SampleDrawProceduralRenderFeature : ScriptableRendererFeature
     {
-        static readonly string ShaderName = "Universal Render Pipeline/Unlit";
+        static readonly string ShaderName = "GameKit/Sample/ProceduralCube";
         static readonly int BaseColorId = Shader.PropertyToID("_BaseColor");
 
         static readonly RenderPassEvent RenderPassEvent = RenderPassEvent.AfterRenderingOpaques;
         static readonly Vector3 Size = new(10f, 10f, 10f);
-        static readonly Color Color = Color.pink;
+        static readonly Color Color = Color.lightGreen;
+        const int VertexCount = 36;
 
-        Mesh unitCubeMesh;
         Material cubeMaterial;
-        RenderGraphCubePass pass;
+        RenderGraphProceduralPass pass;
 
         public override void Create()
         {
-            unitCubeMesh = CoreUtils.CreateCubeMesh(-Vector3.one * 0.5f, Vector3.one * 0.5f);
-            unitCubeMesh.name = "RenderGraphSampleUnitCube";
-
             var shader = Shader.Find(ShaderName);
             cubeMaterial = CoreUtils.CreateEngineMaterial(shader);
 
-            pass = new RenderGraphCubePass(unitCubeMesh, cubeMaterial)
+            pass = new RenderGraphProceduralPass(cubeMaterial)
             {
                 renderPassEvent = RenderPassEvent,
             };
@@ -39,29 +36,26 @@ namespace GameKit.RenderGraph.Sample
 
         protected override void Dispose(bool disposing)
         {
-            CoreUtils.Destroy(unitCubeMesh);
             CoreUtils.Destroy(cubeMaterial);
         }
 
-        sealed class RenderGraphCubePass : ScriptableRenderPass
+        sealed class RenderGraphProceduralPass : ScriptableRenderPass
         {
-            readonly Mesh mesh;
             readonly Material material;
 
-            public RenderGraphCubePass(Mesh mesh, Material material)
+            public RenderGraphProceduralPass(Material material)
             {
-                this.mesh = mesh;
                 this.material = material;
             }
 
             public override void RecordRenderGraph(UnityEngine.Rendering.RenderGraphModule.RenderGraph renderGraph, ContextContainer frameData)
             {
                 var resourceData = frameData.Get<UniversalResourceData>();
-                using var builder = renderGraph.AddRasterRenderPass<PassData>("RenderGraph Cube", out var passData);
-                passData.Mesh = mesh;
+                using var builder = renderGraph.AddRasterRenderPass<PassData>("RenderGraph Procedural Cube", out var passData);
                 passData.Material = material;
                 passData.Color = Color;
                 passData.Matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, Size);
+                passData.VertexCount = VertexCount;
 
                 builder.SetRenderAttachment(resourceData.activeColorTexture, 0);
                 builder.SetRenderAttachmentDepth(resourceData.activeDepthTexture);
@@ -69,16 +63,16 @@ namespace GameKit.RenderGraph.Sample
                 builder.SetRenderFunc(static (PassData data, RasterGraphContext context) =>
                 {
                     data.Material.SetColor(BaseColorId, data.Color);
-                    context.cmd.DrawMesh(data.Mesh, data.Matrix, data.Material, 0, 0);
+                    context.cmd.DrawProcedural(data.Matrix, data.Material, 0, MeshTopology.Triangles, data.VertexCount, 1);
                 });
             }
 
             sealed class PassData
             {
-                public Mesh Mesh;
                 public Material Material;
                 public Matrix4x4 Matrix;
                 public Color Color;
+                public int VertexCount;
             }
         }
     }

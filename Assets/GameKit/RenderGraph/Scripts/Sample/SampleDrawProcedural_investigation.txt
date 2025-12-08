@@ -1,0 +1,51 @@
+【概要】
+Unity 2022 系 URP 17.3.0 環境で、RenderGraph サンプルのうち Procedural 版のみビルド（Windows プレイヤー）で描画されない問題の調査メモ。
+
+【対象ファイル】
+- Assets/GameKit/RenderGraph/Scripts/Sample/SampleDrawProceduralRenderFeature.cs
+- Assets/GameKit/RenderGraph/Shaders/Sample/ProceduralCube.shader
+- 比較: Assets/GameKit/RenderGraph/Scripts/Sample/SampleDrawMeshRenderFeature.cs
+- Renderer 設定: Assets/Settings/URP/PC_Renderer.asset
+- パイプライン設定: Assets/Settings/URP/PC_RPAsset.asset, ProjectSettings/GraphicsSettings.asset, Assets/Settings/URP/UniversalRenderPipelineGlobalSettings.asset
+
+【症状】
+- エディタ再生では Procedural キューブが描画される。
+- Windows プレイヤー（ビルド）では同じシーンで Procedural キューブだけ描画されない。
+- 同じ RenderGraph・同じレンダラーに含まれる Mesh 版サンプルはビルドでも描画される。
+
+【環境メモ】
+- URP 17.3.0（Packages/manifest.json より）
+- PC_Renderer.asset は RenderGraph 対応レンダラー。最初は m_UseNativeRenderPass=1、後に 0 でも再現。
+- GraphicsSettings でカスタム RP: PC_RPAsset（guid 4b83569d...）。
+- PC 品質（QualitySettings index 1）が Windows/Standalone に適用される設定。
+- Shader は AlwaysIncluded に登録済み。Debug.Log で Shader.Find 成功、shader.isSupported==true。
+
+【切り分け・試行】
+1. RenderGraph 無効化／有効化の確認
+   - GlobalSettings 上は m_EnableRenderGraph=0 を確認したが、ユーザー環境では有効とのこと（差分解消済み）。
+2. D3D12 無効化
+   - Player Settings の Auto Graphics API をオフ、D3D11 のみでビルド → 描画されず。
+3. Native RenderPass 無効化
+   - PC_Renderer.asset の m_UseNativeRenderPass を 0 に変更 → 描画されず。
+4. シェーダーストリップ疑い
+   - Shader.Find 成功、AlwaysIncluded 設定済み、shader.isSupported==true → ストリップ否定。
+5. API 差分
+   - Mesh 版は DrawMesh、Procedural 版は DrawProcedural だけが差分。
+
+【暫定仮説】
+- URP 17.3.0 の RenderGraph 経路で CommandBuffer.DrawProcedural がプレイヤー（D3D11/12）に反映されない不具合の可能性が高い。Editor では互換パスで実行されるため再現しない。DrawMesh は正常に通るため Mesh 版のみ描画される。
+
+【未実施・検証したいこと】
+- URP を 17.3.1 以降（または次の LTS 相当）に更新し、同シーンを再ビルドして再現性確認。
+- RenderGraph を無効化し、同パスに Execute 実装を足して旧パスで描画できるかを確認（RenderGraph 固有かどうかの切り分け）。
+- Procedural パスを一時的に DrawMesh へ差し替えてビルドし、描画されるか確認（原因が DrawProcedural に限定されるかの確認）。
+
+【一時回避案】
+- サンプルとしては、SampleDrawProceduralRenderFeature を Mesh 生成 + DrawMesh に置き換えるのが最速の回避策。
+- もしくは RenderGraph を無効化して従来パスでのみ動かす。
+
+【検索状況】
+- ローカルから Google 検索を試行したが CAPTCHA/429 で結果取得不可。既知バグ情報はネット越しには未確認。
+
+【補足】
+- 本件はサンプル機能のため、最終的に「DrawMesh 版のみ残す」対応でも実用上は問題ないが、RenderGraph + DrawProcedural を使いたい場合は URP 更新または公式修正待ちが必要。
