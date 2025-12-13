@@ -1,7 +1,9 @@
 ﻿{
     "name": "GameKit.PropertyDrawer.Editor",
     "rootNamespace": "GameKit.PropertyDrawer.Editor",
-    "references": [],
+    "references": [
+        "GameKit.Collection"
+    ],
     "includePlatforms": [
         "Editor"
     ],
