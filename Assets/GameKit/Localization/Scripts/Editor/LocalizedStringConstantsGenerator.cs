@@ -25,7 +25,7 @@ namespace GameKit.Localization.Editor
                 string[] movedAssets,
                 string[] movedFromAssetPaths)
             {
-                if (importedAssets == null || importedAssets.Length == 0)
+                if (importedAssets.Length == 0)
                 {
                     return;
                 }
@@ -154,44 +154,41 @@ namespace GameKit.Localization.Editor
             var groupTables = new Dictionary<string, List<TableDeclaration>>(StringComparer.Ordinal);
             var groupClassNames = new Dictionary<string, string>(StringComparer.Ordinal);
 
-            if (collections != null)
+            foreach (var collection in collections)
             {
-                foreach (var collection in collections)
+                var references = EnumerateStringReferences(collection);
+                if (references.Count == 0)
                 {
-                    var references = EnumerateStringReferences(collection);
-                    if (references.Count == 0)
-                    {
-                        continue;
-                    }
-
-                    var fullTableName = collection.TableCollectionName ?? string.Empty;
-                    var separatorIndex = fullTableName.IndexOf('.');
-                    var groupKey = separatorIndex >= 0 ? fullTableName.Substring(0, separatorIndex) : string.Empty;
-                    var tableNamePart = separatorIndex >= 0 && separatorIndex + 1 < fullTableName.Length ?
-                        fullTableName.Substring(separatorIndex + 1) :
-                        fullTableName;
-                    if (string.IsNullOrEmpty(tableNamePart))
-                    {
-                        tableNamePart = fullTableName;
-                    }
-                    var className = ToIdentifier(tableNamePart, "Table");
-                    var entryDeclarations = BuildEntryDeclarations(references);
-                    if (entryDeclarations.Count == 0)
-                    {
-                        continue;
-                    }
-
-                    if (!groupTables.TryGetValue(groupKey, out var tables))
-                    {
-                        tables = new List<TableDeclaration>();
-                        groupTables[groupKey] = tables;
-
-                        var groupNameForIdentifier = string.IsNullOrEmpty(groupKey) ? "Global" : groupKey;
-                        groupClassNames[groupKey] = ToIdentifier(groupNameForIdentifier, "Group");
-                    }
-
-                    tables.Add(new TableDeclaration(className, collection.TableCollectionName, entryDeclarations));
+                    continue;
                 }
+
+                var fullTableName = collection.TableCollectionName ?? string.Empty;
+                var separatorIndex = fullTableName.IndexOf('.');
+                var groupKey = separatorIndex >= 0 ? fullTableName.Substring(0, separatorIndex) : string.Empty;
+                var tableNamePart = separatorIndex >= 0 && separatorIndex + 1 < fullTableName.Length ?
+                    fullTableName.Substring(separatorIndex + 1) :
+                    fullTableName;
+                if (string.IsNullOrEmpty(tableNamePart))
+                {
+                    tableNamePart = fullTableName;
+                }
+                var className = ToIdentifier(tableNamePart, "Table");
+                var entryDeclarations = BuildEntryDeclarations(references);
+                if (entryDeclarations.Count == 0)
+                {
+                    continue;
+                }
+
+                if (!groupTables.TryGetValue(groupKey, out var tables))
+                {
+                    tables = new List<TableDeclaration>();
+                    groupTables[groupKey] = tables;
+
+                    var groupNameForIdentifier = string.IsNullOrEmpty(groupKey) ? "Global" : groupKey;
+                    groupClassNames[groupKey] = ToIdentifier(groupNameForIdentifier, "Group");
+                }
+
+                tables.Add(new TableDeclaration(className, collection.TableCollectionName, entryDeclarations));
             }
 
             var groupDeclarations = new List<GroupDeclaration>(groupTables.Count);
@@ -369,7 +366,7 @@ namespace GameKit.Localization.Editor
             }
 
             var sharedData = collection.SharedData;
-            if (sharedData == null || sharedData.Entries == null || sharedData.Entries.Count == 0)
+            if (sharedData == null || sharedData.Entries.Count == 0)
             {
                 return Array.Empty<StringReferenceInfo>();
             }

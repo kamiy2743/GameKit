@@ -5,7 +5,7 @@ using UnityEditor;
 
 namespace SFB {
     public class StandaloneFileBrowserEditor : IStandaloneFileBrowser  {
-        public string[] OpenFilePanel(string title, string directory, ExtensionFilter[] extensions, bool multiselect) {
+        public string[] OpenFilePanel(string title, string directory, ExtensionFilter[]? extensions, bool multiselect) {
             string path = "";
 
             if (extensions == null) {
@@ -31,7 +31,7 @@ namespace SFB {
             cb.Invoke(OpenFolderPanel(title, directory, multiselect));
         }
 
-        public string SaveFilePanel(string title, string directory, string defaultName, ExtensionFilter[] extensions) {
+        public string SaveFilePanel(string title, string directory, string defaultName, ExtensionFilter[]? extensions) {
             var ext = extensions != null ? extensions[0].Extensions[0] : "";
             var name = string.IsNullOrEmpty(ext) ? defaultName : defaultName + "." + ext;
             return EditorUtility.SaveFilePanel(title, directory, name, ext);

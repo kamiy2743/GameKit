@@ -21,7 +21,7 @@ namespace SFB {
         [DllImport("user32.dll")]
         static extern IntPtr GetActiveWindow();
 
-        public string[] OpenFilePanel(string title, string directory, ExtensionFilter[] extensions, bool multiselect) {
+        public string[] OpenFilePanel(string title, string directory, ExtensionFilter[]? extensions, bool multiselect) {
             var fd = new VistaOpenFileDialog();
             fd.Title = title;
             if (extensions != null) {
@@ -61,7 +61,7 @@ namespace SFB {
             cb.Invoke(OpenFolderPanel(title, directory, multiselect));
         }
 
-        public string SaveFilePanel(string title, string directory, string defaultName, ExtensionFilter[] extensions) {
+        public string SaveFilePanel(string title, string directory, string defaultName, ExtensionFilter[]? extensions) {
             var fd = new VistaSaveFileDialog();
             fd.Title = title;
 
