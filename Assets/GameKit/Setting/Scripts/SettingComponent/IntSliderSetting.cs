@@ -21,26 +21,25 @@ namespace GameKit.Setting.SettingComponent
                 .Subscribe(x =>
                 {
                     slider.SetValue(x);
-                    inputField.SetValue(Mathf.Clamp(x, slider.Min, slider.Max));
+                    inputField.SetValue(slider.Value);
                 })
                 .AddTo(this);
         }
         
-        public void SetUp(int min, int max)
+        public void SetUp(int min, int max, int step = 1)
         {
-            slider.SetRange(min, max);
+            slider.SetRange(min, max, step);
         }
         
         void ISettingBindable<IntSettingValue>.SetValue(IntSettingValue value)
         {
             slider.SetValue(value.Value);
-            inputField.SetValue(value.Value);
+            inputField.SetValue(slider.Value);
         }
         
         Observable<IntSettingValue> ISettingBindable<IntSettingValue>.OnValueChange()
         {
-            return Observable.Merge(slider.OnValueChange(), inputField.OnEndEdit())
-                .Select(x => new IntSettingValue(x));
+            return slider.OnValueChange().Select(x => new IntSettingValue(x));
         }
     }
 }

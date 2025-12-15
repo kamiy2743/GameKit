@@ -21,7 +21,7 @@ namespace GameKit.Setting.SettingComponent
                 .Subscribe(x =>
                 {
                     slider.SetValue(x);
-                    inputField.SetValue(Mathf.Clamp(x, slider.Min, slider.Max));
+                    inputField.SetValue(slider.Value);
                 })
                 .AddTo(this);
         }
@@ -34,13 +34,12 @@ namespace GameKit.Setting.SettingComponent
         void ISettingBindable<FloatSettingValue>.SetValue(FloatSettingValue value)
         {
             slider.SetValue(value.Value);
-            inputField.SetValue(value.Value);
+            inputField.SetValue(slider.Value);
         }
         
         Observable<FloatSettingValue> ISettingBindable<FloatSettingValue>.OnValueChange()
         {
-            return Observable.Merge(slider.OnValueChange(), inputField.OnEndEdit())
-                .Select(x => new FloatSettingValue(x));
+            return slider.OnValueChange().Select(x => new FloatSettingValue(x));
         }
     }
 }
