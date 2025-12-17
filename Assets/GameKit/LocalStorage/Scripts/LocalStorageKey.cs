@@ -1,4 +1,5 @@
 ﻿using System.Text.RegularExpressions;
+using Cysharp.Text;
 
 namespace GameKit.LocalStorage
 {
@@ -16,8 +17,8 @@ namespace GameKit.LocalStorage
             Category = category;
 
             Key = category is null
-                ? $"{KeyPrefix}{ValuePrefix}{value}"
-                : $"{KeyPrefix}{CategoryPrefix}{category} {ValuePrefix}{value}";
+                ? ZString.Concat(KeyPrefix, ValuePrefix, value)
+                : ZString.Concat(KeyPrefix, CategoryPrefix, category, " ", ValuePrefix, value);
         }
         
         public static bool TryParse(string key, out LocalStorageKey? localStorageKey)

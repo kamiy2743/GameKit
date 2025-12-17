@@ -3,6 +3,7 @@
     "rootNamespace": "GameKit.LocalStorage",
     "references": [
         "VContainer",
+        "ZString",
         "GameKit.DependencyInjection"
     ],
     "includePlatforms": [],
