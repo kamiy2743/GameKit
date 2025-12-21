@@ -6,9 +6,9 @@ namespace GameKit.Collection
 {
     public static class NativeListExtension
     {
-        public static IEnumerable<T> AsEnumerable<T>(this NativeList<T> list) where T : unmanaged
+        public static IEnumerable<T> AsEnumerable<T>(this NativeList<T> source) where T : unmanaged
         {
-            return new NativeListEnumerable<T>(list);
+            return new NativeListEnumerable<T>(source);
         }
         
         readonly struct NativeListEnumerable<T> : IEnumerable<T> where T : unmanaged
