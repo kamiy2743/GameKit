@@ -1,7 +1,9 @@
 {
     "name": "GameKit.Collection",
     "rootNamespace": "GameKit.Collection",
-    "references": [],
+    "references": [
+        "Unity.Collections"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
