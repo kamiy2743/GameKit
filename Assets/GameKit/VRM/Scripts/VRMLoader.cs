@@ -29,8 +29,8 @@ namespace GameKit.VRM
                 throw new LocalVRMFailedException(e);
             }
         }
-        
-        VRMObject SetUpVRMInstance(Vrm10Instance vrmInstance, RuntimeAnimatorController animatorController)
+
+        static VRMObject SetUpVRMInstance(Vrm10Instance vrmInstance, RuntimeAnimatorController animatorController)
         {
             var animator = vrmInstance.GetComponent<Animator>();
             animator.runtimeAnimatorController = animatorController;

@@ -70,21 +70,21 @@ namespace GameKit.LocalStorage
             }
             PlayerPrefs.Save();
         }
-        
-        LocalStorageKeyData GetLocalStorageKeyData()
+
+        static LocalStorageKeyData GetLocalStorageKeyData()
         {
             var json = PlayerPrefs.GetString(LocalStorageKeyDataKey);
             return JsonUtility.FromJson<LocalStorageKeyData>(json);
         }
-        
-        void SetLocalStorageKeyData(LocalStorageKeyData data)
+
+        static void SetLocalStorageKeyData(LocalStorageKeyData data)
         {
             var json = JsonUtility.ToJson(data);
             PlayerPrefs.SetString(LocalStorageKeyDataKey, json);
             PlayerPrefs.Save();
         }
 
-        void RegisterLocalStorageKey(LocalStorageKey key)
+        static void RegisterLocalStorageKey(LocalStorageKey key)
         {
             var data = GetLocalStorageKeyData();
             if (data.Keys.Contains(key.Key))
@@ -94,8 +94,8 @@ namespace GameKit.LocalStorage
             data.Keys.Add(key.Key);
             SetLocalStorageKeyData(data);
         }
-        
-        void DeregisterLocalStorageKeys(IEnumerable<LocalStorageKey> keys)
+
+        static void DeregisterLocalStorageKeys(IEnumerable<LocalStorageKey> keys)
         {
             var data = GetLocalStorageKeyData();
             foreach (var key in keys)

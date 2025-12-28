@@ -58,8 +58,8 @@ namespace GameKit.UIFramework.Modal
             }
             return modalId;
         }
-        
-        void OnLoadModal(
+
+        static void OnLoadModal(
             UnityScreenNavigator.Runtime.Core.Modal.Modal modal,
             ModalId modalId,
             IPushModalParams? pushModalParams

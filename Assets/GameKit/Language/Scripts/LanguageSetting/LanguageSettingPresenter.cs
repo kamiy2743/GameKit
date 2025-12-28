@@ -42,8 +42,8 @@ namespace GameKit.Language.LanguageSetting
                 disposable
             );
         }
-        
-        DropdownOptionList MakeOptionList(IReadOnlyList<Locale> locales)
+
+        static DropdownOptionList MakeOptionList(IReadOnlyList<Locale> locales)
         {
             var options = locales.Select(x => x.Name);
             return new DropdownOptionList(new ReactiveProperty<IEnumerable<string>>(options));

@@ -18,8 +18,8 @@ namespace GameKit.UIComponent.InputField
             return inputField.OnEndEditAsObservable()
                 .Select(Parse);
         }
-        
-        int Parse(string text)
+
+        static int Parse(string text)
         {
             var floatValue = float.TryParse(text, out var floatResult) ? floatResult : 0f;
             return Mathf.CeilToInt(floatValue);

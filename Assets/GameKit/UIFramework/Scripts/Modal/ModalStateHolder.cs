@@ -59,8 +59,8 @@ namespace GameKit.UIFramework.Modal
                 .Where(e => EqualsState(e.NewItem.Value, targetState))
                 .FirstAsync(ct);
         }
-        
-        bool EqualsState<T>(IModalState state, T targetState)
+
+        static bool EqualsState<T>(IModalState state, T targetState)
             where T : IModalState
         {
             return state is T typedState && typedState.Equals(targetState);
