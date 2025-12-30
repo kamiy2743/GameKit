@@ -3,7 +3,7 @@ using VContainer;
 
 namespace GameKit.Application
 {
-    public sealed class ApplicationLifetimeScope : BaseLifetimeScopeRegistration<ApplicationLifetimeScope>
+    public sealed class ApplicationLifetimeScope : BaseLifetimeScopeRegistration
     {
         public override void Configure(IContainerBuilder builder)
         {

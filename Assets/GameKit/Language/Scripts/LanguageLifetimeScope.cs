@@ -4,7 +4,7 @@ using VContainer.Unity;
 
 namespace GameKit.Language
 {
-    public sealed class LanguageLifetimeScope : BaseLifetimeScopeRegistration<LanguageLifetimeScope>
+    public sealed class LanguageLifetimeScope : BaseLifetimeScopeRegistration
     {
         public override void Configure(IContainerBuilder builder)
         {

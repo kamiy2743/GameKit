@@ -4,7 +4,7 @@ using VContainer.Unity;
 
 namespace GameKit.Input
 {
-    public sealed class InputLifetimeScope : BaseLifetimeScopeRegistration<InputLifetimeScope>
+    public sealed class InputLifetimeScope : BaseLifetimeScopeRegistration
     {
         public override void Configure(IContainerBuilder builder)
         {

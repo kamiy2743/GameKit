@@ -3,7 +3,7 @@ using VContainer;
 
 namespace GameKit.UIFramework.Modal
 {
-    public sealed class ModalLifetimeScope : BaseLifetimeScopeRegistration<ModalLifetimeScope>
+    public sealed class ModalLifetimeScope : BaseLifetimeScopeRegistration
     {
         public override void Configure(IContainerBuilder builder)
         {

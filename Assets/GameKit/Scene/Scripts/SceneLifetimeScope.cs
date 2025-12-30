@@ -3,7 +3,7 @@ using VContainer;
 
 namespace GameKit.Scene
 {
-    public sealed class SceneLifetimeScope : BaseLifetimeScopeRegistration<SceneLifetimeScope>
+    public sealed class SceneLifetimeScope : BaseLifetimeScopeRegistration
     {
         public override void Configure(IContainerBuilder builder)
         {

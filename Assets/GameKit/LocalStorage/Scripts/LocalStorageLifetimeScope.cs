@@ -3,7 +3,7 @@ using VContainer;
 
 namespace GameKit.LocalStorage
 {
-    public sealed class LocalStorageLifetimeScope : BaseLifetimeScopeRegistration<LocalStorageLifetimeScope>
+    public sealed class LocalStorageLifetimeScope : BaseLifetimeScopeRegistration
     {
         public override void Configure(IContainerBuilder builder)
         {

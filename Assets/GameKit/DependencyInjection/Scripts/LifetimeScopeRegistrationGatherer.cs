@@ -65,11 +65,7 @@ namespace GameKit.DependencyInjection.Root
 
             for (var current = type; current != null; current = current.BaseType)
             {
-                if (!current.IsGenericType)
-                {
-                    continue;
-                }
-                if (current.GetGenericTypeDefinition() == typeof(BaseLifetimeScopeRegistration<>))
+                if (current == typeof(BaseLifetimeScopeRegistration))
                 {
                     return true;
                 }
