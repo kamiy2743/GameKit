@@ -21,6 +21,11 @@ namespace GameKit.Camera.Builtin
             Controllers[0].Input.SetAxisInput(input.x);
             Controllers[1].Input.SetAxisInput(input.y);
         }
+        
+        Vector3 ICamera.GetPosition()
+        {
+            return transform.position;
+        }
 
         void Update()
         {

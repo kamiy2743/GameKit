@@ -23,6 +23,11 @@ namespace GameKit.Camera
         {
             return activeCamera;
         }
+        
+        public UnityEngine.Camera GetMainCamera()
+        {
+            return UnityEngine.Camera.main!;
+        }
 
         public bool IsActiveCamera<T>() where T : ICamera
         {

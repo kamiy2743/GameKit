@@ -6,5 +6,6 @@ namespace GameKit.Camera
     {
         void SetEnable(bool enable);
         void SetLookInput(Vector2 input);
+        Vector3 GetPosition();
     }
 }

@@ -23,6 +23,11 @@ namespace GameKit.Camera.Builtin
         {
             this.input = input;
         }
+        
+        Vector3 ICamera.GetPosition()
+        {
+            return transform.position;
+        }
 
         void Update()
         {
