@@ -1,9 +1,9 @@
-﻿using GameKit.DependencyInjection;
+﻿using GameKit.DependencyInjection.Root;
 using VContainer;
 
 namespace GameKit.LocalStorage
 {
-    public sealed class LocalStorageLifetimeScope : BaseLifetimeScopeRegistration<LocalStorageLifetimeScope>
+    public sealed class LocalStorageLifetimeScope : BaseRootLifetimeScopeRegistration
     {
         public override void Configure(IContainerBuilder builder)
         {

@@ -1,10 +1,10 @@
-﻿using GameKit.DependencyInjection;
+﻿using GameKit.DependencyInjection.Root;
 using VContainer;
 using VContainer.Unity;
 
 namespace GameKit.Input
 {
-    public sealed class InputLifetimeScope : BaseLifetimeScopeRegistration<InputLifetimeScope>
+    public sealed class InputLifetimeScope : BaseRootLifetimeScopeRegistration
     {
         public override void Configure(IContainerBuilder builder)
         {

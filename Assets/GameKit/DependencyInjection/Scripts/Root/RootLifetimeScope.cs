@@ -1,23 +1,8 @@
-﻿using UnityEngine;
-using VContainer;
-using VContainer.Unity;
+﻿using GameKit.DependencyInjection.Base;
 
 namespace GameKit.DependencyInjection.Root
 {
-    public sealed class RootLifetimeScope : LifetimeScope
+    public sealed class RootLifetimeScope : BaseParentLifetimeScope<RootLifetimeScope, BaseRootLifetimeScopeRegistration, BaseRootMBLifetimeScopeRegistration>
     {
-        [SerializeField] BaseMBLifetimeScopeRegistration[] registrations;
-
-        protected override void Configure(IContainerBuilder builder)
-        {
-            foreach (var registration in LifetimeScopeRegistrationGatherer.Get())
-            {
-                registration.Configure(builder);
-            }
-            foreach (var registration in registrations)
-            {
-                registration.Configure(builder);
-            }
-        }
     }
 }

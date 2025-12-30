@@ -1,11 +1,11 @@
-﻿using GameKit.DependencyInjection;
+﻿using GameKit.DependencyInjection.Root;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
 namespace GameKit.UIFramework.Page
 {
-    public sealed class PageContainerLifetimeScope : BaseMBLifetimeScopeRegistration
+    public sealed class PageContainerLifetimeScope : BaseRootMBLifetimeScopeRegistration
     {
         [SerializeField] UnityScreenNavigator.Runtime.Core.Page.PageContainer pageContainer;
 

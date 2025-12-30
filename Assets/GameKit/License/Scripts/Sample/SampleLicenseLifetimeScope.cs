@@ -1,10 +1,10 @@
-﻿using GameKit.DependencyInjection;
+﻿using GameKit.DependencyInjection.Root;
 using UnityEngine;
 using VContainer;
 
 namespace GameKit.License.Sample
 {
-    public sealed class SampleLicenseLifetimeScope : BaseMBLifetimeScopeRegistration
+    public sealed class SampleLicenseLifetimeScope : BaseRootMBLifetimeScopeRegistration
     {
         [SerializeField] GameKitLicenseContentSetting licenseContentSetting;
         

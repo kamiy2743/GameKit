@@ -1,9 +1,9 @@
-﻿using GameKit.DependencyInjection;
+﻿using GameKit.DependencyInjection.Root;
 using VContainer;
 
 namespace GameKit.Application
 {
-    public sealed class ApplicationLifetimeScope : BaseLifetimeScopeRegistration<ApplicationLifetimeScope>
+    public sealed class ApplicationLifetimeScope : BaseRootLifetimeScopeRegistration
     {
         public override void Configure(IContainerBuilder builder)
         {

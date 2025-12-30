@@ -1,11 +1,11 @@
-﻿using GameKit.DependencyInjection;
+﻿using GameKit.DependencyInjection.Root;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
 namespace GameKit.UIFramework.Modal
 {
-    public sealed class ModalContainerLifetimeScope : BaseMBLifetimeScopeRegistration
+    public sealed class ModalContainerLifetimeScope : BaseRootMBLifetimeScopeRegistration
     {
         [SerializeField] UnityScreenNavigator.Runtime.Core.Modal.ModalContainer modalContainer;
 

@@ -1,9 +1,9 @@
-﻿using GameKit.DependencyInjection;
+﻿using GameKit.DependencyInjection.Root;
 using VContainer;
 
 namespace GameKit.UIFramework.Modal
 {
-    public sealed class ModalLifetimeScope : BaseLifetimeScopeRegistration<ModalLifetimeScope>
+    public sealed class ModalLifetimeScope : BaseRootLifetimeScopeRegistration
     {
         public override void Configure(IContainerBuilder builder)
         {

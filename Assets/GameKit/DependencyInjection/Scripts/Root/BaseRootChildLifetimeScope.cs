@@ -1,12 +1,8 @@
-﻿using VContainer.Unity;
+﻿using GameKit.DependencyInjection.Base;
 
 namespace GameKit.DependencyInjection.Root
 {
-    public abstract class BaseRootChildLifetimeScope : LifetimeScope
+    public abstract class BaseRootChildLifetimeScope : BaseChildLifetimeScope<RootLifetimeScope>
     {
-        protected virtual void OnValidate()
-        {
-            parentReference = ParentReference.Create<RootLifetimeScope>();
-        }
     }
 }

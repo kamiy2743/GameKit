@@ -1,6 +1,6 @@
 ﻿using VContainer;
 
-namespace GameKit.DependencyInjection
+namespace GameKit.DependencyInjection.Base
 {
     public interface ILifetimeScopeRegistration
     {

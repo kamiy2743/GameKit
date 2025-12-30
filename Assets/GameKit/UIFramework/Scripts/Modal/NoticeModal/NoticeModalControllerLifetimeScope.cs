@@ -1,9 +1,9 @@
-﻿using GameKit.DependencyInjection;
+﻿using GameKit.DependencyInjection.Root;
 using VContainer;
 
 namespace GameKit.UIFramework.Modal.NoticeModal
 {
-    public sealed class NoticeModalControllerLifetimeScope : BaseLifetimeScopeRegistration<NoticeModalControllerLifetimeScope>
+    public sealed class NoticeModalControllerLifetimeScope : BaseRootLifetimeScopeRegistration
     {
         public override void Configure(IContainerBuilder builder)
         {

@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace GameKit.DependencyInjection.Root
+namespace GameKit.DependencyInjection.Base
 {
     public sealed class LifetimeScopeRegistrationGatherer
     {
-        public static IEnumerable<ILifetimeScopeRegistration> Get()
+        public static IEnumerable<TRegistration> Get<TParent, TRegistration>()
+            where TRegistration : BaseLifetimeScopeRegistration<TParent>
         {
-            var instances = new List<ILifetimeScopeRegistration>();
+            var instances = new List<TRegistration>();
             var seen = new HashSet<Type>();
 
             foreach (var type in GetTypes())
@@ -24,7 +25,7 @@ namespace GameKit.DependencyInjection.Root
                     continue;
                 }
 
-                if (Activator.CreateInstance(type) is ILifetimeScopeRegistration instance)
+                if (Activator.CreateInstance(type) is TRegistration instance)
                 {
                     instances.Add(instance);
                 }
@@ -65,11 +66,8 @@ namespace GameKit.DependencyInjection.Root
 
             for (var current = type; current != null; current = current.BaseType)
             {
-                if (!current.IsGenericType)
-                {
-                    continue;
-                }
-                if (current.GetGenericTypeDefinition() == typeof(BaseLifetimeScopeRegistration<>))
+                if (current.IsGenericType &&
+                    current.GetGenericTypeDefinition() == typeof(BaseLifetimeScopeRegistration<>))
                 {
                     return true;
                 }

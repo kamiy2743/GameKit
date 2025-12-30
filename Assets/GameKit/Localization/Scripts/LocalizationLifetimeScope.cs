@@ -1,9 +1,9 @@
-﻿using GameKit.DependencyInjection;
+﻿using GameKit.DependencyInjection.Root;
 using VContainer;
 
 namespace GameKit.Localization
 {
-    public sealed class LocalizationLifetimeScope : BaseLifetimeScopeRegistration<LocalizationLifetimeScope>
+    public sealed class LocalizationLifetimeScope : BaseRootLifetimeScopeRegistration
     {
         public override void Configure(IContainerBuilder builder)
         {
