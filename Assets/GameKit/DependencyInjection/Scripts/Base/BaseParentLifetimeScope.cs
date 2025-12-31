@@ -10,15 +10,16 @@ namespace GameKit.DependencyInjection.Base
 
         protected override void Configure(IContainerBuilder builder)
         {
-            foreach (var registration in LifetimeScopeRegistrationGatherer.Get(GetParentType()))
+            var parentType = GetType();
+            foreach (var registration in LifetimeScopeRegistrationGatherer.Get(parentType))
             {
                 registration.Configure(builder);
             }
             foreach (var registration in registrations)
             {
-                if (registration.GetParentType() != GetParentType())
+                if (registration.GetParentType() != parentType)
                 {
-                    throw new InvalidOperationException("親が異なるLifetimeScopeRegistrationが含まれています。");
+                    throw new InvalidOperationException($"{registration.GetType().FullName}には親のLifetimeScopeとして{parentType.FullName}を指定してください。");
                 }
                 registration.Configure(builder);
             }
