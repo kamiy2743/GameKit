@@ -1,10 +1,17 @@
-﻿using GameKit.DependencyInjection.Root;
+﻿using System;
+using GameKit.DependencyInjection;
+using GameKit.DependencyInjection.Base;
 using VContainer;
 
 namespace GameKit.UIFramework.Modal.NoticeModal
 {
-    public sealed class NoticeModalControllerLifetimeScope : BaseRootLifetimeScopeRegistration
+    public sealed class NoticeModalControllerLifetimeScope : BaseLifetimeScopeRegistration
     {
+        public override Type GetParentType()
+        {
+            return typeof(RootLifetimeScope);
+        }
+
         public override void Configure(IContainerBuilder builder)
         {
             builder.Register<NoticeModalController>(Lifetime.Singleton);

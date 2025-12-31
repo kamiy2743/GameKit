@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -7,10 +7,9 @@ namespace GameKit.DependencyInjection.Base
 {
     public sealed class LifetimeScopeRegistrationGatherer
     {
-        public static IEnumerable<TRegistration> Get<TParent, TRegistration>()
-            where TRegistration : BaseLifetimeScopeRegistration<TParent>
+        public static IEnumerable<BaseLifetimeScopeRegistration> Get(Type parentType)
         {
-            var instances = new List<TRegistration>();
+            var instances = new List<BaseLifetimeScopeRegistration>();
             var seen = new HashSet<Type>();
 
             foreach (var type in GetTypes())
@@ -25,7 +24,10 @@ namespace GameKit.DependencyInjection.Base
                     continue;
                 }
 
-                if (Activator.CreateInstance(type) is TRegistration instance)
+                if (
+                    Activator.CreateInstance(type) is BaseLifetimeScopeRegistration instance &&
+                    instance.GetParentType() == parentType
+                )
                 {
                     instances.Add(instance);
                 }
@@ -64,16 +66,7 @@ namespace GameKit.DependencyInjection.Base
                 return false;
             }
 
-            for (var current = type; current != null; current = current.BaseType)
-            {
-                if (current.IsGenericType &&
-                    current.GetGenericTypeDefinition() == typeof(BaseLifetimeScopeRegistration<>))
-                {
-                    return true;
-                }
-            }
-
-            return false;
+            return typeof(BaseLifetimeScopeRegistration).IsAssignableFrom(type);
         }
     }
 }

@@ -1,10 +1,10 @@
-﻿using GameKit.DependencyInjection.Root;
+﻿using GameKit.DependencyInjection.Base;
 using UnityEngine;
 using VContainer;
 
 namespace GameKit.UIFramework.Page
 {
-    public abstract class BasePageLifetimeScope<TPage, TPagePresenter> : BaseRootChildLifetimeScope
+    public abstract class BasePageLifetimeScope<TPage, TPagePresenter> : BaseLifetimeScope
         where TPage : BasePage
         where TPagePresenter : BasePagePresenter
     {

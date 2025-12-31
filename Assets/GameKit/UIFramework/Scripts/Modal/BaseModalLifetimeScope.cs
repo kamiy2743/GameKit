@@ -1,10 +1,10 @@
-﻿using GameKit.DependencyInjection.Root;
+﻿using GameKit.DependencyInjection.Base;
 using UnityEngine;
 using VContainer;
 
 namespace GameKit.UIFramework.Modal
 {
-    public abstract class BaseModalLifetimeScope<TModal, TModalPresenter> : BaseRootChildLifetimeScope, IModalLifetimeScope
+    public abstract class BaseModalLifetimeScope<TModal, TModalPresenter> : BaseLifetimeScope, IModalLifetimeScope
         where TModal : BaseModal
         where TModalPresenter : BaseModalPresenter
     {

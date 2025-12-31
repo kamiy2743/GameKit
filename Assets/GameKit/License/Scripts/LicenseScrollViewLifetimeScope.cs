@@ -1,15 +1,22 @@
-﻿using GameKit.DependencyInjection.Prefab;
-using GameKit.DependencyInjection.Root;
+﻿using System;
+using GameKit.DependencyInjection;
+using GameKit.DependencyInjection.Base;
+using GameKit.DependencyInjection.Prefab;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
 namespace GameKit.License
 {
-    public sealed class LicenseScrollViewLifetimeScope : BaseRootChildLifetimeScope
+    public sealed class LicenseScrollViewLifetimeScope : BaseLifetimeScope
     {
         [SerializeField] LicenseScrollView licenseScrollView;
         [SerializeField] LicenseContent licenseContentPrefab;
+
+        protected override Type GetParentType()
+        {
+            return typeof(RootLifetimeScope);
+        }
         
         protected override void Configure(IContainerBuilder builder)
         {

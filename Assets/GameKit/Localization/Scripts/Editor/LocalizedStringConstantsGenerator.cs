@@ -4,13 +4,14 @@ using System.IO;
 using System.Text;
 using UnityEditor;
 using UnityEditor.Localization;
+using UnityEngine.Localization;
 using UnityEngine.Localization.Tables;
 
 namespace GameKit.Localization.Editor
 {
     /// <summary>
     /// Detects StringTableCollection updates and enumerates all StringReferences.
-    /// Automatically regenerates <see cref="GameKit.Localization.LocalizedString">LocalizedString</see> constants.
+    /// Automatically regenerates <see cref="LocalizedString">LocalizedString</see> constants.
     /// </summary>
     public static class LocalizedStringConstantsGenerator
     {
