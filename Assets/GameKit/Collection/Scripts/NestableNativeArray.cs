@@ -9,6 +9,7 @@ namespace GameKit.Collection
         readonly T* ptr;
 
         public int Length { get; }
+        public bool IsEmpty { get; }
         
         public ref T this[int index]
         {
@@ -26,6 +27,7 @@ namespace GameKit.Collection
         {
             ptr = (T*)source.GetUnsafeReadOnlyPtr();
             Length = source.Length;
+            IsEmpty = source.Length == 0;
         }
     }
 }
