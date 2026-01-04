@@ -4,7 +4,7 @@ using Unity.Collections.LowLevel.Unsafe;
 
 namespace GameKit.Collection
 {
-    public readonly unsafe struct NestableReadOnlyNativeArray<T> where T : unmanaged
+    public readonly unsafe struct NestableNativeArray<T> where T : unmanaged
     {
         readonly T* ptr;
 
@@ -22,7 +22,7 @@ namespace GameKit.Collection
             }
         }
 
-        public NestableReadOnlyNativeArray(NativeArray<T> source)
+        public NestableNativeArray(NativeArray<T> source)
         {
             ptr = (T*)source.GetUnsafeReadOnlyPtr();
             Length = source.Length;
