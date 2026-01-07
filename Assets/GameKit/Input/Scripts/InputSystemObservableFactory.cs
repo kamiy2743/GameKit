@@ -45,6 +45,18 @@ namespace GameKit.Input
                 });
         }
         
+        public ReadOnlyReactiveProperty<bool> MakePressedReactiveProperty(
+            InputMode enableMode,
+            InputAction action,
+            Disposer disposer
+        )
+        {
+            return Observable.EveryUpdate()
+                .Select(_ => inputModeContainer.ContainsInActiveMode(enableMode) && action.IsPressed())
+                .ToReadOnlyReactiveProperty()
+                .RegisterAndReturn(disposer);
+        }
+        
         T ReadValue<T>(InputMode enableMode, InputAction action) where T : struct
         {
             return inputModeContainer.ContainsInActiveMode(enableMode) ? action.ReadValue<T>() : default;
