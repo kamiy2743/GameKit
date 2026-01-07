@@ -21,10 +21,9 @@ namespace Ricimi
 
         public virtual void OpenPopup()
         {
-            var popup = Instantiate(popupPrefab) as GameObject;
+            var popup = Instantiate(popupPrefab, m_canvas.transform, false);
             popup.SetActive(true);
             popup.transform.localScale = Vector3.zero;
-            popup.transform.SetParent(m_canvas.transform, false);
             popup.GetComponent<Popup>().Open();
         }
     }

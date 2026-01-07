@@ -55,18 +55,18 @@ namespace Ricimi
 
 			public static Vector2 operator *(Matrix2x3 m, Vector2 v)
 			{
-				float x = (m.m00 * v.x) - (m.m01 * v.y) + m.m02;
-				float y = (m.m10 * v.x) + (m.m11 * v.y) + m.m12;
+				float x = m.m00 * v.x - m.m01 * v.y + m.m02;
+				float y = m.m10 * v.x + m.m11 * v.y + m.m12;
 				return new Vector2(x, y);
 			}
 		}
 
-		Matrix2x3 LocalPositionMatrix(Rect rect, Vector2 dir)
+		static Matrix2x3 LocalPositionMatrix(Rect rect, Vector2 dir)
 		{
 			float cos = dir.x;
 			float sin = dir.y;
-			Vector2 rectMin = rect.min;
-			Vector2 rectSize = rect.size;
+			var rectMin = rect.min;
+			var rectSize = rect.size;
 			float c = 0.5f;
 			float ax = rectMin.x / rectSize.x + c;
 			float ay = rectMin.y / rectSize.y + c;
@@ -79,7 +79,7 @@ namespace Ricimi
 			return new Matrix2x3(m00, m01, m02, m10, m11, m12);
 		}
 
-		Vector2 RotationDir(float angle)
+		static Vector2 RotationDir(float angle)
 		{
 			float angleRad = angle * Mathf.Deg2Rad;
 			float cos = Mathf.Cos(angleRad);

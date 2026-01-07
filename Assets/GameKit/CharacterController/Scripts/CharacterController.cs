@@ -7,6 +7,7 @@ namespace GameKit.CharacterController
     [RequireComponent(typeof(JumpController))]
     [RequireComponent(typeof(MovementController))]
     [RequireComponent(typeof(GroundController))]
+    [RequireComponent(typeof(FlyController))]
     [RequireComponent(typeof(AnimationController))]
     public sealed class CharacterController : MonoBehaviour
     {
@@ -16,6 +17,7 @@ namespace GameKit.CharacterController
         JumpController jumpController;
         MovementController movementController;
         GroundController groundController;
+        FlyController flyController;
         AnimationController animationController;
     
         bool isGrounded;
@@ -27,6 +29,7 @@ namespace GameKit.CharacterController
             jumpController = GetComponent<JumpController>();
             movementController = GetComponent<MovementController>();
             groundController = GetComponent<GroundController>();
+            flyController = GetComponent<FlyController>();
             animationController = GetComponent<AnimationController>();
 
             ConfigureRigidbody();
@@ -47,9 +50,45 @@ namespace GameKit.CharacterController
             jumpController.RequestJump();
         }
 
+        public void SetFlyMode(bool enabled)
+        {
+            flyController.SetFlyMode(enabled);
+            groundController.SetForceUngrounded(enabled);
+        }
+
+        public void ToggleFlyMode()
+        {
+            flyController.SetFlyMode(!flyController.IsFlyMode);
+        }
+
+        public void Fly(float verticalInput)
+        {
+            flyController.SetVerticalInput(verticalInput);
+        }
+
+        public bool IsFlyMode => flyController.IsFlyMode;
+
         void FixedUpdate()
         {
             var dt = Time.fixedDeltaTime;
+
+            if (flyController.IsFlyMode)
+            {
+                isGrounded = false;
+                groundNormal = Vector3.up;
+                jumpController.NotifyGroundedState(false);
+
+                var flyVelocity = flyController.CalculateDesiredVelocity(dt);
+
+                if (enableDebugLogs)
+                {
+                    LogState(flyVelocity, flyVelocity);
+                }
+
+                rb.linearVelocity = flyVelocity;
+                jumpController.ResetJumpRequest();
+                return;
+            }
 
             groundController.UpdateGroundState();
             isGrounded = groundController.IsGrounded;

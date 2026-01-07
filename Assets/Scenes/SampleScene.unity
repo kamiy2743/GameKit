@@ -492,6 +492,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 358783320}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &399351883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
+  m_Name: Player/ToggleFly
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
+  m_Asset: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  m_ActionId: e82f7cc4-1f01-4c32-a8b1-a7efb5e0ec6d
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -1846,6 +1860,20 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2853181173196558784, guid: c133a1f882ba01d47b48ebe597190540, type: 3}
   m_PrefabInstance: {fileID: 1016791280}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1039098560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
+  m_Name: Player/Crouch
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
+  m_Asset: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  m_ActionId: 27c5f898-bc57-4ee1-8800-db469aca5fe3
 --- !u!1 &1193293610
 GameObject:
   m_ObjectHideFlags: 0
@@ -2900,6 +2928,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 343032287}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1408281484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
+  m_Name: Player/Jump
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
+  m_Asset: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  m_ActionId: f1ba0d36-48eb-4cd5-b651-1c94a6531f70
 --- !u!224 &1413825948 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8171308805044746197, guid: e298a2b7a64e0144183feabb618bf1e5, type: 3}
@@ -4885,6 +4927,7 @@ GameObject:
   - component: {fileID: 6567928049915594083}
   - component: {fileID: 6567928049915594085}
   - component: {fileID: 6567928049915594086}
+  - component: {fileID: 6567928049915594088}
   - component: {fileID: 6567928049915594087}
   - component: {fileID: 6567928049915594082}
   m_Layer: 0
@@ -5057,6 +5100,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveAction: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   jumpAction: {fileID: -2099379676528639254, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  flyToggleAction: {fileID: 399351883}
+  flyUpAction: {fileID: 1408281484}
+  flyDownAction: {fileID: 1039098560}
   characterController: {fileID: 2738751990528588612}
 --- !u!114 &6567928049915594083
 MonoBehaviour:
@@ -5120,6 +5166,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   freeFallVelocityThreshold: 0.1
+--- !u!114 &6567928049915594088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2681486735896484573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: def7b12478102364db75f8887a6a03ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GameKit.CharacterController::GameKit.CharacterController.FlyController
+  maxFlySpeed: 6
+  flyAcceleration: 75
+  verticalSpeed: 6
+  verticalAcceleration: 75
 --- !u!4 &6740824527271821822
 Transform:
   m_ObjectHideFlags: 0
@@ -5164,7 +5226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentReference:
-    TypeName: GameKit.DependencyInjection.Root.RootLifetimeScope
+    TypeName: GameKit.DependencyInjection.RootLifetimeScope
   autoRun: 1
   autoInjectGameObjects:
   - {fileID: 3017882355382704609}

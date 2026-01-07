@@ -9,11 +9,19 @@ namespace GameKit.CharacterController
         [SerializeField] float groundCheckDistance = 0.1f;
         [SerializeField][Range(0f, 89f)] float slopeLimit = 45f;
 
+        bool forceUngrounded;
+
         public bool IsGrounded { get; private set; }
         public Vector3 GroundNormal { get; private set; } = Vector3.up;
 
         public void UpdateGroundState()
         {
+            if (forceUngrounded)
+            {
+                SetUngrounded();
+                return;
+            }
+
             var origin = transform.position + Vector3.up * (groundCheckRadius + groundCheckDistance);
             var hitGround = Physics.SphereCast(
                 origin,
@@ -39,6 +47,15 @@ namespace GameKit.CharacterController
             }
 
             SetGrounded(hit.normal);
+        }
+
+        public void SetForceUngrounded(bool enabled)
+        {
+            forceUngrounded = enabled;
+            if (enabled)
+            {
+                SetUngrounded();
+            }
         }
 
         void SetUngrounded()

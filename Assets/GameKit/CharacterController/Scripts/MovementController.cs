@@ -52,7 +52,7 @@ namespace GameKit.CharacterController
             return Vector3.MoveTowards(currentPlanar, desiredVelocity, maxDelta);
         }
 
-        bool TryGetWorldMovementDirection(out Vector3 worldDirection)
+        public bool TryGetWorldMovementDirection(out Vector3 worldDirection)
         {
             if (moveInput.sqrMagnitude <= Mathf.Epsilon)
             {
