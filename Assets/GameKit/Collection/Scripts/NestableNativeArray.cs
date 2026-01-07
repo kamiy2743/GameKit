@@ -25,9 +25,14 @@ namespace GameKit.Collection
 
         public NestableNativeArray(NativeArray<T> source)
         {
-            ptr = (T*)source.GetUnsafeReadOnlyPtr();
+            ptr = (T*)source.GetUnsafePtr();
             Length = source.Length;
             IsEmpty = source.Length == 0;
+        }
+        
+        public T* GetUnsafePtr()
+        {
+            return ptr;
         }
     }
 }
