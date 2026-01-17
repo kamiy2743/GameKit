@@ -193,11 +193,10 @@ namespace GameKit.Localization.Editor
             }
 
             var groupDeclarations = new List<GroupDeclaration>(groupTables.Count);
-            foreach (var pair in groupTables)
+            foreach (var (key, tables) in groupTables)
             {
-                var tables = pair.Value;
                 tables.Sort((a, b) => string.CompareOrdinal(a.TableName, b.TableName));
-                groupDeclarations.Add(new GroupDeclaration(groupClassNames[pair.Key], pair.Key, tables.ToArray()));
+                groupDeclarations.Add(new GroupDeclaration(groupClassNames[key], key, tables.ToArray()));
             }
 
             groupDeclarations.Sort((a, b) => string.CompareOrdinal(a.GroupKey, b.GroupKey));
