@@ -1,5 +1,8 @@
 using System;
+using System.Collections.Generic;
 using System.Reflection;
+using VContainer;
+using VContainer.Internal;
 using VContainer.Unity;
 
 namespace GameKit.DependencyInjection.Base
@@ -17,6 +20,23 @@ namespace GameKit.DependencyInjection.Base
             parentReference = (ParentReference)createMethod!
                 .MakeGenericMethod(GetParentType())
                 .Invoke(null, null);
+        }
+
+        protected override void OnDestroy()
+        {
+            InvokeBeforeDispose();
+            base.OnDestroy();
+        }
+
+        void InvokeBeforeDispose()
+        {
+            if (Container.TryResolve<ContainerLocal<IReadOnlyList<IBeforeDisposable>>>(out var beforeDisposables))
+            {
+                foreach (var beforeDisposable in beforeDisposables.Value)
+                {
+                    beforeDisposable.BeforeDispose();
+                }
+            }
         }
     }
 }
