@@ -44,7 +44,7 @@ namespace GameKit.Localization.Editor
                         continue;
                     }
 
-                    HandleCollectionUpdated(collection);
+                    HandleCollectionUpdated();
                 }
             }
         }
@@ -124,7 +124,7 @@ namespace GameKit.Localization.Editor
             return collection != null;
         }
 
-        static void HandleCollectionUpdated(StringTableCollection collection)
+        static void HandleCollectionUpdated()
         {
             GenerateConstantsAsset();
         }
