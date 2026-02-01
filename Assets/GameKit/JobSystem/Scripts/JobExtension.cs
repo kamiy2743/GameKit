@@ -32,6 +32,7 @@ namespace GameKit.JobSystem
         
         public static async UniTask WaitForAsync(this JobHandle handle, CancellationToken ct)
         {
+            ct.ThrowIfCancellationRequested();
             try
             {
                 await UniTask.WaitUntil(() => handle.IsCompleted, cancellationToken: ct);
